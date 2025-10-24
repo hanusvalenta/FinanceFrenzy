@@ -18,11 +18,13 @@ flip_h = true
 [node name="Ammo" type="Sprite2D" parent="."]
 position = Vector2(312, 332)
 texture = ExtResource("3_70j8v")
+offset = Vector2(-50, 0)
 metadata/Tag = "Ammo"
 
 [node name="Ammo2" type="Sprite2D" parent="."]
 position = Vector2(211, 271)
 texture = ExtResource("3_70j8v")
+offset = Vector2(-50, 0)
 metadata/Tag = "Ammo"
 
 [node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snapTargetPosition")]
@@ -32,7 +34,7 @@ texture = ExtResource("1_pw64i")
 script = ExtResource("2_67ibq")
 _snappableObject1 = NodePath("../Ammo")
 _snappableObject2 = NodePath("../Ammo2")
-_snapTargetPosition = NodePath("Node2D")
+_snapTargetPosition = NodePath("HeldPos")
 
-[node name="Node2D" type="Node2D" parent="Hand"]
-position = Vector2(-83.995, 13.9649)
+[node name="HeldPos" type="Node2D" parent="Hand"]
+position = Vector2(-92.6101, -3.26484)

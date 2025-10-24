@@ -10,6 +10,8 @@ public partial class Hand : Sprite2D
 	[Export]
 	private Node2D _snapTargetPosition;
 
+	private Node2D _heldObject = null;
+
 	public override void _Ready()
 	{
 		Input.MouseMode = Input.MouseModeEnum.Hidden;
@@ -17,30 +19,38 @@ public partial class Hand : Sprite2D
 
 	public override void _Process(double delta)
 	{
-		GlobalPosition = GetGlobalMousePosition();
+		Vector2 mousePosition = GetGlobalMousePosition();
+		GlobalPosition = mousePosition;
+
+		if (_heldObject != null)
+		{
+			_heldObject.GlobalPosition = mousePosition;
+		}
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseButton mouseButtonEvent && mouseButtonEvent.ButtonIndex == MouseButton.Left && mouseButtonEvent.Pressed)
+		if (@event is InputEventMouseButton mouseButtonEvent && mouseButtonEvent.ButtonIndex == MouseButton.Left)
 		{
-			Vector2 mouseGlobalPos = GetGlobalMousePosition();
-
-			if (_snappableObject1 != null && _snapTargetPosition != null)
+			if (mouseButtonEvent.Pressed)
 			{
-				if (IsMouseOverNode(_snappableObject1, mouseGlobalPos))
+				Vector2 mouseGlobalPos = GetGlobalMousePosition();
+				if (_heldObject == null && _snappableObject1 != null && IsMouseOverNode(_snappableObject1, mouseGlobalPos))
 				{
-					((Node2D)_snappableObject1).GlobalPosition = _snapTargetPosition.GlobalPosition;
+					_heldObject = (Node2D)_snappableObject1;
 					GetViewport().SetInputAsHandled();
-					return;
+				}
+				else if (_heldObject == null && _snappableObject2 != null && IsMouseOverNode(_snappableObject2, mouseGlobalPos))
+				{
+					_heldObject = (Node2D)_snappableObject2;
+					GetViewport().SetInputAsHandled();
 				}
 			}
-			
-			if (_snappableObject2 != null && _snapTargetPosition != null)
+			else
 			{
-				if (IsMouseOverNode(_snappableObject2, mouseGlobalPos))
+				if (_heldObject != null)
 				{
-					((Node2D)_snappableObject2).GlobalPosition = _snapTargetPosition.GlobalPosition;
+					_heldObject = null;
 					GetViewport().SetInputAsHandled();
 				}
 			}
