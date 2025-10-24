@@ -10,7 +10,6 @@ public partial class DataModel : Node2D
 	public static int V_Int_Level			= 1;
 	public static double V_Double_Nextlvl	= 3;
 	public static bool V_Bool_IsInterim		= true;
-	private static List<int> V_IntList_Skip	= new List<int>();
 
 	public override void _Ready()
 	{
@@ -62,22 +61,8 @@ public partial class DataModel : Node2D
 				PAR_ScenePath_Str	= "res://Scenes/CursedScenes/";
 			}
 
-			if(V_Int_Max			== V_IntList_Skip.Count)
-			{
-				V_IntList_Skip		= new List<int>();
-				V_Int_Level			++;
-
-				F_SanityChange_RNil(10);
-
-				goto NextLvL;
-			}
-
-			do
-			{
-				V_Int_NextLVL			= V_Random_.Next(1, V_Int_Max+1);
-				V_IntList_Skip.Add(V_Int_Max);
-			}
-			while(V_IntList_Skip.IndexOf(V_Int_Max) != -1);
+			
+			V_Int_NextLVL			= V_Random_.Next(1, V_Int_Max+1);
 
 			PAR_ScenePath_Str		= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
 			V_Bool_IsInterim		= false;
