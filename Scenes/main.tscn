@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=76 format=3 uid="uid://kh1solr2rh21"]
 
 [ext_resource type="Script" uid="uid://dxxwujakx82pg" path="res://Scripts/MenuManager.cs" id="1_fevyy"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
@@ -12,13 +12,67 @@
 [ext_resource type="Texture2D" uid="uid://cyyk2uas76xfx" path="res://Sprites/ibtS_spr_btn_exit_0.png" id="7_ynf5e"]
 [ext_resource type="AudioStream" uid="uid://dsfe4bchmgiyc" path="res://Sounds/snd_menu_click_major.wav" id="8_hibaj"]
 [ext_resource type="Texture2D" uid="uid://bb1fae8v3uw50" path="res://Sprites/ibtS_spr_btn_exit_1.png" id="8_hptm8"]
+[ext_resource type="Script" uid="uid://cnmh40d4wdepj" path="res://Scripts/SimpleMenuAnim.cs" id="9_hibaj"]
 [ext_resource type="Texture2D" uid="uid://6adskk3wj1x1" path="res://Sprites/mf3_spr_bg_0.png" id="10_6iyac"]
+[ext_resource type="Texture2D" uid="uid://ch5bffusqsjkh" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_0.png" id="10_owhal"]
 [ext_resource type="Shader" uid="uid://d3w8kw1njlc7l" path="res://Shaders/liquid.gdshader" id="11_6iyac"]
+[ext_resource type="Texture2D" uid="uid://suc1ephafp6m" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_1.png" id="11_uv6w5"]
 [ext_resource type="Texture2D" uid="uid://delmnuhaw1786" path="res://Sprites/mf0_spr_hardmix_0.png" id="12_fdnlq"]
-[ext_resource type="Texture2D" uid="uid://dxis7nv4pbgmv" path="res://Sprites/ibtT_spr_pandoraspeedup_5.png" id="13_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://bntd70bkoq2bv" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_2.png" id="12_r7bbj"]
+[ext_resource type="Texture2D" uid="uid://bbtrbfyv37dkf" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_3.png" id="13_e5peh"]
+[ext_resource type="Texture2D" uid="uid://qeu0lh2tdyaj" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_4.png" id="14_f6rfp"]
 [ext_resource type="Texture2D" uid="uid://bdkrnascst454" path="res://Sprites/ibtT_spr_mgintro_31.png" id="14_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://d3xuuyurhi4kj" path="res://Sprites/mf0_spr_hardlightmask_0.png" id="15_k12tt"]
+[ext_resource type="Texture2D" uid="uid://crgd3cwewmfts" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_5.png" id="15_sasc4"]
 [ext_resource type="Texture2D" uid="uid://m54wtjwjxm1l" path="res://Sprites/mf0_spr_hardlight_0.png" id="16_h1bgf"]
+[ext_resource type="Texture2D" uid="uid://cf7mswjoj25hb" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_6.png" id="16_pfx1i"]
+[ext_resource type="Texture2D" uid="uid://cwackwbgyl5dp" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_7.png" id="17_fg68e"]
+[ext_resource type="Texture2D" uid="uid://c1x7hgrb402aw" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_8.png" id="18_jekl6"]
+[ext_resource type="Texture2D" uid="uid://dpntyl7cek16d" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_9.png" id="19_v1mrv"]
+[ext_resource type="Texture2D" uid="uid://bjcdwjgkqpkm3" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_10.png" id="20_fd3ed"]
+[ext_resource type="Texture2D" uid="uid://lnaw0m33jn2j" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_11.png" id="21_qnggo"]
+[ext_resource type="Texture2D" uid="uid://b6gksf8a3jwdg" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_12.png" id="22_tab3y"]
+[ext_resource type="Texture2D" uid="uid://dix8nut8o6at7" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_13.png" id="23_1tvlp"]
+[ext_resource type="Texture2D" uid="uid://e4631fixuibq" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_14.png" id="24_wl4bb"]
+[ext_resource type="Texture2D" uid="uid://bixmswjt3r8i6" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_15.png" id="25_6h1fc"]
+[ext_resource type="Texture2D" uid="uid://cn64yaljpmslw" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_16.png" id="26_vxl7x"]
+[ext_resource type="Texture2D" uid="uid://bvlqy08wlr0hw" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_17.png" id="27_ihvwq"]
+[ext_resource type="Texture2D" uid="uid://cljqx0rwvvmou" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_18.png" id="28_k8rh3"]
+[ext_resource type="Texture2D" uid="uid://cv0icgkub8gcx" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_19.png" id="29_55idt"]
+[ext_resource type="Texture2D" uid="uid://c43eyogsr2tk2" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_20.png" id="30_87bhu"]
+[ext_resource type="Texture2D" uid="uid://bj5auc0g8rv2g" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_21.png" id="31_33qc4"]
+[ext_resource type="Texture2D" uid="uid://evvt0enrpr8s" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_22.png" id="32_e6rcu"]
+[ext_resource type="Texture2D" uid="uid://5c133k5os0fb" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_23.png" id="33_p4gyq"]
+[ext_resource type="Texture2D" uid="uid://c0ie46f8i25nt" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_24.png" id="34_32dfi"]
+[ext_resource type="Texture2D" uid="uid://bcvh67imwxxr2" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_25.png" id="35_cf2bd"]
+[ext_resource type="Texture2D" uid="uid://b2prppg7joxph" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_26.png" id="36_lpdpw"]
+[ext_resource type="Texture2D" uid="uid://bp8djfg31wgwg" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_27.png" id="37_jrou0"]
+[ext_resource type="Texture2D" uid="uid://c1cdqdgvdpo73" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_28.png" id="38_j2g22"]
+[ext_resource type="Texture2D" uid="uid://ch57684w7d2rb" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_29.png" id="39_phube"]
+[ext_resource type="Texture2D" uid="uid://df38pc80h7xc" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_30.png" id="40_t014q"]
+[ext_resource type="Texture2D" uid="uid://dwqmsmb106frp" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_31.png" id="41_nb1ia"]
+[ext_resource type="Texture2D" uid="uid://c7kii8rn68b6k" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_32.png" id="42_3ahwd"]
+[ext_resource type="Texture2D" uid="uid://cjqpgacviyf0t" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_33.png" id="43_b4xsn"]
+[ext_resource type="Texture2D" uid="uid://b3irr7cl6rd4a" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_34.png" id="44_ot5ec"]
+[ext_resource type="Texture2D" uid="uid://bb6mcwbmvv48b" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_35.png" id="45_aok0f"]
+[ext_resource type="Texture2D" uid="uid://h75lp6cg4m7g" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_36.png" id="46_64lof"]
+[ext_resource type="Texture2D" uid="uid://bjgp5pihanyqq" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_37.png" id="47_b4mik"]
+[ext_resource type="Texture2D" uid="uid://7676hr72d5s5" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_38.png" id="48_urine"]
+[ext_resource type="Texture2D" uid="uid://bjabenfo272vu" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_39.png" id="49_5vy51"]
+[ext_resource type="Texture2D" uid="uid://cldslcwjk3dwe" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_40.png" id="50_o2owy"]
+[ext_resource type="Texture2D" uid="uid://bg6cv7t3fjsi" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_41.png" id="51_ylsbi"]
+[ext_resource type="Texture2D" uid="uid://c4ksxbpnf7dpu" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_42.png" id="52_ceghn"]
+[ext_resource type="Texture2D" uid="uid://bw6s3msaydyvv" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_43.png" id="53_3h4bx"]
+[ext_resource type="Texture2D" path="res://Sprites/MenuAnim1/ibtT_spr_mgoutro_lose_44.png" id="54_o2owy"]
+[ext_resource type="Texture2D" uid="uid://b58fd7o7md6kq" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_44.png" id="54_xg142"]
+[ext_resource type="Texture2D" uid="uid://dkupbdgnyol8t" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_45.png" id="55_rlvxq"]
+[ext_resource type="Texture2D" uid="uid://cspud7qlrcr40" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_46.png" id="56_0fjpc"]
+[ext_resource type="Texture2D" uid="uid://brdpgmftfi5e8" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_47.png" id="57_gdwd6"]
+[ext_resource type="Texture2D" uid="uid://b2qpxmjxihc8f" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_48.png" id="58_cmq5c"]
+[ext_resource type="AudioStream" uid="uid://c0oqjhomhtfsf" path="res://Sounds/ibtS_voice_win2.wav" id="63_uv6w5"]
+[ext_resource type="Script" uid="uid://b1oututgycilv" path="res://Scenes/SimpleMusicPlayer.cs" id="71_r7bbj"]
+[ext_resource type="AudioStream" uid="uid://cyd0gdxwotxbo" path="res://Sounds/ms12_snd_hello.wav" id="72_f6rfp"]
+[ext_resource type="AudioStream" uid="uid://bscgc3epioqax" path="res://Sounds/mus_mainmenu.wav" id="73_sasc4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdnlq"]
 shader = ExtResource("11_6iyac")
@@ -55,7 +109,7 @@ anchors_preset = 0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jjgbg")
-V_Int_Delay_ms = 5000
+V_Int_Delay_ms = 2000
 
 [node name="Start" type="TextureButton" parent="Control"]
 z_index = 5
@@ -70,6 +124,7 @@ texture_hover = ExtResource("4_6bp64")
 stretch_mode = 0
 script = ExtResource("2_kry3j")
 HoverScaleMultiplier = 1.3
+HoverImageOpacity = 1.0
 HoverImagePath = NodePath("../../IbtTSprPandoraspeedup5")
 
 [node name="ButtonSoundComponent" type="Node" parent="Control/Start"]
@@ -79,6 +134,15 @@ ClickSound = ExtResource("8_hibaj")
 HoverVolume = 1.0
 ClickVolume = 1.0
 ButtonPath = NodePath("..")
+
+[node name="SimpleMenuAnim" type="Node" parent="Control/Start"]
+script = ExtResource("9_hibaj")
+Frames = [ExtResource("10_owhal"), ExtResource("11_uv6w5"), ExtResource("12_r7bbj"), ExtResource("13_e5peh"), ExtResource("14_f6rfp"), ExtResource("15_sasc4"), ExtResource("16_pfx1i"), ExtResource("17_fg68e"), ExtResource("18_jekl6"), ExtResource("19_v1mrv"), ExtResource("20_fd3ed"), ExtResource("21_qnggo"), ExtResource("22_tab3y"), ExtResource("23_1tvlp"), ExtResource("24_wl4bb"), ExtResource("25_6h1fc"), ExtResource("26_vxl7x"), ExtResource("27_ihvwq"), ExtResource("28_k8rh3"), ExtResource("29_55idt"), ExtResource("30_87bhu"), ExtResource("31_33qc4"), ExtResource("32_e6rcu"), ExtResource("33_p4gyq"), ExtResource("34_32dfi"), ExtResource("35_cf2bd"), ExtResource("36_lpdpw"), ExtResource("37_jrou0"), ExtResource("38_j2g22"), ExtResource("39_phube"), ExtResource("40_t014q"), ExtResource("41_nb1ia"), ExtResource("42_3ahwd"), ExtResource("43_b4xsn"), ExtResource("44_ot5ec"), ExtResource("45_aok0f"), ExtResource("46_64lof"), ExtResource("47_b4mik"), ExtResource("48_urine"), ExtResource("49_5vy51"), ExtResource("50_o2owy"), ExtResource("51_ylsbi"), ExtResource("52_ceghn"), ExtResource("53_3h4bx"), ExtResource("54_xg142"), ExtResource("55_rlvxq"), ExtResource("56_0fjpc"), ExtResource("57_gdwd6"), ExtResource("58_cmq5c")]
+Speed = 24.0
+TargetSpritePath = NodePath("../../../IbtTSprPandoraspeedup5")
+ControlButtonScale = true
+ButtonScalePath = NodePath("../../../IbtTSprPandoraspeedup5")
+ShowOnAnimationEnd = true
 
 [node name="Options" type="TextureButton" parent="Control"]
 z_index = 5
@@ -108,6 +172,14 @@ stretch_mode = 0
 script = ExtResource("2_kry3j")
 HoverImagePath = NodePath("../../IbtTSprMgintro31")
 
+[node name="ButtonSoundComponent" type="Node" parent="Control/Exit"]
+script = ExtResource("6_h1bgf")
+HoverSound = ExtResource("7_fevyy")
+ClickSound = ExtResource("63_uv6w5")
+HoverVolume = 1.0
+ClickVolume = 1.0
+ButtonPath = NodePath("..")
+
 [node name="Ms4SprComputerBg0" type="Sprite2D" parent="."]
 z_index = -5
 texture_filter = 3
@@ -118,10 +190,11 @@ texture = ExtResource("10_6iyac")
 metadata/_edit_lock_ = true
 
 [node name="IbtTSprPandoraspeedup5" type="Sprite2D" parent="."]
+z_index = 6
 texture_filter = 1
-position = Vector2(75.6398, 180)
-scale = Vector2(3.45024, 3.45024)
-texture = ExtResource("13_fdnlq")
+position = Vector2(42.6958, 40.3738)
+scale = Vector2(4.53165, 4.4942)
+texture = ExtResource("54_o2owy")
 
 [node name="Mf0SprHardmix0" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -129,6 +202,7 @@ material = SubResource("ShaderMaterial_fdnlq")
 position = Vector2(10.6666, 39.9999)
 scale = Vector2(3.89333, 3.89333)
 texture = ExtResource("12_fdnlq")
+metadata/_edit_lock_ = true
 
 [node name="IbtTSprMgintro31" type="Sprite2D" parent="."]
 position = Vector2(704, 176)
@@ -141,6 +215,7 @@ material = SubResource("ShaderMaterial_b3802")
 position = Vector2(16, 24)
 scale = Vector2(3.89333, 3.89333)
 texture = ExtResource("15_k12tt")
+metadata/_edit_lock_ = true
 
 [node name="Mf0SprHardlight0" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -149,6 +224,13 @@ position = Vector2(-2.22229, -30.6666)
 rotation = 3.14159
 scale = Vector2(3.87111, 3.87111)
 texture = ExtResource("16_h1bgf")
+metadata/_edit_lock_ = true
+
+[node name="MenuMusicManager" type="Node" parent="."]
+script = ExtResource("71_r7bbj")
+FirstAudio = ExtResource("72_f6rfp")
+SecondAudio = ExtResource("73_sasc4")
+Volume = 1.0
 
 [connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
 [connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]
