@@ -33,7 +33,6 @@ public partial class GameController : Control
 		}
 
 		Node V_Node_CurScene= GetTree().CurrentScene;
-
 		GetTree().Root.AddChild(V_Scene_Interm);
 		GetTree().Root.RemoveChild(V_Node_CurScene);
 	}

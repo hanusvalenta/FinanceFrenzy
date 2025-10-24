@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=19 format=3 uid="uid://kh1solr2rh21"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://delmnuhaw1786" path="res://Sprites/mf0_spr_hardmix_0.png" id="12_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://dxis7nv4pbgmv" path="res://Sprites/ibtT_spr_pandoraspeedup_5.png" id="13_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://bdkrnascst454" path="res://Sprites/ibtT_spr_mgintro_31.png" id="14_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://d3xuuyurhi4kj" path="res://Sprites/mf0_spr_hardlightmask_0.png" id="15_k12tt"]
+[ext_resource type="Texture2D" uid="uid://m54wtjwjxm1l" path="res://Sprites/mf0_spr_hardlight_0.png" id="16_h1bgf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdnlq"]
 shader = ExtResource("11_6iyac")
@@ -25,6 +27,18 @@ shader_parameter/viscosity = 1.0
 shader_parameter/enable_secondary_flow = true
 shader_parameter/turbulence = 0.425
 shader_parameter/opacity = 0.12
+shader_parameter/fade_edges = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3802"]
+shader = ExtResource("11_6iyac")
+shader_parameter/flow_speed = 1.0
+shader_parameter/flow_strength = 0.054
+shader_parameter/swirl_intensity = 0.8
+shader_parameter/wave_scale = 4.0
+shader_parameter/viscosity = 1.79
+shader_parameter/enable_secondary_flow = true
+shader_parameter/turbulence = 0.3
+shader_parameter/opacity = 0.202
 shader_parameter/fade_edges = 0.0
 
 [node name="Node2D" type="Node2D"]
@@ -112,6 +126,21 @@ texture = ExtResource("12_fdnlq")
 position = Vector2(704, 176)
 scale = Vector2(1.63248, 1.63248)
 texture = ExtResource("14_jkdf5")
+
+[node name="Mf0SprHardlightmask0" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_b3802")
+position = Vector2(16, 24)
+scale = Vector2(3.89333, 3.89333)
+texture = ExtResource("15_k12tt")
+
+[node name="Mf0SprHardlight0" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_b3802")
+position = Vector2(-2.22229, -30.6666)
+rotation = 3.14159
+scale = Vector2(3.87111, 3.87111)
+texture = ExtResource("16_h1bgf")
 
 [connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
 [connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]

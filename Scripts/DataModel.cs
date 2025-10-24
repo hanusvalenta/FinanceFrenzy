@@ -3,10 +3,13 @@ using System;
 
 public partial class DataModel : Node2D
 {
+	Random V_Random_;
+
 	public override void _Ready()
 	{
 		GD.Print(GetTree().Root.GetMeta("Sanity"));
-		
+
+		V_Random_	= new Random();		
 	}
 
 	public void F_SanityChange_RNil(int PAR_Sanity)
@@ -17,9 +20,20 @@ public partial class DataModel : Node2D
 		}
 	}
 
-	public void F_ChangeLevel_RNil()
+	public void F_ChangeLevel_RNil(bool PAR_Intermission_RNil, string PAR_ScenePath_Str	= "")
 	{
+		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
+		{
+			PAR_ScenePath_Str	= "res://Scenes/GameScenes";
 
+			int V_Int_NextLVL	= V_Random_.Next(0, 2);
+			PAR_ScenePath_Str	= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
+		}
+
+
+		Node V_Node_CurScene= GetTree().CurrentScene;
+		GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>(PAR_ScenePath_Str).Instantiate());
+		GetTree().Root.RemoveChild(V_Node_CurScene);
 	}
 
 	public float F_BeatSpeed_RNil(float PAR_DecreaseSPD_Float = 0.0f)
