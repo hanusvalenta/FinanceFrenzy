@@ -304,7 +304,7 @@ HoverSound = ExtResource("7_fevyy")
 ClickSound = ExtResource("63_uv6w5")
 HoverVolume = 1.0
 ClickVolume = 1.0
-ButtonPath = NodePath("../../Exit")
+ButtonPath = NodePath("..")
 
 [node name="Exit" type="TextureButton" parent="Control"]
 z_index = 5
