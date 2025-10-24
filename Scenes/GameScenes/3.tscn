@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=11 format=3 uid="uid://bnp67uyfuqy34"]
-=======
-[gd_scene load_steps=9 format=3 uid="uid://bwi12ikp2ydrt"]
->>>>>>> 387179a259ea030016c07e90e5f5dc62eda564da
 
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_ojqd7"]
 [ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="2_uii3l"]
@@ -24,20 +20,15 @@ radius = 273.713
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snapTargetPosition")]
+[node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snappableObject3", "_snapTargetPosition")]
 z_index = 1
 position = Vector2(434.75, -83.0415)
 scale = Vector2(2.43764, 2.43764)
 texture = ExtResource("2_uii3l")
 script = ExtResource("3_87qgg")
-<<<<<<< HEAD
 _snappableObject1 = NodePath("../5")
 _snappableObject2 = NodePath("../20")
 _snappableObject3 = NodePath("../50")
-=======
-_snappableObject1 = NodePath("../Coin1")
-_snappableObject2 = NodePath("../Coin2")
->>>>>>> 387179a259ea030016c07e90e5f5dc62eda564da
 _snapTargetPosition = NodePath("HeldPos")
 _holdingTexture = ExtResource("4_anwib")
 
@@ -108,7 +99,7 @@ scale = Vector2(23.1038, 15.636)
 shape = SubResource("RectangleShape2D_cgare")
 
 [node name="Sprite2D" type="Sprite2D" parent="CoinHub5"]
-position = Vector2(-144, 48)
+position = Vector2(-144, 72)
 scale = Vector2(0.21952, 0.21952)
 texture = ExtResource("5_fk6v0")
 
