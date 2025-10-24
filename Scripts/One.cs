@@ -16,6 +16,8 @@ public partial class One : Node2D
 
 	public override void _Ready()
 	{
+		DataModel.V_Double_Nextlvl	= 5;
+
 		_drawTimer = new Timer();
 		AddChild(_drawTimer);
 		_drawTimer.WaitTime = LINE_DRAW_INTERVAL;
@@ -56,20 +58,24 @@ public partial class One : Node2D
 		}
 	}
 
+	private void F_FinishLevel_RNil(int PAR_SanityInc_Int)
+	{
+		GetNode<DataModel>("..").F_SanityChange_RNil(PAR_SanityInc_Int);
+		GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+		DataModel.V_Double_Nextlvl	= 3;
+	}
+
 	private void Good()
 	{
-		GD.Print("Good Clicked");
 		goodClicks++;
 		if (goodClicks >= 5)
 		{
-			GetNode<DataModel>("..").F_SanityChange_RNil(10);
-			GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+			F_FinishLevel_RNil(10);
 		}
 	}
 	
 	private void Bad()
 	{
-		GetNode<DataModel>("..").F_SanityChange_RNil(-10);
-		GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+		F_FinishLevel_RNil(10);
 	}
 }

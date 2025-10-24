@@ -1,30 +1,32 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 public partial class DataModel : Node2D
 {
 	Random V_Random_;
-	static double V_Double_Nextlvl	= 3;
-	static bool V_Bool_IgnoreTimer	= false;
+	public static int V_Int_Level			= 1;
+	public static double V_Double_Nextlvl	= 3;
+	public static bool V_Bool_IsInterim		= true;
+	private static List<int> V_IntList_Skip	= new List<int>();
 
 	public override void _Ready()
 	{
-		GD.Print(GetTree().Root.GetMeta("Sanity"));
-
 		V_Random_			= new Random();
 	}
 
 	public override void _Process(double delta)
 	{
-		if((int)GetTree().Root.GetMeta("Sanity") != 101 && V_Bool_IgnoreTimer == false)
+		if((int)GetTree().Root.GetMeta("Sanity") != 101)
 		{
 			V_Double_Nextlvl	-= delta;
 			
 			if(V_Double_Nextlvl	< 0)
 			{
 				F_ChangeLevel_RNil();
-				V_Double_Nextlvl= 7;
+				V_Double_Nextlvl= 5;
 			}
 		}
 	}
@@ -39,7 +41,12 @@ public partial class DataModel : Node2D
 
 	public void F_ChangeLevel_RNil(string PAR_ScenePath_Str	= "")
 	{
-		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
+		if(string.IsNullOrEmpty(PAR_ScenePath_Str) && V_Bool_IsInterim	== false)
+		{
+			PAR_ScenePath_Str		= "res://Scenes/Intermission.tscn";
+			V_Bool_IsInterim		= true;
+		}
+		else if(string.IsNullOrEmpty(PAR_ScenePath_Str))
 		{
 			int V_Int_Max;
 			int V_Int_NextLVL;
@@ -55,13 +62,29 @@ public partial class DataModel : Node2D
 				PAR_ScenePath_Str	= "res://Scenes/CursedScenes/";
 			}
 
-			V_Int_NextLVL		= V_Random_.Next(1, V_Int_Max+1);
+			if(V_Int_Max			== V_IntList_Skip.Count)
+			{
+				V_IntList_Skip		= new List<int>();
+				V_Int_Level			++;
 
-			PAR_ScenePath_Str	= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
+				F_SanityChange_RNil(10);
+
+				goto NextLvL;
+			}
+
+			do
+			{
+				V_Int_NextLVL			= V_Random_.Next(1, V_Int_Max+1);
+				V_IntList_Skip.Add(V_Int_Max);
+			}
+			while(V_IntList_Skip.IndexOf(V_Int_Max) != -1);
+
+			PAR_ScenePath_Str		= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
+			V_Bool_IsInterim		= false;
 		}
 
+		NextLvL:
 
-		Node V_Node_CurScene	= GetTree().CurrentScene;
 		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>(PAR_ScenePath_Str));
 	}
 

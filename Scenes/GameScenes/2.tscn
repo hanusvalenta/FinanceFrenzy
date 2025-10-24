@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c72l7pssbtiwf" path="res://Sprites/ibtS_spr_btn_blank_0.png" id="5_d1wgd"]
 [ext_resource type="Texture2D" uid="uid://c2ni1argf82sg" path="res://Sprites/ibtS_spr_btn_blank_1.png" id="6_q4vvs"]
 
-[node name="1" type="Node2D"]
+[node name="2" type="Node2D"]
 position = Vector2(0, 2)
 script = ExtResource("1_717p5")
 
