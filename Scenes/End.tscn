@@ -20,10 +20,19 @@ position = Vector2(312, 332)
 texture = ExtResource("3_70j8v")
 metadata/Tag = "Ammo"
 
-[node name="Hand" type="Sprite2D" parent="."]
+[node name="Ammo2" type="Sprite2D" parent="."]
+position = Vector2(211, 271)
+texture = ExtResource("3_70j8v")
+metadata/Tag = "Ammo"
+
+[node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snapTargetPosition")]
 position = Vector2(434.75, -83.0415)
 scale = Vector2(2.43764, 2.43764)
 texture = ExtResource("1_pw64i")
 script = ExtResource("2_67ibq")
+_snappableObject1 = NodePath("../Ammo")
+_snappableObject2 = NodePath("../Ammo2")
+_snapTargetPosition = NodePath("Node2D")
 
 [node name="Node2D" type="Node2D" parent="Hand"]
+position = Vector2(-83.995, 13.9649)
