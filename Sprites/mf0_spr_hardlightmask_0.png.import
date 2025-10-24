@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8up5olvxoguu"
-path="res://.godot/imported/spr_mmui_btn0_big_1.png-ef67065fdefd31d620bc0b937dab26f8.ctex"
+uid="uid://d3xuuyurhi4kj"
+path="res://.godot/imported/mf0_spr_hardlightmask_0.png-677a4ff9299fc7579eca29adb2920eee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/spr_mmui_btn0_big_1.png"
-dest_files=["res://.godot/imported/spr_mmui_btn0_big_1.png-ef67065fdefd31d620bc0b937dab26f8.ctex"]
+source_file="res://Sprites/mf0_spr_hardlightmask_0.png"
+dest_files=["res://.godot/imported/mf0_spr_hardlightmask_0.png-677a4ff9299fc7579eca29adb2920eee.ctex"]
 
 [params]
 
