@@ -63,7 +63,7 @@ public partial class One : Node2D
 		if (goodClicks >= 5)
 		{
 			GetNode<DataModel>("..").F_SanityChange_RNil(10);
-			GetNode<DataModel>("..").F_ChangeLevel_RNil();
+			GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
 		}
 	}
 	

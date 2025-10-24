@@ -20,7 +20,7 @@ public partial class DataModel : Node2D
 		}
 	}
 
-	public void F_ChangeLevel_RNil(bool PAR_Intermission_RNil, string PAR_ScenePath_Str	= "")
+	public void F_ChangeLevel_RNil(string PAR_ScenePath_Str	= "")
 	{
 		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
 		{
