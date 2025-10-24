@@ -66,7 +66,6 @@ public partial class One : Node2D
 			GetNode<DataModel>("..").F_ChangeLevel_RNil();
         }
 	}
-
 	private void Bad()
 	{
 		GD.Print("Outcome: Bad!");
