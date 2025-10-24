@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=75 format=3 uid="uid://kh1solr2rh21"]
 
 [ext_resource type="Script" uid="uid://dxxwujakx82pg" path="res://Scripts/MenuManager.cs" id="1_fevyy"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
@@ -63,7 +63,6 @@
 [ext_resource type="Texture2D" uid="uid://bg6cv7t3fjsi" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_41.png" id="51_ylsbi"]
 [ext_resource type="Texture2D" uid="uid://c4ksxbpnf7dpu" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_42.png" id="52_ceghn"]
 [ext_resource type="Texture2D" uid="uid://bw6s3msaydyvv" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_43.png" id="53_3h4bx"]
-[ext_resource type="Texture2D" path="res://Sprites/MenuAnim1/ibtT_spr_mgoutro_lose_44.png" id="54_o2owy"]
 [ext_resource type="Texture2D" uid="uid://b58fd7o7md6kq" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_44.png" id="54_xg142"]
 [ext_resource type="Texture2D" uid="uid://dkupbdgnyol8t" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_45.png" id="55_rlvxq"]
 [ext_resource type="Texture2D" uid="uid://cspud7qlrcr40" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_46.png" id="56_0fjpc"]
@@ -194,7 +193,6 @@ z_index = 6
 texture_filter = 1
 position = Vector2(42.6958, 40.3738)
 scale = Vector2(4.53165, 4.4942)
-texture = ExtResource("54_o2owy")
 
 [node name="Mf0SprHardmix0" type="Sprite2D" parent="."]
 texture_filter = 1

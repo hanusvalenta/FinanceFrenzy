@@ -27,6 +27,11 @@ public partial class GameController : Control
 		GetNode<Button>("./Exit").Pressed += () => {F_LoadLVL_RNil(true);};
 	}
 
+	public void F_Settings_RNil(bool PAR_Open_Bool)
+	{
+		
+	}
+
 	public async void F_LoadLVL_RNil(bool PAR_Exit_Bool)
 	{
 		if(V_Int_Delay_ms	> 0)
