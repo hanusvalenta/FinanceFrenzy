@@ -251,7 +251,6 @@ anchors_preset = 0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jjgbg")
-V_Int_Delay_ms = 2000
 
 [node name="Start" type="TextureButton" parent="Control"]
 z_index = 5
@@ -369,5 +368,5 @@ scale = Vector2(4.32472, 4.32472)
 sprite_frames = SubResource("SpriteFrames_e5peh")
 animation = &"MenuAnim"
 
-[connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
 [connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]
+[connection signal="animation_looped" from="MenuAnim" to="Control" method="F_LoadLVL_RNil" binds= [false]]
