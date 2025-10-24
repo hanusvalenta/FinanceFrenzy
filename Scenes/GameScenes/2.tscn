@@ -63,6 +63,22 @@ texture_normal = ExtResource("5_d1wgd")
 texture_hover = ExtResource("6_q4vvs")
 stretch_mode = 0
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Buy"]
+layout_mode = 0
+anchor_right = 0.859
+anchor_bottom = 0.819
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 19.944
+offset_bottom = 12.064
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0219203
+theme_override_font_sizes/normal_font_size = 61
+text = "Buy"
+scroll_active = false
+autowrap_mode = 2
+
 [node name="Sell" type="TextureButton" parent="."]
 texture_filter = 1
 offset_left = 1104.0
@@ -73,6 +89,22 @@ texture_normal = ExtResource("5_d1wgd")
 texture_hover = ExtResource("6_q4vvs")
 stretch_mode = 0
 flip_h = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Sell"]
+layout_mode = 0
+anchor_right = 0.859
+anchor_bottom = 0.819
+offset_left = 42.0
+offset_top = 32.0
+offset_right = 21.944
+offset_bottom = 12.064
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0190485
+theme_override_font_sizes/normal_font_size = 61
+text = "Sell"
+scroll_active = false
+autowrap_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 1
