@@ -6,7 +6,8 @@ public partial class Hotgun : Sprite2D
 	[Export] private Sprite2D _sprite;
 	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")] private Texture2D _oneAmmoTexture; // Texture when one ammo is loaded (regardless of which hole)
 	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")] private Texture2D _twoAmmoTexture; // Texture when both ammo are loaded
-	[Export] private Sprite2D _delayedSprite; // Sprite to make visible after 1 second delay
+	[Export] private Sprite2D _delayedSprite; // First sprite to make visible after 1 second delay
+	[Export] private AnimationManager _delayedSprite2; // Second sprite to make visible after additional 2 seconds
 	[Export] private AnimatedSprite2D _animationSprite; // AnimatedSprite2D to start and loop after delay
 	
 	private int _ammoCount = 0; // Track how many ammo are loaded
@@ -71,11 +72,11 @@ public partial class Hotgun : Sprite2D
 		// Wait for 1 second
 		await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
 		
-		// Turn on visibility for the delayed sprite
+		// Turn on visibility for the first delayed sprite
 		if (_delayedSprite != null)
 		{
 			_delayedSprite.Visible = true;
-			GD.Print("Delayed sprite is now visible!"); // Debug line
+			GD.Print("First delayed sprite is now visible!"); // Debug line
 		}
 		else
 		{
@@ -93,6 +94,20 @@ public partial class Hotgun : Sprite2D
 		{
 			GD.PrintErr("AnimationSprite is not assigned in the inspector!");
 		}
+
+		// Wait for additional 2 seconds before showing the second sprite
+		await ToSignal(GetTree().CreateTimer(2.0), SceneTreeTimer.SignalName.Timeout);
+		
+		// Turn on visibility for the second delayed sprite
+		if (_delayedSprite2 != null)
+		{
+			_delayedSprite2.Visible = true;
+			GD.Print("Second delayed sprite is now visible!"); // Debug line
+		}
+		else
+		{
+			GD.PrintErr("DelayedSprite2 is not assigned in the inspector!");
+		}
 	}
 
 	private void F_ForceDrop_RNil()
@@ -106,10 +121,16 @@ public partial class Hotgun : Sprite2D
 		_ammoCount = 0;
 		_sprite.Texture = Texture; // Reset to original texture
 		
-		// Hide the delayed sprite when resetting
+		// Hide the first delayed sprite when resetting
 		if (_delayedSprite != null)
 		{
 			_delayedSprite.Visible = false;
+		}
+		
+		// Hide the second delayed sprite when resetting
+		if (_delayedSprite2 != null)
+		{
+			_delayedSprite2.Visible = false;
 		}
 		
 		// Stop and hide the animation sprite when resetting
