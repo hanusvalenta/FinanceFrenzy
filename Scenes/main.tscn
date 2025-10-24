@@ -1,6 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=76 format=3 uid="uid://kh1solr2rh21"]
 
-[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://dxxwujakx82pg" path="res://Scripts/MenuManager.cs" id="1_fevyy"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://lqsq0jdlfvpa" path="res://Scripts/ButtonScale.cs" id="2_kry3j"]
 [ext_resource type="Texture2D" uid="uid://cbax8mknx2elo" path="res://Sprites/spr_mmui_btn0_big_0.png" id="3_21xkr"]
@@ -69,8 +69,10 @@
 [ext_resource type="Texture2D" uid="uid://brdpgmftfi5e8" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_47.png" id="57_gdwd6"]
 [ext_resource type="Texture2D" uid="uid://b2qpxmjxihc8f" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_48.png" id="58_cmq5c"]
 [ext_resource type="AudioStream" uid="uid://c0oqjhomhtfsf" path="res://Sounds/ibtS_voice_win2.wav" id="63_uv6w5"]
-[ext_resource type="Script" path="res://Scenes/SimpleMusicPlayer.cs" id="70_uv6w5"]
-[ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="73_f6rfp"]
+[ext_resource type="Script" uid="uid://b1oututgycilv" path="res://Scripts/SimpleMusicManager.cs" id="70_uv6w5"]
+[ext_resource type="AudioStream" uid="uid://cyd0gdxwotxbo" path="res://Sounds/ms12_snd_hello.wav" id="72_f6rfp"]
+[ext_resource type="Texture2D" uid="uid://cel1ddypdxb4r" path="res://Sprites/mainMenuBgr.png" id="72_sasc4"]
+[ext_resource type="Script" uid="uid://bsrcjxlpfttg5" path="res://Scenes/Scrollingbackground.cs" id="73_pfx1i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdnlq"]
 shader = ExtResource("11_6iyac")
@@ -97,7 +99,7 @@ shader_parameter/opacity = 0.202
 shader_parameter/fade_edges = 0.0
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_bo1nx")
+script = ExtResource("1_fevyy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -225,10 +227,18 @@ metadata/_edit_lock_ = true
 
 [node name="MenuMusicManager" type="Node" parent="."]
 script = ExtResource("70_uv6w5")
-Volume = null
-LoopSecond = null
+HelloSound = ExtResource("72_f6rfp")
+MenuMusic = ExtResource("63_uv6w5")
 
-[node name="MenuManager" parent="." instance=ExtResource("73_f6rfp")]
+[node name="Scrollingbackground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, -80)
+scale = Vector2(1.19259, 1.19259)
+texture = ExtResource("72_sasc4")
+script = ExtResource("73_pfx1i")
+ScrollSpeedX = 100.0
+ScrollSpeedY = 700.0
+TileSize = Vector2(2016.86, 1100)
 
 [connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
 [connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]
