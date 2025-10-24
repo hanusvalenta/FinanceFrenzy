@@ -73,5 +73,5 @@ scale = Vector2(4, 4.02963)
 texture = ExtResource("5_344ge")
 metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil"]
+[connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
 [connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]
