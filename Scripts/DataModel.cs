@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +28,7 @@ public partial class DataModel : Node2D
 			V_Double_Rhythm			-= delta;
 
 			if(V_Double_Rhythm		< 0)
-			{GD.Print("Rhythm Step");
+			{
 				if(V_Bool_LvlWonSwitch	== true)
 				{GD.Print("Point add");
 					V_Bool_QuitService	= true;
@@ -71,7 +70,7 @@ public partial class DataModel : Node2D
 	}
 
 	public void F_ChangeLevel_RNil(string PAR_ScenePath_Str	= "")
-	{
+	{GD.Print((int)GetTree().Root.GetMeta("Sanity"));
 		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
 		{
 			int V_Int_Max			= 6;
@@ -89,7 +88,7 @@ public partial class DataModel : Node2D
 			do
 			{
 				V_Int_NextLVL		= V_Random_.Next(1, V_Int_Max+1);
-GD.Print(V_Int_NextLVL+" | "+V_IntList_Pld.IndexOf(V_Int_NextLVL));
+
 			}while(V_IntList_Pld.IndexOf(V_Int_NextLVL) != -1);
 
 			V_IntList_Pld.Add(V_Int_NextLVL);

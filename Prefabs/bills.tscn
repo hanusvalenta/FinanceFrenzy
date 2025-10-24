@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfavoixy74t3"]
+[gd_scene load_steps=4 format=3 uid="uid://dy2rl3shnlcwj"]
 
 [ext_resource type="Texture2D" uid="uid://7terun3mks88" path="res://TestImages/Weight.png" id="1_2nvbc"]
 
@@ -8,15 +8,16 @@
 size = Vector2(358.991, 459.566)
 
 [node name="Bills" type="RigidBody2D"]
-scale = Vector2(0.205582, 0.205582)
 physics_material_override = SubResource("PhysicsMaterial_x0hyg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -236)
+scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_gf06a")
 
 [node name="Weight" type="Sprite2D" parent="."]
 position = Vector2(-2, -241)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_2nvbc")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
