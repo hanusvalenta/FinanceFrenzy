@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://3qammc20vd41"]
+[gd_scene load_steps=3 format=3 uid="uid://3qammc20vd41"]
+
+[sub_resource type="Gradient" id="Gradient_dj5pn"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8reg5"]
+gradient = SubResource("Gradient_dj5pn")
 
 [node name="1" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(919, 535)
+scale = Vector2(-119.247, 1076.75)
+texture = SubResource("GradientTexture1D_8reg5")
