@@ -70,7 +70,7 @@ public partial class DataModel : Node2D
 	}
 
 	public void F_ChangeLevel_RNil(string PAR_ScenePath_Str	= "")
-	{GD.Print((int)GetTree().Root.GetMeta("Sanity"));
+	{
 		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
 		{
 			int V_Int_Max			= 6;
