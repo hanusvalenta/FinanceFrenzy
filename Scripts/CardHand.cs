@@ -28,8 +28,7 @@ public partial class CardHand : Sprite2D
 			{
 				_hasWon = true;
 
-				GetNode<DataModel>("..").F_SanityChange_RNil(10);
-                GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+				GetNode<DataModel>("..").V_Bool_LvlWonSwitch	= true;
 			}
 		}
 		_previousMousePosition = mousePosition;

@@ -59,7 +59,7 @@ public partial class One : Node2D
 	private void F_FinishLevel_RNil(int PAR_SanityInc_Int)
 	{
 		GetNode<DataModel>("..").F_SanityChange_RNil(PAR_SanityInc_Int);
-		GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+		GetNode<DataModel>("..").V_Bool_LvlWonSwitch	= true;
 	}
 
 	private void Good()
@@ -67,12 +67,12 @@ public partial class One : Node2D
 		goodClicks++;
 		if (goodClicks >= 5)
 		{
-			F_FinishLevel_RNil(10);
+			F_FinishLevel_RNil(0);
 		}
 	}
 	
 	private void Bad()
 	{
-		F_FinishLevel_RNil(-10);
+		F_FinishLevel_RNil(-30);
 	}
 }

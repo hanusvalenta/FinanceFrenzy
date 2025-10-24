@@ -39,8 +39,7 @@ public partial class CigHand : Sprite2D
 					_targetSprite.Texture = _burntTexture;
 					_isBurnt = true;
 
-					GetNode<DataModel>("..").F_SanityChange_RNil(10);
-					GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+					GetNode<DataModel>("..").V_Bool_LvlWonSwitch	= true;
 				}
 			}
 		}

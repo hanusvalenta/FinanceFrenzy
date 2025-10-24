@@ -10,7 +10,7 @@
 
 [node name="Interm" type="Node2D"]
 script = ExtResource("1_k0l3i")
-metadata/V_NextLevelIn = 3
+metadata/V_NextLevelIn = 6
 metadata/V_IsInterm = true
 
 [node name="MenuManager" parent="." instance=ExtResource("2_4nnvh")]
@@ -30,7 +30,6 @@ texture = ExtResource("4_k0dqm")
 z_index = 2
 texture_filter = 1
 position = Vector2(1.01328e-05, 67.8743)
-scale = Vector2(1, 1)
 texture = ExtResource("5_47dhd")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]

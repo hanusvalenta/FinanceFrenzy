@@ -8,11 +8,15 @@ public partial class DataModel : Node2D
 {
 	Random V_Random_;
 	public double V_Double_Nextlvl;
+	public bool V_Bool_LvlWonSwitch	= false;
+	private double V_Double_Rhythm;
 	private bool V_Bool_QuitService	= false;
 
 	public override void _Ready()
 	{
-		V_Double_Nextlvl	= (double)GetMeta("V_NextLevelIn");
+		V_Double_Rhythm		= (double)GetTree().Root.GetMeta("Speed");
+		V_Double_Nextlvl	= (double)GetMeta("V_NextLevelIn")*V_Double_Rhythm;
+		
 
 		V_Random_			= new Random();
 	}
@@ -21,15 +25,31 @@ public partial class DataModel : Node2D
 	{
 		if((int)GetTree().Root.GetMeta("Sanity") != 101 && V_Bool_QuitService == false)
 		{
-			V_Double_Nextlvl	-= delta;
+			V_Double_Nextlvl		-= delta;
+			V_Double_Rhythm			-= delta;
 
-			if(V_Double_Nextlvl	< 0)
+			if(V_Double_Rhythm		< 0)
+			{GD.Print("Rhythm Step");
+				if(V_Bool_LvlWonSwitch	== true)
+				{GD.Print("Point add");
+					V_Bool_QuitService	= true;
+
+					F_SanityChange_RNil(10);
+					F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+
+					return;
+				}
+
+				V_Double_Rhythm		= (double)GetTree().Root.GetMeta("Speed");
+			}
+
+			if(V_Double_Nextlvl		< 0)
 			{
 				V_Bool_QuitService	= true;
 
 				if((bool)GetMeta("V_IsInterm") == false)
 				{
-					F_SanityChange_RNil(-10);
+					F_SanityChange_RNil(-20);
 				}
 
 				F_ChangeLevel_RNil((bool)GetMeta("V_IsInterm") == true ? "" : "res://Scenes/Intermission.tscn");
@@ -54,7 +74,7 @@ public partial class DataModel : Node2D
 	{
 		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
 		{
-			int V_Int_Max			= 5;
+			int V_Int_Max			= 6;
 			int V_Int_NextLVL;
 			PAR_ScenePath_Str		= "res://Scenes/GameScenes/";
 
