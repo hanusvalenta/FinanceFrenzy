@@ -7,7 +7,8 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Img20251024123013098-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(746, 331)
+[node name="Hand" type="Sprite2D" parent="."]
+position = Vector2(434.75, -83.0415)
+scale = Vector2(2.43764, 2.43764)
 texture = ExtResource("1_pw64i")
 script = ExtResource("2_67ibq")
