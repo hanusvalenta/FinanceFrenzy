@@ -28,3 +28,8 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="FinanceFrenzy"
+
+[rendering]
+
+textures/default_filters/anisotropic_filtering_level=0
+anti_aliasing/screen_space_roughness_limiter/enabled=false
