@@ -6,6 +6,7 @@ public partial class ButtonScale : TextureButton
 	[Export] public float ClickScaleMultiplier { get; set; } = 0.95f;
 	[Export] public float AnimationSpeed { get; set; } = 8f;
 	[Export] public float FadeDuration { get; set; } = 0.2f; // délka fade v sekundách
+	[Export] public float HoverImageOpacity { get; set; } = 0.5f; // opacity při hoveru
 	
 	// Obrázek, který se zobrazí při hoveru
 	[Export] public NodePath HoverImagePath { get; set; }
@@ -22,7 +23,7 @@ public partial class ButtonScale : TextureButton
 		if (HoverImagePath != null && !HoverImagePath.IsEmpty)
 		{
 			_hoverImage = GetNode<CanvasItem>(HoverImagePath);
-			_hoverImage.Modulate = new Color(1, 1, 1, 0); // start transparent
+			_hoverImage.Modulate = new Color(1, 1, 1, 0); // start completely transparent
 		}
 		
 		// Signály tlačítka
@@ -40,13 +41,13 @@ public partial class ButtonScale : TextureButton
 	private void OnMouseEntered()
 	{
 		_targetScale = _originalScale * HoverScaleMultiplier;
-		FadeImage(1.0f); // fade in
+		FadeImage(HoverImageOpacity); // fade to custom opacity value
 	}
 	
 	private void OnMouseExited()
 	{
 		_targetScale = _originalScale;
-		FadeImage(0.0f); // fade out
+		FadeImage(0.0f); // fade back to transparent
 	}
 	
 	private void OnPressed()
@@ -67,8 +68,9 @@ public partial class ButtonScale : TextureButton
 		if (_hoverImage == null)
 			return;
 			
+		// Vytvoří nový Tween pro plynulý fade
 		var tween = CreateTween();
-		tween.TweenProperty(_hoverImage, "modulate:a", targetAlpha, FadeDuration)  // ← This fades YOUR LINKED IMAGE
+		tween.TweenProperty(_hoverImage, "modulate:a", targetAlpha, FadeDuration)
 			 .SetTrans(Tween.TransitionType.Sine)
 			 .SetEase(Tween.EaseType.InOut);
 	}
