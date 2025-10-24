@@ -1,5 +1,13 @@
-[gd_scene load_steps=0 format=3 uid="uid://bg880qsb15lbt"]
+[gd_scene load_steps=3 format=3 uid="uid://bg880qsb15lbt"]
+
+[ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="1_pw64i"]
+[ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="2_67ibq"]
 
 [node name="End" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Img20251024123013098-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(746, 331)
+texture = ExtResource("1_pw64i")
+script = ExtResource("2_67ibq")
