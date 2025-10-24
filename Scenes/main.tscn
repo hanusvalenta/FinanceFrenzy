@@ -1,6 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=75 format=3 uid="uid://kh1solr2rh21"]
 
-[ext_resource type="Script" uid="uid://dxxwujakx82pg" path="res://Scripts/MenuManager.cs" id="1_fevyy"]
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://lqsq0jdlfvpa" path="res://Scripts/ButtonScale.cs" id="2_kry3j"]
 [ext_resource type="Texture2D" uid="uid://cbax8mknx2elo" path="res://Sprites/spr_mmui_btn0_big_0.png" id="3_21xkr"]
@@ -70,6 +70,7 @@
 [ext_resource type="Script" uid="uid://b1oututgycilv" path="res://Scripts/SimpleMusicManager.cs" id="70_uv6w5"]
 [ext_resource type="AudioStream" uid="uid://cyd0gdxwotxbo" path="res://Sounds/ms12_snd_hello.wav" id="72_f6rfp"]
 [ext_resource type="Texture2D" uid="uid://c28bu24e5pvth" path="res://Sprites/DollaDolla.png" id="73_f6rfp"]
+[ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="73_fg68e"]
 [ext_resource type="Script" uid="uid://bsrcjxlpfttg5" path="res://Scripts/SimpleTileBackground.cs" id="73_pfx1i"]
 [ext_resource type="AudioStream" uid="uid://bscgc3epioqax" path="res://Sounds/mus_mainmenu.wav" id="73_sasc4"]
 
@@ -86,7 +87,7 @@ shader_parameter/opacity = 0.12
 shader_parameter/fade_edges = 0.0
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_fevyy")
+script = ExtResource("1_bo1nx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -212,6 +213,8 @@ ScrollSpeedX = 20.0
 ScrollSpeedY = 20.0
 DollarOpacity = 0.5
 AnimateOpacityChanges = false
+
+[node name="MenuManager" parent="." instance=ExtResource("73_fg68e")]
 
 [connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
 [connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]
