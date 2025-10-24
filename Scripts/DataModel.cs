@@ -27,7 +27,7 @@ public partial class DataModel : Node2D
 			int V_Int_Max;
 			int V_Int_NextLVL;
 
-			if(true)//(int)GetTree().Root.GetMeta("Sanity") > 25)
+			if(true)//(int)GetTree().Root.GetMeta("Sanity") > 35)
 			{
 				V_Int_Max			= 2;
 				PAR_ScenePath_Str	= "res://Scenes/GameScenes";
