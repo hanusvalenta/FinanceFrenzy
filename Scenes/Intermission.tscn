@@ -44,38 +44,38 @@ ScrollSpeedX = 25.0
 ScrollSpeedY = 0.0
 TileSize = Vector2(32, 32)
 
-[node name="nextGameInput" type="Node2D" parent="."]
+[node name="NextInputType" type="Node2D" parent="."]
 z_index = 2
 
-[node name="Keyboard" type="Sprite2D" parent="nextGameInput"]
+[node name="Keyboard" type="Sprite2D" parent="NextInputType"]
 visible = false
 texture_filter = 1
 position = Vector2(1700, 265)
 scale = Vector2(3, 3)
 texture = ExtResource("8_l5w55")
 
-[node name="Mouse" type="Sprite2D" parent="nextGameInput"]
+[node name="Mouse" type="Sprite2D" parent="NextInputType"]
 texture_filter = 1
 position = Vector2(1700, 265)
 scale = Vector2(3, 3)
 texture = ExtResource("10_u1u3f")
 
-[node name="reaction" type="Node2D" parent="."]
+[node name="Reaction" type="Node2D" parent="."]
 
-[node name="Sane" type="Sprite2D" parent="reaction"]
+[node name="Sane" type="Sprite2D" parent="Reaction"]
 texture_filter = 1
 position = Vector2(300, 600)
 scale = Vector2(2, 2)
 texture = ExtResource("11_mb0fx")
 
-[node name="NotSane" type="Sprite2D" parent="reaction"]
+[node name="NotSane" type="Sprite2D" parent="Reaction"]
 visible = false
 texture_filter = 1
 position = Vector2(300, 600)
 scale = Vector2(2, 2)
 texture = ExtResource("12_woxsb")
 
-[node name="Insane" type="Sprite2D" parent="reaction"]
+[node name="Insane" type="Sprite2D" parent="Reaction"]
 visible = false
 texture_filter = 1
 position = Vector2(300, 600)
