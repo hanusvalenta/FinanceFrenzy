@@ -9,11 +9,15 @@ public partial class Hand : Sprite2D
 	private CanvasItem _snappableObject2;
 	[Export]
 	private Node2D _snapTargetPosition;
+	[Export]
+	private Texture2D _holdingTexture;
 
+	private Texture2D _idleTexture;
 	private Node2D _heldObject = null;
 
 	public override void _Ready()
 	{
+		_idleTexture = Texture;
 		Input.MouseMode = Input.MouseModeEnum.Hidden;
 	}
 
@@ -38,21 +42,25 @@ public partial class Hand : Sprite2D
 				if (_heldObject == null && _snappableObject1 != null && IsMouseOverNode(_snappableObject1, mouseGlobalPos))
 				{
 					_heldObject = (Node2D)_snappableObject1;
-					GetViewport().SetInputAsHandled();
 				}
 				else if (_heldObject == null && _snappableObject2 != null && IsMouseOverNode(_snappableObject2, mouseGlobalPos))
 				{
 					_heldObject = (Node2D)_snappableObject2;
+				}
+
+				if (_heldObject != null)
+				{
+					Texture = _holdingTexture;
 					GetViewport().SetInputAsHandled();
 				}
 			}
 			else
 			{
-				if (_heldObject != null)
-				{
-					_heldObject = null;
-					GetViewport().SetInputAsHandled();
-				}
+				if (_heldObject == null) return;
+				
+				_heldObject = null;
+				Texture = _idleTexture;
+				GetViewport().SetInputAsHandled();
 			}
 		}
 	}
