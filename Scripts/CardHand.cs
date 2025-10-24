@@ -21,15 +21,13 @@ public partial class CardHand : Sprite2D
 		Vector2 mousePosition = GetGlobalMousePosition();
 		float newX;
 
-		if (!_hasWon && delta > 0)
+		if (!_hasWon && delta > 0 && _isXLocked)
 		{
 			float velocityY = (mousePosition.Y - _previousMousePosition.Y) / (float)delta;
 			if (velocityY > SWIPE_VELOCITY_THRESHOLD)
 			{
 				_hasWon = true;
-
-				GetNode<DataModel>("..").F_SanityChange_RNil(10);
-                GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+				WinSequence();
 			}
 		}
 		_previousMousePosition = mousePosition;
@@ -42,6 +40,13 @@ public partial class CardHand : Sprite2D
 		newX = _isXLocked ? LOCK_X_POSITION : mousePosition.X;
 
 		GlobalPosition = new Vector2(newX, mousePosition.Y);
+	}
+
+	private async void WinSequence()
+	{
+		await ToSignal(GetTree().CreateTimer(2.0), SceneTreeTimer.SignalName.Timeout);
+		GetNode<DataModel>("..").F_SanityChange_RNil(10);
+		GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
 	}
 
 	public override void _ExitTree()
