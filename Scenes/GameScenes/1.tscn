@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://3qammc20vd41"]
+[gd_scene load_steps=4 format=3 uid="uid://3qammc20vd41"]
+
+[ext_resource type="Texture2D" uid="uid://kuqd6vr225rh" path="res://Sprites/spr_mmui_btn0_big_0.png" id="1_8reg5"]
 
 [sub_resource type="Gradient" id="Gradient_dj5pn"]
 
@@ -11,3 +13,8 @@ gradient = SubResource("Gradient_dj5pn")
 position = Vector2(919, 535)
 scale = Vector2(-119.247, 1076.75)
 texture = SubResource("GradientTexture1D_8reg5")
+
+[node name="SprMmuiBtn0Big0" type="Sprite2D" parent="."]
+position = Vector2(960, 501)
+scale = Vector2(8.01777, 8.01777)
+texture = ExtResource("1_8reg5")
