@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnp67uyfuqy34"]
+
+[ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_ojqd7"]
+[ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="2_uii3l"]
+[ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="3_87qgg"]
+[ext_resource type="Texture2D" uid="uid://cbjth6p1ip0s7" path="res://TestImages/IMG_20251024_123020407-removebg-preview.png" id="4_anwib"]
+[ext_resource type="Texture2D" uid="uid://hmj4il71050d" path="res://TestImages/IMG_20251024_124935334-removebg-preview.png" id="10_www1u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbw3r"]
+radius = 40.0
+height = 417.133
+
+[node name="End" type="Node2D"]
+
+[node name="MenuManager" parent="." instance=ExtResource("1_ojqd7")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snapTargetPosition")]
+z_index = 1
+position = Vector2(434.75, -83.0415)
+scale = Vector2(2.43764, 2.43764)
+texture = ExtResource("2_uii3l")
+script = ExtResource("3_87qgg")
+_snappableObject1 = NodePath("")
+_snappableObject2 = NodePath("../Coin1")
+_snapTargetPosition = NodePath("HeldPos")
+_holdingTexture = ExtResource("4_anwib")
+
+[node name="HeldPos" type="Node2D" parent="Hand"]
+position = Vector2(-92.6101, -3.26484)
+
+[node name="Coin1" type="Sprite2D" parent="."]
+position = Vector2(398, 303)
+texture = ExtResource("10_www1u")
+metadata/Tag = "Ammo"
+
+[node name="Area2D" type="Area2D" parent="Coin1"]
+position = Vector2(87.1279, -48.5989)
+scale = Vector2(0.437828, 0.437828)
+
+[node name="ColShape" type="CollisionShape2D" parent="Coin1/Area2D"]
+position = Vector2(-201.284, 158.964)
+rotation = 0.837758
+scale = Vector2(2.284, 2.284)
+shape = SubResource("CapsuleShape2D_vbw3r")
