@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class DataModel : Node2D
 {
@@ -28,7 +29,7 @@ public partial class DataModel : Node2D
 
 				if((bool)GetMeta("V_IsInterm") == false)
 				{
-					GetNode<DataModel>("..").F_SanityChange_RNil(-10);
+					F_SanityChange_RNil(-10);
 				}
 
 				F_ChangeLevel_RNil((bool)GetMeta("V_IsInterm") == true ? "" : "res://Scenes/Intermission.tscn");
@@ -45,31 +46,34 @@ public partial class DataModel : Node2D
 	}
 
 	public void F_ChangeLevel_RNil(string PAR_ScenePath_Str	= "")
-	{GD.Print(V_Double_Nextlvl+" | "+PAR_ScenePath_Str);
+	{
 		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
 		{
-			int V_Int_Max;
+			int V_Int_Max			= 5;
 			int V_Int_NextLVL;
+			PAR_ScenePath_Str		= "res://Scenes/GameScenes/";
 
-			if(true)//(int)GetTree().Root.GetMeta("Sanity") > 35)
-			{
-				V_Int_Max			= 4;
-				PAR_ScenePath_Str	= "res://Scenes/GameScenes/";
-			}
-			else
-			{
-				V_Int_Max			= 2;
-				PAR_ScenePath_Str	= "res://Scenes/CursedScenes/";
+			List<int> V_IntList_Pld	= ((Godot.Collections.Array<int>)GetTree().Root.GetMeta("Played")).ToList<int>();
+
+			if(V_Int_Max			== V_IntList_Pld.Count)
+			{GD.Print("Out");
+				GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Win.tscn"));
+				return;
 			}
 
 			do
 			{
-				V_Int_NextLVL			= V_Random_.Next(1, V_Int_Max+1);
-			}while(false);//(int[])GetTree().Root.GetMeta("Played").IndexOf(V_Int_NextLVL) != -1);
+				V_Int_NextLVL		= V_Random_.Next(1, V_Int_Max+1);
+GD.Print(V_Int_NextLVL+" | "+V_IntList_Pld.IndexOf(V_Int_NextLVL));
+			}while(V_IntList_Pld.IndexOf(V_Int_NextLVL) != -1);
+
+			V_IntList_Pld.Add(V_Int_NextLVL);
+
+			GetTree().Root.SetMeta("Played", V_IntList_Pld.ToArray<int>());
 
 			PAR_ScenePath_Str		= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
 		}
-
+GD.Print(PAR_ScenePath_Str);
 		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>(PAR_ScenePath_Str));
 	}
 

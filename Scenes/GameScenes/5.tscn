@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://co1r0f1j43dts"]
+[gd_scene load_steps=6 format=3 uid="uid://bq63vnybwhmsi"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_4bbmq"]
 [ext_resource type="Texture2D" uid="uid://v1t5gvmgx007" path="res://TestImages/CardHand.png" id="1_bp4bb"]
@@ -9,7 +9,7 @@
 [node name="5" type="Node2D"]
 script = ExtResource("1_4bbmq")
 metadata/V_IsInterm = false
-metadata/V_NextLevelIn = 5
+metadata/V_NextLevelIn = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

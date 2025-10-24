@@ -26,8 +26,10 @@ public partial class CardHand : Sprite2D
 			float velocityY = (mousePosition.Y - _previousMousePosition.Y) / (float)delta;
 			if (velocityY > SWIPE_VELOCITY_THRESHOLD)
 			{
-				GD.Print("Win");
 				_hasWon = true;
+
+				GetNode<DataModel>("..").F_SanityChange_RNil(10);
+                GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
 			}
 		}
 		_previousMousePosition = mousePosition;
