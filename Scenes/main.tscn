@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://kh1solr2rh21"]
 
-[ext_resource type="Script" path="res://Scripts/DataModel.cs" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://lqsq0jdlfvpa" path="res://Scripts/ButtonScale.cs" id="2_kry3j"]
 [ext_resource type="Texture2D" uid="uid://cbax8mknx2elo" path="res://Sprites/spr_mmui_btn0_big_0.png" id="3_21xkr"]
@@ -54,6 +54,7 @@ HoverScaleMultiplier = 1.3
 [node name="Exit" type="TextureButton" parent="Control"]
 z_index = 5
 texture_filter = 1
+layout_mode = 0
 offset_left = 640.0
 offset_top = 352.0
 offset_right = 888.0
@@ -72,4 +73,5 @@ scale = Vector2(4, 4.02963)
 texture = ExtResource("5_344ge")
 metadata/_edit_lock_ = true
 
-[connection signal="button_up" from="Control/Start" to="Control" method="F_LoadLVL_RNil"]
+[connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil"]
+[connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]
