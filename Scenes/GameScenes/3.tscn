@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnp67uyfuqy34"]
+[gd_scene load_steps=13 format=3 uid="uid://bnp67uyfuqy34"]
 
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_ojqd7"]
 [ext_resource type="Texture2D" uid="uid://757kejjosfgy" path="res://Sprites/ms3_spr_hand_open_0.png" id="2_f8egr"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dbu4c25oqnbc" path="res://TestImages/20.png" id="6_cgare"]
 [ext_resource type="Texture2D" uid="uid://b1kfchtwx4h0e" path="res://TestImages/50.png" id="7_f8egr"]
 [ext_resource type="Script" uid="uid://dgw5yqhvu07ri" path="res://Scripts/CoinHub.cs" id="8_f8egr"]
+[ext_resource type="Texture2D" uid="uid://di7fevj4bow7p" path="res://Sprites/cs_0_0_11a_spr_sky_0-min.png" id="9_e7ahb"]
+[ext_resource type="Texture2D" uid="uid://b3hdop4u2f5y" path="res://Sprites/ms17_spr_winbg_0.png" id="10_uqenc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6csqx"]
 radius = 273.713
@@ -37,8 +39,9 @@ _holdingTexture = ExtResource("4_1c47g")
 position = Vector2(-79.8929, -5.316)
 
 [node name="5" type="Sprite2D" parent="."]
-position = Vector2(122, 354)
+position = Vector2(211, 265)
 scale = Vector2(0.294979, 0.294979)
+skew = 0.436332
 texture = ExtResource("5_fk6v0")
 metadata/Tag = "Ammo"
 
@@ -53,8 +56,9 @@ scale = Vector2(2.284, 2.284)
 shape = SubResource("CircleShape2D_6csqx")
 
 [node name="20" type="Sprite2D" parent="."]
-position = Vector2(-566, 368)
+position = Vector2(-477, 279)
 scale = Vector2(0.294979, 0.294979)
+skew = 0.436332
 texture = ExtResource("6_cgare")
 metadata/Tag = "Ammo"
 
@@ -69,8 +73,9 @@ scale = Vector2(2.284, 2.284)
 shape = SubResource("CircleShape2D_6csqx")
 
 [node name="50" type="Sprite2D" parent="."]
-position = Vector2(-232, 340)
+position = Vector2(-143, 251)
 scale = Vector2(0.294979, 0.294979)
+skew = 0.436332
 texture = ExtResource("7_f8egr")
 metadata/Tag = "Ammo"
 
@@ -85,7 +90,7 @@ scale = Vector2(2.284, 2.284)
 shape = SubResource("CircleShape2D_6csqx")
 
 [node name="CoinHub5" type="Node2D" parent="." node_paths=PackedStringArray("Hub1", "Hub2", "Hub3")]
-position = Vector2(-647, -190)
+position = Vector2(-506, -145)
 script = ExtResource("8_f8egr")
 CoinName = "5"
 Hub1 = NodePath(".")
@@ -102,16 +107,19 @@ shape = SubResource("RectangleShape2D_cgare")
 [node name="Sprite2D" type="Sprite2D" parent="CoinHub5"]
 position = Vector2(-144, 72)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("5_fk6v0")
 
 [node name="Sprite2D2" type="Sprite2D" parent="CoinHub5"]
 position = Vector2(-91, -100)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("5_fk6v0")
 
 [node name="Sprite2D3" type="Sprite2D" parent="CoinHub5"]
 position = Vector2(107, -92)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("5_fk6v0")
 
 [node name="CoinHub20" type="Node2D" parent="." node_paths=PackedStringArray("Hub1", "Hub2", "Hub3")]
@@ -132,16 +140,19 @@ shape = SubResource("RectangleShape2D_cgare")
 [node name="Sprite2D" type="Sprite2D" parent="CoinHub20"]
 position = Vector2(-144, 48)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("6_cgare")
 
 [node name="Sprite2D2" type="Sprite2D" parent="CoinHub20"]
 position = Vector2(-91, -100)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("6_cgare")
 
 [node name="Sprite2D3" type="Sprite2D" parent="CoinHub20"]
 position = Vector2(107, -92)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("6_cgare")
 
 [node name="CoinHub50" type="Node2D" parent="." node_paths=PackedStringArray("Hub1", "Hub2", "Hub3")]
@@ -162,17 +173,32 @@ shape = SubResource("RectangleShape2D_cgare")
 [node name="Sprite2D" type="Sprite2D" parent="CoinHub50"]
 position = Vector2(-144, 48)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("7_f8egr")
 
 [node name="Sprite2D2" type="Sprite2D" parent="CoinHub50"]
 position = Vector2(-91, -100)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("7_f8egr")
 
 [node name="Sprite2D3" type="Sprite2D" parent="CoinHub50"]
 position = Vector2(107, -92)
 scale = Vector2(0.21952, 0.21952)
+skew = 0.436332
 texture = ExtResource("7_f8egr")
+
+[node name="Cs0011aSprSky0-min" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-102.832, 152)
+scale = Vector2(3.37809, 3.43704)
+texture = ExtResource("9_e7ahb")
+
+[node name="Ms17SprWinbg0" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(70.0399, -103.75)
+scale = Vector2(5.23152, 5.23152)
+texture = ExtResource("10_uqenc")
 
 [connection signal="area_entered" from="CoinHub5/Area2D" to="CoinHub5" method="_OnHubEntered"]
 [connection signal="area_entered" from="CoinHub20/Area2D" to="CoinHub20" method="_OnHubEntered"]
