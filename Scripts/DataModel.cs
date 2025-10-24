@@ -9,7 +9,15 @@ public partial class DataModel : Node2D
 	{
 		GD.Print(GetTree().Root.GetMeta("Sanity"));
 
-		V_Random_	= new Random();		
+		V_Random_	= new Random();
+	}
+
+	public override void _Process(double delta)
+	{
+		if((int)GetTree().Root.GetMeta("Sanity") != 101)
+		{
+
+		}
 	}
 
 	public void F_SanityChange_RNil(int PAR_Sanity)

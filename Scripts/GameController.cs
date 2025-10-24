@@ -16,15 +16,15 @@ public partial class GameController : Control
 
 	public override void _Ready()
 	{
-		GetTree().Root.SetMeta("Sanity", 100);
+		GetTree().Root.SetMeta("Sanity", 101);
 		GetTree().Root.SetMeta("Speed", 0.464f);
 
 		V_Scene_Interm		= ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn").Instantiate();
 		V_Scene_Death		= ResourceLoader.Load<PackedScene>("res://Scenes/End.tscn").Instantiate();
 
-		GetNode<Button>("./Start").Pressed += () => {F_LoadLVL_RNil(false);};
-		V_Btn_Sets	= GetNode<Button>("./Options");
-		GetNode<Button>("./Exit").Pressed += () => {F_LoadLVL_RNil(true);};
+		GetNode<Button>("./Start").Pressed	+= () => {F_LoadLVL_RNil(false);};
+		GetNode<Button>("./Options").Pressed+= () => {F_Settings_RNil(true);};
+		GetNode<Button>("./Exit").Pressed	+= () => {F_LoadLVL_RNil(true);};
 	}
 
 	public void F_Settings_RNil(bool PAR_Open_Bool)
@@ -43,6 +43,8 @@ public partial class GameController : Control
 		{
 			GetTree().Quit();
 		}
+
+		GetTree().Root.SetMeta("Sanity", 100);
 
 		Node V_Node_CurScene= GetTree().CurrentScene;
 		GetTree().Root.AddChild(V_Scene_Interm);
