@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://3qammc20vd41"]
+[gd_scene load_steps=7 format=3 uid="uid://3qammc20vd41"]
 
 [ext_resource type="Script" uid="uid://ddyfpjv66k1gl" path="res://Scripts/One.cs" id="1_8reg5"]
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_tlnrp"]
 
 [sub_resource type="Gradient" id="Gradient_dj5pn"]
 colors = PackedColorArray(0.0823529, 0.129412, 0.14902, 1, 0.0823529, 0.129412, 0.14902, 1)
@@ -17,6 +18,8 @@ gradient = SubResource("Gradient_8reg5")
 width = 20
 
 [node name="1" type="Node2D"]
+position = Vector2(0, 2)
+script = ExtResource("1_tlnrp")
 
 [node name="BackGround" type="Sprite2D" parent="."]
 position = Vector2(919, 538)
@@ -30,22 +33,26 @@ scale = Vector2(83.8194, -463.747)
 texture = SubResource("GradientTexture1D_tlnrp")
 
 [node name="1" type="Node2D" parent="Sprite2D2"]
-position = Vector2(7.28948, 0.0172474)
+position = Vector2(8.78079, 0.204849)
 
 [node name="2" type="Node2D" parent="Sprite2D2"]
-position = Vector2(4.48583, -0.105663)
+position = Vector2(6.001, -0.0345043)
 scale = Vector2(1, 1)
 
 [node name="3" type="Node2D" parent="Sprite2D2"]
-position = Vector2(2.50539, 0.0172496)
+position = Vector2(2.67241, 0.0991908)
 scale = Vector2(1, 1)
 
 [node name="4" type="Node2D" parent="Sprite2D2"]
-position = Vector2(0.703893, -0.118599)
+position = Vector2(-1.6464, -0.342859)
 scale = Vector2(1, 1)
 
 [node name="5" type="Node2D" parent="Sprite2D2"]
-position = Vector2(-1.64639, 0.338547)
+position = Vector2(-2.45766, 0.342861)
+scale = Vector2(1, 1)
+
+[node name="6" type="Node2D" parent="Sprite2D2"]
+position = Vector2(-2.93488, 0.403238)
 scale = Vector2(1, 1)
 
 [node name="Button" type="Button" parent="."]
@@ -54,7 +61,10 @@ offset_top = 610.0
 offset_right = 187.0
 offset_bottom = 618.0
 scale = Vector2(15.4939, 10.8414)
+action_mode = 0
 text = "Buy"
+script = ExtResource("1_tlnrp")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sell" type="Button" parent="."]
 offset_left = 1090.0
@@ -65,6 +75,5 @@ scale = Vector2(15.0717, 10.546)
 text = "Sell"
 
 [node name="SceneManager" type="Node2D" parent="." node_paths=PackedStringArray("_targetObjects")]
-position = Vector2(341, 284)
 script = ExtResource("1_8reg5")
-_targetObjects = [NodePath("../Sprite2D2/1"), NodePath("../Sprite2D2/2"), NodePath("../Sprite2D2/3"), NodePath("../Sprite2D2/4"), NodePath("../Sprite2D2/5")]
+_targetObjects = [NodePath("../Sprite2D2/1"), NodePath("../Sprite2D2/2"), NodePath("../Sprite2D2/3"), NodePath("../Sprite2D2/4"), NodePath("../Sprite2D2/5"), NodePath("../Sprite2D2/6")]

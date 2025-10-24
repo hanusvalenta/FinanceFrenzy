@@ -11,7 +11,8 @@ public partial class One : Node2D
 	private int _connectionsDrawn = 0;
 	private readonly Color _upwardColor = Colors.Green;
 	private readonly Color _downwardColor = Colors.Red;
-	private const float LINE_DRAW_INTERVAL = 0.5f;
+    private const float LINE_DRAW_INTERVAL = 0.5f;
+    private int goodClicks = 0;
 
 	public override void _Ready()
 	{
@@ -33,6 +34,7 @@ public partial class One : Node2D
 		else
 		{
 			_drawTimer.Stop();
+			DetermineOutcome();
 		}
 	}
 	
@@ -53,5 +55,20 @@ public partial class One : Node2D
 				DrawLine(localStart, localEnd, lineColor, 2.0f);
 			}
 		}
+	}
+
+	private void Good()
+    {
+        goodClicks++;
+        if (goodClicks >= 5)
+        {
+            GetNode<DataModel>("..").F_SanityChange_RNil(10);
+			GetNode<DataModel>("..").F_ChangeLevel_RNil();
+        }
+	}
+
+	private void Bad()
+	{
+		GD.Print("Outcome: Bad!");
 	}
 }
