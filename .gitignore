@@ -2,7 +2,7 @@
 .godot/
 .nomedia
 
-.Notes.txt
+Notes.txt
 
 # Godot-specific ignores
 .import/
