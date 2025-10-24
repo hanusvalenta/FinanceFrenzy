@@ -46,19 +46,7 @@ public partial class GameController : Control
 
 		GetTree().Root.SetMeta("Sanity", 100);
 
-		AudioStreamPlayer V_Audio_	= new AudioStreamPlayer
-		{
-			Stream			= new AudioStreamWav
-			{
-				ResourcePath= "res://Sounds/mus_sparkle_act1.wav",
-				LoopMode	= AudioStreamWav.LoopModeEnum.Forward
-			},
-		};
-
-		
-
-		GetTree().Root.AddChild(V_Audio_);
-		V_Audio_.Play();
+		GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("res://Scenes/audio_stream_player.tscn").Instantiate());
 
 		Node V_Node_CurScene= GetTree().CurrentScene;
 		GetTree().Root.AddChild(V_Scene_Interm);
