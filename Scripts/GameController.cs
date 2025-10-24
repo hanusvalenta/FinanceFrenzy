@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using System.Threading.Tasks;
 
 public partial class GameController : Control
 {
@@ -12,10 +13,13 @@ public partial class GameController : Control
 	Node V_Scene_Interm;
 	Node V_Scene_Death;
 
+	[Export]
+	int V_Int_Delay_ms;
+
 	public override void _Ready()
 	{
 		GetTree().Root.SetMeta("Sanity", 100);
-		GetTree().Root.SetMeta("Speed", 0.5f);
+		GetTree().Root.SetMeta("Speed", 0.464f);
 
 		V_Scene_Interm		= ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn").Instantiate();
 		V_Scene_Death		= ResourceLoader.Load<PackedScene>("res://Scenes/End.tscn").Instantiate();
@@ -27,6 +31,11 @@ public partial class GameController : Control
 
 	public void F_LoadLVL_RNil(bool PAR_Exit_Bool)
 	{
+		if(V_Int_Delay_ms	> 0)
+		{
+			Task.Delay(V_Int_Delay_ms).Wait();
+		}
+
 		if(PAR_Exit_Bool	== true)
 		{
 			GetTree().Quit();

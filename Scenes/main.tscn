@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=22 format=3 uid="uid://kh1solr2rh21"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://c8up5olvxoguu" path="res://Sprites/spr_mmui_btn0_big_1.png" id="4_6bp64"]
 [ext_resource type="Texture2D" uid="uid://bjpkiia6pj8h8" path="res://Sprites/spr_mmui_btn2_small_0.png" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://lh4nwpk0a0c0" path="res://Sprites/spr_mmui_btn2_big_0.png" id="6_6bp64"]
+[ext_resource type="Script" uid="uid://7s5s6iu2tslt" path="res://Scripts/ButtonSoundComponent.cs" id="6_h1bgf"]
+[ext_resource type="AudioStream" uid="uid://bhrhibndgipwt" path="res://Sounds/ms12_snd_button.wav" id="7_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cyyk2uas76xfx" path="res://Sprites/ibtS_spr_btn_exit_0.png" id="7_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://dsfe4bchmgiyc" path="res://Sounds/snd_menu_click_major.wav" id="8_hibaj"]
 [ext_resource type="Texture2D" uid="uid://bb1fae8v3uw50" path="res://Sprites/ibtS_spr_btn_exit_1.png" id="8_hptm8"]
 [ext_resource type="Texture2D" uid="uid://6adskk3wj1x1" path="res://Sprites/mf3_spr_bg_0.png" id="10_6iyac"]
 [ext_resource type="Shader" uid="uid://d3w8kw1njlc7l" path="res://Shaders/liquid.gdshader" id="11_6iyac"]
@@ -67,6 +70,14 @@ stretch_mode = 0
 script = ExtResource("2_kry3j")
 HoverScaleMultiplier = 1.3
 HoverImagePath = NodePath("../../IbtTSprPandoraspeedup5")
+
+[node name="ButtonSoundComponent" type="Node" parent="Control/Start"]
+script = ExtResource("6_h1bgf")
+HoverSound = ExtResource("7_fevyy")
+ClickSound = ExtResource("8_hibaj")
+HoverVolume = 1.0
+ClickVolume = 1.0
+ButtonPath = NodePath("..")
 
 [node name="Options" type="TextureButton" parent="Control"]
 z_index = 5

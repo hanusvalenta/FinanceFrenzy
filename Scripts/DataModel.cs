@@ -24,14 +24,27 @@ public partial class DataModel : Node2D
 	{
 		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
 		{
-			PAR_ScenePath_Str	= "res://Scenes/GameScenes";
+			int V_Int_Max;
+			int V_Int_NextLVL;
 
-			int V_Int_NextLVL	= V_Random_.Next(0, 2);
+			if(true)//(int)GetTree().Root.GetMeta("Sanity") > 25)
+			{
+				V_Int_Max			= 2;
+				PAR_ScenePath_Str	= "res://Scenes/GameScenes";
+			}
+			else
+			{
+				V_Int_Max			= 2;
+				PAR_ScenePath_Str	= "res://Scenes/CursedScenes";
+			}
+
+			V_Int_NextLVL		= V_Random_.Next(0, V_Int_Max);
+
 			PAR_ScenePath_Str	= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
 		}
 
 
-		Node V_Node_CurScene= GetTree().CurrentScene;
+		Node V_Node_CurScene	= GetTree().CurrentScene;
 		GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>(PAR_ScenePath_Str).Instantiate());
 		GetTree().Root.RemoveChild(V_Node_CurScene);
 	}
