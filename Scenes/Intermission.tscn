@@ -39,7 +39,6 @@ position = Vector2(1.01328e-05, 67.8743)
 texture = ExtResource("5_47dhd")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
-z_index = 1
 script = ExtResource("6_47dhd")
 TileTexture = ExtResource("7_f3y7e")
 ScrollSpeedX = 25.0
@@ -47,29 +46,42 @@ ScrollSpeedY = 0.0
 TileSize = Vector2(32, 32)
 
 [node name="nextGameInput" type="Node2D" parent="."]
+z_index = 2
 
 [node name="Keyboard" type="Sprite2D" parent="nextGameInput"]
-position = Vector2(-232, -216)
+texture_filter = 1
+position = Vector2(1700, 265)
+scale = Vector2(3, 3)
 texture = ExtResource("8_l5w55")
 
 [node name="KeyboardAndMouse" type="Sprite2D" parent="nextGameInput"]
-position = Vector2(16, -216)
+texture_filter = 1
+position = Vector2(1640, 265)
+scale = Vector2(3, 3)
 texture = ExtResource("9_lo3t8")
 
 [node name="Mouse" type="Sprite2D" parent="nextGameInput"]
-position = Vector2(248, -224)
+texture_filter = 1
+position = Vector2(1700, 265)
+scale = Vector2(3, 3)
 texture = ExtResource("10_u1u3f")
 
 [node name="reaction" type="Node2D" parent="."]
 
 [node name="Sane" type="Sprite2D" parent="reaction"]
-position = Vector2(-568, 40)
+texture_filter = 1
+position = Vector2(300, 600)
+scale = Vector2(2, 2)
 texture = ExtResource("11_mb0fx")
 
 [node name="NotSane" type="Sprite2D" parent="reaction"]
-position = Vector2(-568, 392)
+texture_filter = 1
+position = Vector2(300, 600)
+scale = Vector2(2, 2)
 texture = ExtResource("12_woxsb")
 
 [node name="Insane" type="Sprite2D" parent="reaction"]
-position = Vector2(-584, 720)
+texture_filter = 1
+position = Vector2(300, 600)
+scale = Vector2(2, 2)
 texture = ExtResource("13_ydaex")
