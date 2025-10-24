@@ -1,3 +1,76 @@
-[gd_scene format=3 uid="uid://i4ip6e5gd8fh"]
+[gd_scene load_steps=7 format=3 uid="uid://nlayuaquxmy5"]
 
-[node name="2" type="Node2D"]
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_717p5"]
+[ext_resource type="Script" uid="uid://ddyfpjv66k1gl" path="res://Scripts/One.cs" id="2_g1jek"]
+
+[sub_resource type="Gradient" id="Gradient_dj5pn"]
+colors = PackedColorArray(0.0823529, 0.129412, 0.14902, 1, 0.0823529, 0.129412, 0.14902, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8reg5"]
+gradient = SubResource("Gradient_dj5pn")
+width = 20
+
+[sub_resource type="Gradient" id="Gradient_8reg5"]
+colors = PackedColorArray(0.419608, 0.552941, 0.607843, 1, 0.419842, 0.553188, 0.609351, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tlnrp"]
+gradient = SubResource("Gradient_8reg5")
+width = 20
+
+[node name="1" type="Node2D"]
+position = Vector2(0, 2)
+script = ExtResource("1_717p5")
+
+[node name="BackGround" type="Sprite2D" parent="."]
+position = Vector2(919, 538)
+scale = Vector2(-119.247, 1076.75)
+texture = SubResource("GradientTexture1D_8reg5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(952, 276)
+rotation = 3.14159
+scale = Vector2(83.8194, -463.747)
+texture = SubResource("GradientTexture1D_tlnrp")
+
+[node name="1" type="Node2D" parent="Sprite2D2"]
+position = Vector2(8.78079, 0.204849)
+
+[node name="2" type="Node2D" parent="Sprite2D2"]
+position = Vector2(6.001, -0.0345043)
+
+[node name="3" type="Node2D" parent="Sprite2D2"]
+position = Vector2(2.67241, 0.0991908)
+
+[node name="4" type="Node2D" parent="Sprite2D2"]
+position = Vector2(1.75378, 0.431269)
+
+[node name="5" type="Node2D" parent="Sprite2D2"]
+position = Vector2(-1.24076, 0.370892)
+
+[node name="6" type="Node2D" parent="Sprite2D2"]
+position = Vector2(-2.93489, -0.357952)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 179.0
+offset_top = 610.0
+offset_right = 187.0
+offset_bottom = 618.0
+scale = Vector2(15.4939, 10.8414)
+action_mode = 0
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sell" type="Button" parent="."]
+offset_left = 1090.0
+offset_top = 610.0
+offset_right = 1125.0
+offset_bottom = 641.0
+scale = Vector2(15.0717, 10.546)
+text = "Sell"
+
+[node name="SceneManager" type="Node2D" parent="." node_paths=PackedStringArray("_targetObjects")]
+script = ExtResource("2_g1jek")
+_targetObjects = [NodePath("../Sprite2D2/1"), NodePath("../Sprite2D2/2"), NodePath("../Sprite2D2/3"), NodePath("../Sprite2D2/4"), NodePath("../Sprite2D2/5"), NodePath("../Sprite2D2/6")]
+
+[connection signal="pressed" from="Button" to="SceneManager" method="Bad"]
+[connection signal="pressed" from="Sell" to="SceneManager" method="Good"]
