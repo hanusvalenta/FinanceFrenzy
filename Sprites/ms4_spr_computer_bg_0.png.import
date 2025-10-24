@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmyduopphuv70"
-path="res://.godot/imported/Sources-of-Business-Finance-2-copy-551611966.webp-b41c7c2f5370cc4d89400c4e51809609.ctex"
+uid="uid://bldg0f6qhol0h"
+path="res://.godot/imported/ms4_spr_computer_bg_0.png-eba1b3932fb47192dd142755936fdbc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TestImages/Sources-of-Business-Finance-2-copy-551611966.webp"
-dest_files=["res://.godot/imported/Sources-of-Business-Finance-2-copy-551611966.webp-b41c7c2f5370cc4d89400c4e51809609.ctex"]
+source_file="res://Sprites/ms4_spr_computer_bg_0.png"
+dest_files=["res://.godot/imported/ms4_spr_computer_bg_0.png-eba1b3932fb47192dd142755936fdbc7.ctex"]
 
 [params]
 
