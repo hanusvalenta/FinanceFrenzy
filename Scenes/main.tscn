@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://kh1solr2rh21"]
 
-[ext_resource type="Script" uid="uid://ci3ck3p2sx2pu" path="res://Scenes/GameProcessor.gd" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
 
 [node name="Node2D" type="Node2D"]
 
