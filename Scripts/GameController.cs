@@ -9,7 +9,6 @@ public partial class GameController : Control
 	Button V_Btn_Sets;
 	Button V_Btn_Exit;
 
-	List<Node> V_SceneList_Games;
 	Node V_Scene_Interm;
 	Node V_Scene_Death;
 
@@ -20,13 +19,6 @@ public partial class GameController : Control
 
 		V_Scene_Interm		= ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn").Instantiate();
 		V_Scene_Death		= ResourceLoader.Load<PackedScene>("res://Scenes/End.tscn").Instantiate();
-
-		V_SceneList_Games	= new List<Node>()
-		{
-			ResourceLoader.Load<PackedScene>("res://GameScenes/1.tscn").Instantiate(),
-			ResourceLoader.Load<PackedScene>("res://GameScenes/2.tscn").Instantiate(),
-			ResourceLoader.Load<PackedScene>("res://GameScenes/3.tscn").Instantiate()
-		};
 
 		V_Btn_Play	= GetNode<Button>("./Start");
 		V_Btn_Sets	= GetNode<Button>("./Options");
