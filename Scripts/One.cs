@@ -34,7 +34,6 @@ public partial class One : Node2D
 		else
 		{
 			_drawTimer.Stop();
-			DetermineOutcome();
 		}
 	}
 	
@@ -58,14 +57,15 @@ public partial class One : Node2D
 	}
 
 	private void Good()
-    {
-        goodClicks++;
-        if (goodClicks >= 5)
-        {
-            GetNode<DataModel>("..").F_SanityChange_RNil(10);
+	{
+		goodClicks++;
+		if (goodClicks >= 5)
+		{
+			GetNode<DataModel>("..").F_SanityChange_RNil(10);
 			GetNode<DataModel>("..").F_ChangeLevel_RNil();
-        }
+		}
 	}
+	
 	private void Bad()
 	{
 		GD.Print("Outcome: Bad!");
