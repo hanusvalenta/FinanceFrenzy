@@ -15,7 +15,7 @@ scale = Vector2(3.35526, 3.35526)
 texture = ExtResource("2_jjmnh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-202, 87)
+position = Vector2(0, 82)
 scale = Vector2(0.7125, 0.7125)
 texture = ExtResource("1_bp4bb")
 flip_h = true
