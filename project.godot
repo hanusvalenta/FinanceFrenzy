@@ -31,5 +31,7 @@ project/assembly_name="FinanceFrenzy"
 
 [rendering]
 
+textures/lossless_compression/force_png=true
 textures/default_filters/anisotropic_filtering_level=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
+textures/default_filters/texture_mipmap_bias=1.0
