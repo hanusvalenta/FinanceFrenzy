@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=74 format=3 uid="uid://kh1solr2rh21"]
 
 [ext_resource type="Script" uid="uid://dxxwujakx82pg" path="res://Scripts/MenuManager.cs" id="1_fevyy"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
@@ -22,9 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bbtrbfyv37dkf" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_3.png" id="13_e5peh"]
 [ext_resource type="Texture2D" uid="uid://qeu0lh2tdyaj" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_4.png" id="14_f6rfp"]
 [ext_resource type="Texture2D" uid="uid://bdkrnascst454" path="res://Sprites/ibtT_spr_mgintro_31.png" id="14_jkdf5"]
-[ext_resource type="Texture2D" uid="uid://d3xuuyurhi4kj" path="res://Sprites/mf0_spr_hardlightmask_0.png" id="15_k12tt"]
 [ext_resource type="Texture2D" uid="uid://crgd3cwewmfts" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_5.png" id="15_sasc4"]
-[ext_resource type="Texture2D" uid="uid://m54wtjwjxm1l" path="res://Sprites/mf0_spr_hardlight_0.png" id="16_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://cf7mswjoj25hb" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_6.png" id="16_pfx1i"]
 [ext_resource type="Texture2D" uid="uid://cwackwbgyl5dp" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_7.png" id="17_fg68e"]
 [ext_resource type="Texture2D" uid="uid://c1x7hgrb402aw" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_8.png" id="18_jekl6"]
@@ -71,8 +69,8 @@
 [ext_resource type="AudioStream" uid="uid://c0oqjhomhtfsf" path="res://Sounds/ibtS_voice_win2.wav" id="63_uv6w5"]
 [ext_resource type="Script" uid="uid://b1oututgycilv" path="res://Scripts/SimpleMusicManager.cs" id="70_uv6w5"]
 [ext_resource type="AudioStream" uid="uid://cyd0gdxwotxbo" path="res://Sounds/ms12_snd_hello.wav" id="72_f6rfp"]
-[ext_resource type="Texture2D" uid="uid://cel1ddypdxb4r" path="res://Sprites/mainMenuBgr.png" id="72_sasc4"]
-[ext_resource type="Script" uid="uid://bsrcjxlpfttg5" path="res://Scenes/Scrollingbackground.cs" id="73_pfx1i"]
+[ext_resource type="Texture2D" uid="uid://c28bu24e5pvth" path="res://Sprites/DollaDolla.png" id="73_f6rfp"]
+[ext_resource type="Script" uid="uid://bsrcjxlpfttg5" path="res://Scripts/SimpleTileBackground.cs" id="73_pfx1i"]
 [ext_resource type="AudioStream" uid="uid://bscgc3epioqax" path="res://Sounds/mus_mainmenu.wav" id="73_sasc4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdnlq"]
@@ -85,18 +83,6 @@ shader_parameter/viscosity = 1.0
 shader_parameter/enable_secondary_flow = true
 shader_parameter/turbulence = 0.425
 shader_parameter/opacity = 0.12
-shader_parameter/fade_edges = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3802"]
-shader = ExtResource("11_6iyac")
-shader_parameter/flow_speed = 1.0
-shader_parameter/flow_strength = 0.054
-shader_parameter/swirl_intensity = 0.8
-shader_parameter/wave_scale = 4.0
-shader_parameter/viscosity = 1.79
-shader_parameter/enable_secondary_flow = true
-shader_parameter/turbulence = 0.3
-shader_parameter/opacity = 0.202
 shader_parameter/fade_edges = 0.0
 
 [node name="Node2D" type="Node2D"]
@@ -209,37 +195,23 @@ position = Vector2(704, 176)
 scale = Vector2(1.63248, 1.63248)
 texture = ExtResource("14_jkdf5")
 
-[node name="Mf0SprHardlightmask0" type="Sprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_b3802")
-position = Vector2(16, 24)
-scale = Vector2(3.89333, 3.89333)
-texture = ExtResource("15_k12tt")
-metadata/_edit_lock_ = true
-
-[node name="Mf0SprHardlight0" type="Sprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_b3802")
-position = Vector2(-2.22229, -30.6666)
-rotation = 3.14159
-scale = Vector2(3.87111, 3.87111)
-texture = ExtResource("16_h1bgf")
-metadata/_edit_lock_ = true
-
 [node name="MenuMusicManager" type="Node" parent="."]
 script = ExtResource("70_uv6w5")
 HelloSound = ExtResource("72_f6rfp")
 MenuMusic = ExtResource("73_sasc4")
 
 [node name="Scrollingbackground" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.490196)
+z_index = -2
 texture_filter = 1
 position = Vector2(32, -80)
 scale = Vector2(1.19259, 1.19259)
-texture = ExtResource("72_sasc4")
 script = ExtResource("73_pfx1i")
-ScrollSpeedX = 100.0
-ScrollSpeedY = 700.0
-TileSize = Vector2(2016.86, 1100)
+TileTexture = ExtResource("73_f6rfp")
+ScrollSpeedX = 20.0
+ScrollSpeedY = 20.0
+DollarOpacity = 0.5
+AnimateOpacityChanges = false
 
 [connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
 [connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]
