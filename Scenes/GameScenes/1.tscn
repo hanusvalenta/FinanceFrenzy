@@ -63,7 +63,6 @@ offset_bottom = 618.0
 scale = Vector2(15.4939, 10.8414)
 action_mode = 0
 text = "Buy"
-script = ExtResource("1_tlnrp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sell" type="Button" parent="."]
@@ -77,3 +76,5 @@ text = "Sell"
 [node name="SceneManager" type="Node2D" parent="." node_paths=PackedStringArray("_targetObjects")]
 script = ExtResource("1_8reg5")
 _targetObjects = [NodePath("../Sprite2D2/1"), NodePath("../Sprite2D2/2"), NodePath("../Sprite2D2/3"), NodePath("../Sprite2D2/4"), NodePath("../Sprite2D2/5"), NodePath("../Sprite2D2/6")]
+
+[connection signal="pressed" from="Button" to="SceneManager" method="Good"]
