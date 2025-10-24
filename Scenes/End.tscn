@@ -1,22 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg880qsb15lbt"]
+[gd_scene load_steps=12 format=3 uid="uid://g2axvft3cn00"]
 
-[ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="1_pw64i"]
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_x8vyd"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="2_67ibq"]
+[ext_resource type="Texture2D" uid="uid://757kejjosfgy" path="res://Sprites/ms3_spr_hand_open_0.png" id="2_d1g0i"]
 [ext_resource type="Script" uid="uid://bflshvxtvhhvx" path="res://Scripts/Hotgun.cs" id="2_vbw3r"]
-[ext_resource type="Texture2D" uid="uid://hmj4il71050d" path="res://TestImages/IMG_20251024_124935334-removebg-preview.png" id="3_70j8v"]
 [ext_resource type="Texture2D" uid="uid://ccd4cke2fxa1e" path="res://TestImages/Ammo.png" id="4_03b8h"]
 [ext_resource type="Texture2D" uid="uid://bkbd048dl2tv1" path="res://TestImages/Ammo1.png" id="4_vbw3r"]
-[ext_resource type="Texture2D" uid="uid://bqy3x1lvh6ui1" path="res://TestImages/Ammo2.png" id="4_xoww8"]
+[ext_resource type="Texture2D" uid="uid://diy1nf4rejp1o" path="res://Sprites/ms3_spr_hand_pinch_0.png" id="4_whs21"]
 [ext_resource type="Texture2D" uid="uid://bgmw4lm5f6mc" path="res://TestImages/Ammo3.png" id="6_d1g0i"]
-[ext_resource type="Texture2D" uid="uid://cbjth6p1ip0s7" path="res://TestImages/IMG_20251024_123020407-removebg-preview.png" id="6_dut67"]
+[ext_resource type="Texture2D" uid="uid://bh30ueaouqxkh" path="res://Sprites/ms14_spr_candy2_0.png" id="10_d1g0i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dut67"]
 radius = 23.2709
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbw3r"]
-radius = 40.0
-height = 417.133
+radius = 18.5277
+height = 109.133
 
 [node name="End" type="Node2D"]
 
@@ -26,17 +25,19 @@ height = 417.133
 
 [node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snapTargetPosition")]
 z_index = 1
-position = Vector2(434.75, -83.0415)
-scale = Vector2(2.43764, 2.43764)
-texture = ExtResource("1_pw64i")
+texture_filter = 1
+position = Vector2(587.391, -7.22651)
+scale = Vector2(4.45937, 4.45937)
+texture = ExtResource("2_d1g0i")
+offset = Vector2(50, -17)
 script = ExtResource("2_67ibq")
 _snappableObject1 = NodePath("../Ammo3")
 _snappableObject2 = NodePath("../Ammo1")
 _snapTargetPosition = NodePath("HeldPos")
-_holdingTexture = ExtResource("6_dut67")
+_holdingTexture = ExtResource("4_whs21")
 
 [node name="HeldPos" type="Node2D" parent="Hand"]
-position = Vector2(-92.6101, -3.26484)
+position = Vector2(-49.1977, 8.79642)
 
 [node name="Shotgun" type="Sprite2D" parent="." node_paths=PackedStringArray("_sprite")]
 position = Vector2(-199, 111)
@@ -45,9 +46,8 @@ texture = ExtResource("4_03b8h")
 flip_h = true
 script = ExtResource("2_vbw3r")
 _sprite = NodePath(".")
-_hole1Texture = ExtResource("4_vbw3r")
-_hole2Texture = ExtResource("4_xoww8")
-_hole3Texture = ExtResource("6_d1g0i")
+_oneAmmoTexture = ExtResource("4_vbw3r")
+_twoAmmoTexture = ExtResource("6_d1g0i")
 
 [node name="Area2D" type="Area2D" parent="Shotgun"]
 position = Vector2(87.1279, -48.599)
@@ -68,8 +68,11 @@ scale = Vector2(2.284, 2.284)
 shape = SubResource("CircleShape2D_dut67")
 
 [node name="Ammo1" type="Sprite2D" parent="."]
-position = Vector2(398, 303)
-texture = ExtResource("3_70j8v")
+texture_filter = 1
+position = Vector2(336.75, 261.355)
+scale = Vector2(5.43421, 5.43421)
+texture = ExtResource("10_d1g0i")
+offset = Vector2(0, 25)
 metadata/Tag = "Ammo"
 
 [node name="Area2D" type="Area2D" parent="Ammo1"]
@@ -77,14 +80,16 @@ position = Vector2(87.1279, -48.5989)
 scale = Vector2(0.437828, 0.437828)
 
 [node name="Ammo1" type="CollisionShape2D" parent="Ammo1/Area2D"]
-position = Vector2(-201.284, 158.964)
-rotation = 0.837758
+position = Vector2(-202.678, 139.011)
 scale = Vector2(2.284, 2.284)
 shape = SubResource("CapsuleShape2D_vbw3r")
 
 [node name="Ammo3" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(777, 352)
-texture = ExtResource("3_70j8v")
+scale = Vector2(5.434, 5.434)
+texture = ExtResource("10_d1g0i")
+offset = Vector2(0, 15)
 metadata/Tag = "Ammo"
 
 [node name="Area2D" type="Area2D" parent="Ammo3"]
@@ -92,8 +97,7 @@ position = Vector2(87.1279, -48.5989)
 scale = Vector2(0.437828, 0.437828)
 
 [node name="Ammo2" type="CollisionShape2D" parent="Ammo3/Area2D"]
-position = Vector2(-201.284, 158.964)
-rotation = 0.837758
+position = Vector2(-199.421, 107.637)
 scale = Vector2(2.284, 2.284)
 shape = SubResource("CapsuleShape2D_vbw3r")
 

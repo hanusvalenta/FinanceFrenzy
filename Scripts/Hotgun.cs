@@ -7,52 +7,89 @@ public partial class Hotgun : Sprite2D
 	private Sprite2D _sprite;
 
 	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")]
-	private Texture2D _hole1Texture;
+	private Texture2D _oneAmmoTexture; // Texture when one ammo is loaded (regardless of which hole)
 
 	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")]
-	private Texture2D _hole2Texture;
+	private Texture2D _twoAmmoTexture; // Texture when both ammo are loaded
 
-	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")]
-	private Texture2D _hole3Texture;
-
-	private bool _holeFilled = false;
+	private int _ammoCount = 0; // Track how many ammo are loaded
 
 	private void _OnHole1BodyEntered(Node2D body)
 	{
-		if (_holeFilled)
-		{
-			_sprite.Texture = _hole3Texture;
-			body.GetParent().QueueFree();
-		}
-		else
-		{
-			_sprite.Texture = _hole1Texture;
-			_holeFilled = true;
-			body.GetParent().QueueFree();
-		}
-
-		F_ForceDrop_RNil();
+		LoadAmmo(body);
 	}
 
 	private void _OnHole2BodyEntered(Node2D body)
 	{
-		if (_holeFilled)
+		LoadAmmo(body);
+	}
+
+	private void LoadAmmo(Node2D body)
+	{
+		// Only proceed if we haven't reached max ammo
+		if (_ammoCount >= 2)
+			return;
+			
+		// Increment ammo count
+		_ammoCount++;
+		
+		// Update texture based on total ammo count
+		if (_ammoCount == 1)
 		{
-			_sprite.Texture = _hole3Texture;
-			body.GetParent().QueueFree();
+			_sprite.Texture = _oneAmmoTexture;
 		}
-		else
+		else if (_ammoCount >= 2)
 		{
-			_sprite.Texture = _hole2Texture;
-			_holeFilled = true;
-			body.GetParent().QueueFree();
+			_sprite.Texture = _twoAmmoTexture;
 		}
 
+		// Remove the ammo object
+		if (body != null)
+		{
+			// The body is usually a CollisionShape2D/Area2D child of the actual ammo object
+			Node ammoToDelete = body.GetParent();
+			
+			// Safety check: make sure we're not deleting the gun, hand, or main scene
+			if (ammoToDelete != null && 
+				ammoToDelete != this && 
+				ammoToDelete != GetParent())
+			{
+				GD.Print($"Deleting ammo: {ammoToDelete.Name}"); // Debug line
+				ammoToDelete.QueueFree();
+			}
+			else
+			{
+				// If parent deletion seems unsafe, try deleting the body itself
+				GD.Print($"Deleting body instead: {body.Name}"); // Debug line
+				body.QueueFree();
+			}
+		}
+		
+		// Force hand to drop
 		F_ForceDrop_RNil();
 	}
 
 	private void F_ForceDrop_RNil()
-    {
-        GetNode<Hand>("../Hand").F_DropObject_RNil();
-    }
+	{
+		GetNode<Hand>("../Hand").F_DropObject_RNil();
+	}
+	
+	// Optional: Method to reset the gun (remove all ammo)
+	public void ResetGun()
+	{
+		_ammoCount = 0;
+		_sprite.Texture = Texture; // Reset to original texture
+	}
+	
+	// Optional: Method to check if gun is fully loaded
+	public bool IsFullyLoaded()
+	{
+		return _ammoCount >= 2;
+	}
+	
+	// Optional: Method to get current ammo count
+	public int GetAmmoCount()
+	{
+		return _ammoCount;
+	}
 }
