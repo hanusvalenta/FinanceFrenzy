@@ -1,0 +1,28 @@
+Balance Beam Budgeting: Players control a character on a balance beam, trying to keep it level by adding and removing weights (representing income and expenses). The goal is to maintain financial balance over a set period.
+
+
+Loan Ladder: Players climb a ladder by answering questions about different types of loans (mortgages, student loans, car loans, etc.). Each correct answer moves them up a rung, while incorrect answers make them slide down.
+
+
+Interest Rate Race: Players race against each other or the clock to match interest rates with their corresponding financial products (savings accounts, loans, credit cards, etc.). The faster they match, the more points they earn.
+
+
+Spending Spree: Players are given a budget and must buy items within that budget without going over. Items have varying prices, and players must strategically choose which items to buy to maximize their satisfaction.
+
+
+Credit Score Climb: Players climb a mountain by making good financial decisions that boost their credit score. Bad decisions, like missing payments or maxing out credit cards, cause them to slide down.
+
+
+Retirement Run: Players run through an obstacle course, collecting items that represent retirement savings strategies (like 401(k)s and IRAs). They must avoid traps that represent poor retirement planning.
+
+
+Tax Time Toss: Players toss coins into different slots representing various tax deductions and credits. The goal is to maximize their tax return by correctly identifying and using the right deductions.
+
+
+Debt Duel: Players compete in a card game where they must match debt types with the best repayment strategies. The player with the most successful matches wins.
+
+
+Emergency Fund Escape: Players navigate a maze, collecting emergency fund items (like a first-aid kit, flashlight, and water) while avoiding traps (like unexpected expenses). The goal is to build a robust emergency fund to handle life's surprises.
+
+
+Insurance Island: Players explore an island where they must decide which insurance policies to purchase to protect against various risks. This teaches about the importance of insurance in financial planning.
