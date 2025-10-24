@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=9 format=3 uid="uid://kh1solr2rh21"]
 
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://lqsq0jdlfvpa" path="res://Scripts/ButtonScale.cs" id="2_kry3j"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bjpkiia6pj8h8" path="res://Sprites/spr_mmui_btn2_small_0.png" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bejs0wtoq1mej" path="res://Sprites/ms4_spr_computer_bg_0.png" id="5_344ge"]
 [ext_resource type="Texture2D" uid="uid://lh4nwpk0a0c0" path="res://Sprites/spr_mmui_btn2_big_0.png" id="6_6bp64"]
+[ext_resource type="Texture2D" uid="uid://bjxcfvx5myc5a" path="res://Sprites/ibtS_spr_btn_blank_0.png" id="8_344ge"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -76,3 +77,7 @@ texture_repeat = 1
 position = Vector2(0, 2.00272e-05)
 scale = Vector2(4, 4.02963)
 texture = ExtResource("5_344ge")
+
+[node name="IbtSSprBtnBlank0" type="Sprite2D" parent="."]
+position = Vector2(-520, 176)
+texture = ExtResource("8_344ge")
