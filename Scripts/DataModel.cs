@@ -6,6 +6,7 @@ public partial class DataModel : Node2D
 	public override void _Ready()
 	{
 		GD.Print(GetTree().Root.GetMeta("Sanity"));
+		
 	}
 
 	public void F_SanityChange_RNil(int PAR_Sanity)
@@ -19,5 +20,15 @@ public partial class DataModel : Node2D
 	public void F_ChangeLevel_RNil()
 	{
 
+	}
+
+	public float F_BeatSpeed_RNil(float PAR_DecreaseSPD_Float = 0.0f)
+	{
+		if(PAR_DecreaseSPD_Float != 0.0f)
+		{
+			GetTree().Root.SetMeta("Speed", (float)GetTree().Root.GetMeta("Speed")-PAR_DecreaseSPD_Float);
+		}
+
+		return (float)GetTree().Root.GetMeta("Speed");
 	}
 }

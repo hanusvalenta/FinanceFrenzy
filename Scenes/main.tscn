@@ -82,4 +82,5 @@ position = Vector2(75.6398, 180)
 scale = Vector2(3.45024, 3.45024)
 texture = ExtResource("13_fdnlq")
 
-[connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil"]
+[connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
+[connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]

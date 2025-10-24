@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 
 public partial class GameController : Control
 {
@@ -8,16 +9,16 @@ public partial class GameController : Control
 	Button V_Btn_Sets;
 	Button V_Btn_Exit;
 
-	List<PackedScene> V_SceneList_Games;
-	PackedScene	V_Scene_Interm;
-	PackedScene V_Scene_Death;
+	Node V_Scene_Interm;
+	Node V_Scene_Death;
 
 	public override void _Ready()
 	{
 		GetTree().Root.SetMeta("Sanity", 100);
+		GetTree().Root.SetMeta("Speed", 0.5f);
 
-		V_Scene_Interm	= ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn");
-		V_Scene_Death	= ResourceLoader.Load<PackedScene>("res://Scenes/End.tscn");
+		V_Scene_Interm		= ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn").Instantiate();
+		V_Scene_Death		= ResourceLoader.Load<PackedScene>("res://Scenes/End.tscn").Instantiate();
 
 		V_Btn_Play	= GetNode<Button>("./Start");
 		V_Btn_Sets	= GetNode<Button>("./Options");
@@ -31,7 +32,9 @@ public partial class GameController : Control
 			GetTree().Quit();
 		}
 
-		GetTree().CurrentScene.RemoveChild(GetTree().CurrentScene);
-		GetTree().CurrentScene.AddChild(V_Scene_Interm.Instantiate());
+		Node V_Node_CurScene= GetTree().CurrentScene;
+
+		GetTree().Root.AddChild(V_Scene_Interm);
+		GetTree().Root.RemoveChild(V_Node_CurScene);
 	}
 }
