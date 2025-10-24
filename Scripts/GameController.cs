@@ -31,6 +31,10 @@ public partial class GameController : Control
 	{
 		
 	}
+	
+	public void F_Switch() {
+		
+	}
 
 	public async void F_LoadLVL_RNil(bool PAR_Exit_Bool)
 	{

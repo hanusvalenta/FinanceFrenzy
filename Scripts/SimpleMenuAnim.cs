@@ -2,12 +2,10 @@ using Godot;
 
 public partial class SimpleMenuAnim : Node
 {
-	[Export] public Texture2D[] Frames { get; set; } = new Texture2D[0];
-	[Export] public float Speed { get; set; } = 12.0f; // FPS
+	[Export] public string AnimationName { get; set; } = "default"; // Název animace v AnimatedSprite2D
 	[Export] public bool PlayInBackground { get; set; } = false; // loop automaticky na pozadí
-	[Export] public bool PlayOnClick { get; set; } = true;
 	[Export] public bool ReverseAnimation { get; set; } = false; // přehrávání pozpátku
-	[Export] public NodePath TargetSpritePath { get; set; } // Cesta k Sprite2D kde se má animace přehrát
+	[Export] public NodePath TargetSpritePath { get; set; } // Cesta k AnimatedSprite2D kde se má animace přehrát
 	
 	[ExportGroup("ButtonScale Integration")]
 	[Export] public bool ControlButtonScale { get; set; } = false; // zapne komunikaci s ButtonScale
@@ -16,24 +14,33 @@ public partial class SimpleMenuAnim : Node
 	[Export] public bool ShowOnAnimationStart { get; set; } = true; // zobrazí při spuštění animace
 	[Export] public bool ShowOnAnimationEnd { get; set; } = false; // zobrazí po skončení animace
 	
-	private int _frame = 0;
-	private float _timer = 0.0f;
-	private bool _playing = false;
-	private Node _targetSprite;
+	private bool _isHovered = false;
+	private bool _isPlayingFullAnimation = false;
+	private AnimatedSprite2D _animatedSprite;
 	private BaseButton _button;
 	private Node _buttonScale; // Reference na ButtonScale komponent
+	private bool _wasPlayingOriginally = false; // Zda byla animace původně spuštěná
 	
 	public override void _Ready()
 	{
-		// Najdi target sprite - buď z cesty nebo parent
+		// Najdi AnimatedSprite2D - buď z cesty nebo parent
 		if (TargetSpritePath != null && !TargetSpritePath.IsEmpty)
 		{
-			_targetSprite = GetNode(TargetSpritePath);
+			_animatedSprite = GetNode<AnimatedSprite2D>(TargetSpritePath);
 		}
 		else
 		{
-			_targetSprite = GetParent(); // default: parent node
+			_animatedSprite = GetParent() as AnimatedSprite2D; // default: parent node
 		}
+		
+		if (_animatedSprite == null)
+		{
+			GD.PrintErr("SimpleMenuAnim: AnimatedSprite2D not found!");
+			return;
+		}
+		
+		// Uložení původního stavu animace
+		_wasPlayingOriginally = _animatedSprite.IsPlaying();
 		
 		// Najdi ButtonScale komponent
 		if (ControlButtonScale && ButtonScalePath != null && !ButtonScalePath.IsEmpty)
@@ -41,7 +48,7 @@ public partial class SimpleMenuAnim : Node
 			_buttonScale = GetNode(ButtonScalePath);
 		}
 		
-		// Najdi button pro klikání
+		// Najdi button pro klikání a hover
 		_button = GetParent() as BaseButton;
 		if (_button == null)
 		{
@@ -57,18 +64,22 @@ public partial class SimpleMenuAnim : Node
 			}
 		}
 		
-		// Připoj klik
-		if (_button != null && PlayOnClick)
+		// Připoj signály pro hover a klik
+		if (_button != null)
 		{
-			_button.Pressed += () => Play();
+			_button.Pressed += OnButtonPressed;
+			_button.MouseEntered += OnButtonHoverEntered;
+			_button.MouseExited += OnButtonHoverExited;
 		}
 		
-		// Nastav první snímek podle směru
-		if (Frames.Length > 0)
+		// Připoj signál pro konec animace
+		if (_animatedSprite != null)
 		{
-			int startFrame = ReverseAnimation ? Frames.Length - 1 : 0;
-			ShowFrame(startFrame);
+			_animatedSprite.AnimationFinished += OnAnimationFinished;
 		}
+		
+		// Nastav animaci a první snímek
+		SetupAnimation();
 		
 		// Auto spuštění na pozadí
 		if (PlayInBackground)
@@ -77,91 +88,132 @@ public partial class SimpleMenuAnim : Node
 		}
 	}
 	
-	public override void _Process(double delta)
+	private void SetupAnimation()
 	{
-		if (!_playing || Frames.Length == 0)
+		if (_animatedSprite == null || string.IsNullOrEmpty(AnimationName))
 			return;
 			
-		_timer += (float)delta;
+		// Nastav animaci
+		_animatedSprite.Animation = AnimationName;
 		
-		if (_timer >= 1.0f / Speed)
+		// Zastav animaci a nastav na první snímek podle směru
+		_animatedSprite.Stop();
+		if (ReverseAnimation)
 		{
-			_timer = 0.0f;
-			
-			// Pohyb snímků podle směru
+			_animatedSprite.Frame = _animatedSprite.SpriteFrames.GetFrameCount(AnimationName) - 1;
+		}
+		else
+		{
+			_animatedSprite.Frame = 0;
+		}
+	}
+	
+	private void OnButtonPressed()
+	{
+		// Klik spustí celou animaci
+		Play();
+	}
+	
+	private void OnButtonHoverEntered()
+	{
+		_isHovered = true;
+		
+		// Pokud se nehraje celá animace, zobraz první snímek
+		if (!_isPlayingFullAnimation && _animatedSprite != null)
+		{
+			_animatedSprite.Stop();
 			if (ReverseAnimation)
 			{
-				_frame--;
-				
-				if (_frame < 0)
-				{
-					if (PlayInBackground)
-					{
-						_frame = Frames.Length - 1; // loop zpět na konec
-					}
-					else
-					{
-						_frame = 0; // zastav na prvním snímku
-						_playing = false;
-						OnAnimationFinished();
-						return;
-					}
-				}
+				_animatedSprite.Frame = _animatedSprite.SpriteFrames.GetFrameCount(AnimationName) - 1;
 			}
 			else
 			{
-				_frame++;
-				
-				if (_frame >= Frames.Length)
-				{
-					if (PlayInBackground)
-					{
-						_frame = 0; // loop zpět na začátek
-					}
-					else
-					{
-						_frame = Frames.Length - 1; // zastav na posledním snímku
-						_playing = false;
-						OnAnimationFinished();
-						return;
-					}
-				}
+				_animatedSprite.Frame = 0;
 			}
-			
-			ShowFrame(_frame);
+		}
+	}
+	
+	private void OnButtonHoverExited()
+	{
+		_isHovered = false;
+		
+		// Pokud se nehraje celá animace, vrať původní stav
+		if (!_isPlayingFullAnimation && _animatedSprite != null)
+		{
+			RestoreOriginalState();
 		}
 	}
 	
 	public void Play()
 	{
-		// Nastav startovací snímek podle směru
-		_frame = ReverseAnimation ? Frames.Length - 1 : 0;
-		_timer = 0.0f;
-		_playing = true;
-		ShowFrame(_frame);
+		if (_animatedSprite == null || string.IsNullOrEmpty(AnimationName))
+			return;
+			
+		_isPlayingFullAnimation = true;
+		_animatedSprite.Animation = AnimationName;
+		
+		// Nastav směr a spusť animaci
+		if (ReverseAnimation)
+		{
+			_animatedSprite.PlayBackwards(AnimationName);
+		}
+		else
+		{
+			_animatedSprite.Play(AnimationName);
+		}
+		
 		OnAnimationStarted();
 	}
 	
 	public void Stop()
 	{
-		_playing = false;
-		// Resetuj na začátek podle směru
-		_frame = ReverseAnimation ? Frames.Length - 1 : 0;
-		ShowFrame(_frame);
+		if (_animatedSprite == null)
+			return;
+			
+		_isPlayingFullAnimation = false;
+		_animatedSprite.Stop();
+		
+		// Pokud není hover, vrať původní stav, jinak zobraz první snímek
+		if (_isHovered)
+		{
+			if (ReverseAnimation)
+			{
+				_animatedSprite.Frame = _animatedSprite.SpriteFrames.GetFrameCount(AnimationName) - 1;
+			}
+			else
+			{
+				_animatedSprite.Frame = 0;
+			}
+		}
+		else
+		{
+			RestoreOriginalState();
+		}
 	}
 	
-	private void ShowFrame(int index)
+	private void RestoreOriginalState()
 	{
-		if (index >= Frames.Length || _targetSprite == null) 
+		if (_animatedSprite == null)
 			return;
 		
-		// Podporuje různé typy node
-		if (_targetSprite is Sprite2D sprite2D)
-			sprite2D.Texture = Frames[index];
-		else if (_targetSprite is TextureRect rect)
-			rect.Texture = Frames[index];
-		else if (_targetSprite is TextureButton btn)
-			btn.TextureNormal = Frames[index];
+		// Vrať původní stav animace
+		if (_wasPlayingOriginally && PlayInBackground)
+		{
+			_animatedSprite.Play(AnimationName);
+		}
+		else
+		{
+			_animatedSprite.Stop();
+			// Nastav na začátek podle směru
+			if (ReverseAnimation)
+			{
+				_animatedSprite.Frame = _animatedSprite.SpriteFrames.GetFrameCount(AnimationName) - 1;
+			}
+			else
+			{
+				_animatedSprite.Frame = 0;
+			}
+		}
 	}
 	
 	private void OnAnimationStarted()
@@ -175,10 +227,31 @@ public partial class SimpleMenuAnim : Node
 	
 	private void OnAnimationFinished()
 	{
+		_isPlayingFullAnimation = false;
+		
 		if (ControlButtonScale && ShowOnAnimationEnd && _buttonScale != null)
 		{
 			// Zavolej metodu na ButtonScale pro trvalé zobrazení
 			_buttonScale.Call("SetHoverImagePermanentlyVisible", PermanentOpacity);
+		}
+		
+		// Po skončení animace zkontroluj hover stav
+		if (_isHovered)
+		{
+			// Pokud je stále hover, zobraz první snímek
+			if (ReverseAnimation)
+			{
+				_animatedSprite.Frame = _animatedSprite.SpriteFrames.GetFrameCount(AnimationName) - 1;
+			}
+			else
+			{
+				_animatedSprite.Frame = 0;
+			}
+		}
+		else
+		{
+			// Jinak vrať původní stav
+			RestoreOriginalState();
 		}
 	}
 	
@@ -203,11 +276,13 @@ public partial class SimpleMenuAnim : Node
 	public void SetReverse(bool reverse)
 	{
 		ReverseAnimation = reverse;
+		SetupAnimation(); // Nastav správný snímek podle nového směru
 	}
 	
 	public void ToggleDirection()
 	{
 		ReverseAnimation = !ReverseAnimation;
+		SetupAnimation(); // Nastav správný snímek podle nového směru
 	}
 	
 	public void PlayForward()
@@ -227,7 +302,14 @@ public partial class SimpleMenuAnim : Node
 		// Odpoj signály
 		if (_button != null)
 		{
-			_button.Pressed -= () => Play();
+			_button.Pressed -= OnButtonPressed;
+			_button.MouseEntered -= OnButtonHoverEntered;
+			_button.MouseExited -= OnButtonHoverExited;
+		}
+		
+		if (_animatedSprite != null)
+		{
+			_animatedSprite.AnimationFinished -= OnAnimationFinished;
 		}
 	}
 }
