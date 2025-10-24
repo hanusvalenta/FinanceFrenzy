@@ -1,22 +1,31 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class DataModel : Node2D
 {
 	Random V_Random_;
+	static double V_Double_Nextlvl	= 3;
+	static bool V_Bool_IgnoreTimer	= false;
 
 	public override void _Ready()
 	{
 		GD.Print(GetTree().Root.GetMeta("Sanity"));
 
-		V_Random_	= new Random();
+		V_Random_			= new Random();
 	}
 
 	public override void _Process(double delta)
 	{
-		if((int)GetTree().Root.GetMeta("Sanity") != 101)
+		if((int)GetTree().Root.GetMeta("Sanity") != 101 && V_Bool_IgnoreTimer == false)
 		{
-
+			V_Double_Nextlvl	-= delta;
+			
+			if(V_Double_Nextlvl	< 0)
+			{
+				F_ChangeLevel_RNil();
+				V_Double_Nextlvl= 7;
+			}
 		}
 	}
 
@@ -37,24 +46,23 @@ public partial class DataModel : Node2D
 
 			if(true)//(int)GetTree().Root.GetMeta("Sanity") > 35)
 			{
-				V_Int_Max			= 2;
-				PAR_ScenePath_Str	= "res://Scenes/GameScenes";
+				V_Int_Max			= 3;
+				PAR_ScenePath_Str	= "res://Scenes/GameScenes/";
 			}
 			else
 			{
 				V_Int_Max			= 2;
-				PAR_ScenePath_Str	= "res://Scenes/CursedScenes";
+				PAR_ScenePath_Str	= "res://Scenes/CursedScenes/";
 			}
 
-			V_Int_NextLVL		= V_Random_.Next(0, V_Int_Max);
+			V_Int_NextLVL		= V_Random_.Next(1, V_Int_Max+1);
 
 			PAR_ScenePath_Str	= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
 		}
 
 
 		Node V_Node_CurScene	= GetTree().CurrentScene;
-		GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>(PAR_ScenePath_Str).Instantiate());
-		GetTree().Root.RemoveChild(V_Node_CurScene);
+		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>(PAR_ScenePath_Str));
 	}
 
 	public float F_BeatSpeed_RNil(float PAR_DecreaseSPD_Float = 0.0f)
