@@ -1,3 +1,6 @@
-[gd_scene load_steps=0 format=3 uid="uid://hu4kkh2m2rld"]
+[gd_scene load_steps=2 format=3 uid="uid://hu4kkh2m2rld"]
+
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_k0l3i"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_k0l3i")
