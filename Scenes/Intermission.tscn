@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_k0l3i"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Interm" type="Node2D"]
 script = ExtResource("1_k0l3i")
