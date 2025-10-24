@@ -1,14 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg880qsb15lbt"]
+[gd_scene load_steps=5 format=3 uid="uid://bg880qsb15lbt"]
 
 [ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="1_pw64i"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="2_67ibq"]
+[ext_resource type="Texture2D" uid="uid://hmj4il71050d" path="res://TestImages/IMG_20251024_124935334-removebg-preview.png" id="3_70j8v"]
+[ext_resource type="Texture2D" uid="uid://ccd4cke2fxa1e" path="res://TestImages/Ammo.png" id="4_03b8h"]
 
 [node name="End" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Hotgun" type="Sprite2D" parent="."]
+position = Vector2(-199, 111)
+scale = Vector2(2.284, 2.284)
+texture = ExtResource("4_03b8h")
+flip_h = true
+
+[node name="Ammo" type="Sprite2D" parent="."]
+position = Vector2(312, 332)
+texture = ExtResource("3_70j8v")
+metadata/Tag = "Ammo"
 
 [node name="Hand" type="Sprite2D" parent="."]
 position = Vector2(434.75, -83.0415)
 scale = Vector2(2.43764, 2.43764)
 texture = ExtResource("1_pw64i")
 script = ExtResource("2_67ibq")
+
+[node name="Node2D" type="Node2D" parent="Hand"]
