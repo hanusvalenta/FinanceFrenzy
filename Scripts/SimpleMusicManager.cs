@@ -2,7 +2,7 @@ using Godot;
 
 public partial class SimpleMusicManager : Node
 {
-[Export] private AudioStreamWav HelloSound;
+	[Export] private AudioStreamWav HelloSound;
 	[Export] private AudioStreamWav MenuMusic;
 
 	private AudioStreamPlayer _AudioPlayer;
