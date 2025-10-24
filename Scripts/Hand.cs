@@ -8,6 +8,8 @@ public partial class Hand : Sprite2D
 	[Export]
 	private CanvasItem _snappableObject2;
 	[Export]
+	private CanvasItem _snappableObject3;
+	[Export]
 	private Node2D _snapTargetPosition;
 	[Export]
 	private Texture2D _holdingTexture;
@@ -45,7 +47,7 @@ public partial class Hand : Sprite2D
 			if (mouseButtonEvent.Pressed)
 			{
 				Vector2 mouseGlobalPos = GetGlobalMousePosition();
-				
+
 				// Check if objects are valid before testing mouse over
 				if (_heldObject == null && _snappableObject1 != null && GodotObject.IsInstanceValid(_snappableObject1) && IsMouseOverNode(_snappableObject1, mouseGlobalPos))
 				{
@@ -54,6 +56,10 @@ public partial class Hand : Sprite2D
 				else if (_heldObject == null && _snappableObject2 != null && GodotObject.IsInstanceValid(_snappableObject2) && IsMouseOverNode(_snappableObject2, mouseGlobalPos))
 				{
 					_heldObject = (Node2D)_snappableObject2;
+				}
+				else if (_heldObject == null && _snappableObject3 != null && GodotObject.IsInstanceValid(_snappableObject3) && IsMouseOverNode(_snappableObject3, mouseGlobalPos))
+				{
+					_heldObject = (Node2D)_snappableObject3;
 				}
 				
 				if (_heldObject != null)

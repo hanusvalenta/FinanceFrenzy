@@ -1,29 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnp67uyfuqy34"]
+[gd_scene load_steps=9 format=3 uid="uid://bnp67uyfuqy34"]
 
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_ojqd7"]
 [ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="2_uii3l"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="3_87qgg"]
 [ext_resource type="Texture2D" uid="uid://cbjth6p1ip0s7" path="res://TestImages/IMG_20251024_123020407-removebg-preview.png" id="4_anwib"]
-[ext_resource type="Texture2D" uid="uid://hmj4il71050d" path="res://TestImages/IMG_20251024_124935334-removebg-preview.png" id="10_www1u"]
+[ext_resource type="Texture2D" uid="uid://clk1dhy7rciv7" path="res://TestImages/5.png" id="5_fk6v0"]
+[ext_resource type="Texture2D" uid="uid://dbu4c25oqnbc" path="res://TestImages/20.png" id="6_cgare"]
+[ext_resource type="Texture2D" uid="uid://b1kfchtwx4h0e" path="res://TestImages/50.png" id="7_f8egr"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbw3r"]
-radius = 40.0
-height = 417.133
+[sub_resource type="CircleShape2D" id="CircleShape2D_6csqx"]
+radius = 273.713
 
-[node name="End" type="Node2D"]
+[node name="3" type="Node2D"]
 
 [node name="MenuManager" parent="." instance=ExtResource("1_ojqd7")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snapTargetPosition")]
+[node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snappableObject3", "_snapTargetPosition")]
 z_index = 1
 position = Vector2(434.75, -83.0415)
 scale = Vector2(2.43764, 2.43764)
 texture = ExtResource("2_uii3l")
 script = ExtResource("3_87qgg")
-_snappableObject1 = NodePath("")
-_snappableObject2 = NodePath("../Coin1")
+_snappableObject1 = NodePath("../Coin1")
+_snappableObject2 = NodePath("../Coin2")
+_snappableObject3 = NodePath("../Coin3")
 _snapTargetPosition = NodePath("HeldPos")
 _holdingTexture = ExtResource("4_anwib")
 
@@ -31,8 +33,9 @@ _holdingTexture = ExtResource("4_anwib")
 position = Vector2(-92.6101, -3.26484)
 
 [node name="Coin1" type="Sprite2D" parent="."]
-position = Vector2(398, 303)
-texture = ExtResource("10_www1u")
+position = Vector2(122, 354)
+scale = Vector2(0.294979, 0.294979)
+texture = ExtResource("5_fk6v0")
 metadata/Tag = "Ammo"
 
 [node name="Area2D" type="Area2D" parent="Coin1"]
@@ -40,7 +43,39 @@ position = Vector2(87.1279, -48.5989)
 scale = Vector2(0.437828, 0.437828)
 
 [node name="ColShape" type="CollisionShape2D" parent="Coin1/Area2D"]
-position = Vector2(-201.284, 158.964)
+position = Vector2(-212.008, 114.872)
 rotation = 0.837758
 scale = Vector2(2.284, 2.284)
-shape = SubResource("CapsuleShape2D_vbw3r")
+shape = SubResource("CircleShape2D_6csqx")
+
+[node name="Coin2" type="Sprite2D" parent="."]
+position = Vector2(-566, 368)
+scale = Vector2(0.294979, 0.294979)
+texture = ExtResource("6_cgare")
+metadata/Tag = "Ammo"
+
+[node name="Area2D2" type="Area2D" parent="Coin2"]
+position = Vector2(87.1279, -48.5989)
+scale = Vector2(0.437828, 0.437828)
+
+[node name="ColShape2" type="CollisionShape2D" parent="Coin2/Area2D2"]
+position = Vector2(-212.008, 114.872)
+rotation = 0.837758
+scale = Vector2(2.284, 2.284)
+shape = SubResource("CircleShape2D_6csqx")
+
+[node name="Coin3" type="Sprite2D" parent="."]
+position = Vector2(-232, 340)
+scale = Vector2(0.294979, 0.294979)
+texture = ExtResource("7_f8egr")
+metadata/Tag = "Ammo"
+
+[node name="Area2D3" type="Area2D" parent="Coin3"]
+position = Vector2(87.1279, -48.5989)
+scale = Vector2(0.437828, 0.437828)
+
+[node name="ColShape3" type="CollisionShape2D" parent="Coin3/Area2D3"]
+position = Vector2(-212.008, 114.872)
+rotation = 0.837758
+scale = Vector2(2.284, 2.284)
+shape = SubResource("CircleShape2D_6csqx")
