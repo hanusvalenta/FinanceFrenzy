@@ -82,6 +82,12 @@ public partial class Hand : Sprite2D
 		return false;
 	}
 
+	public void F_DropObject_RNil()
+	{
+		_heldObject = null;
+		Texture = _idleTexture;
+	}	
+	
 	public override void _ExitTree()
 	{
 		Input.MouseMode = Input.MouseModeEnum.Visible;
