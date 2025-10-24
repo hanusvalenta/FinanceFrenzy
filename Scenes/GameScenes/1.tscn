@@ -26,22 +26,22 @@ scale = Vector2(2.75988, 4.28545)
 texture = ExtResource("3_u6r6c")
 
 [node name="1" type="Node2D" parent="Sprite2D2"]
-position = Vector2(8.78079, 0.204849)
+position = Vector2(192.171, -60.8869)
 
 [node name="2" type="Node2D" parent="Sprite2D2"]
-position = Vector2(6.001, -0.0345043)
+position = Vector2(111.37, -51.3198)
 
 [node name="3" type="Node2D" parent="Sprite2D2"]
-position = Vector2(2.67241, 0.0991908)
+position = Vector2(44.7004, -58.787)
 
 [node name="4" type="Node2D" parent="Sprite2D2"]
-position = Vector2(-1.6464, -0.342859)
+position = Vector2(-20.5201, 8.41705)
 
 [node name="5" type="Node2D" parent="Sprite2D2"]
-position = Vector2(-2.45766, 0.342861)
+position = Vector2(-63.2754, -54.3536)
 
 [node name="6" type="Node2D" parent="Sprite2D2"]
-position = Vector2(-2.93488, 0.403238)
+position = Vector2(-88.2764, -63.9209)
 
 [node name="SceneManager" type="Node2D" parent="." node_paths=PackedStringArray("_targetObjects")]
 script = ExtResource("1_8reg5")
@@ -67,3 +67,12 @@ texture_normal = ExtResource("5_44jne")
 texture_hover = ExtResource("6_8ctki")
 stretch_mode = 0
 flip_h = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 1
+position = Vector2(1004, 464)
+rotation = 3.14159
+scale = Vector2(2.75988, 4.28545)
+
+[connection signal="pressed" from="Buy" to="SceneManager" method="Good"]
+[connection signal="pressed" from="Sell" to="SceneManager" method="Bad"]
