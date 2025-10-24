@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://lqsq0jdlfvpa" path="res://Scripts/ButtonScale.cs" id="2_kry3j"]
-[ext_resource type="Texture2D" uid="uid://kuqd6vr225rh" path="res://Sprites/spr_mmui_btn0_big_0.png" id="3_21xkr"]
-[ext_resource type="Texture2D" uid="uid://b0my6vl062cro" path="res://Sprites/spr_mmui_btn0_big_1.png" id="4_6bp64"]
+[ext_resource type="Texture2D" uid="uid://cbax8mknx2elo" path="res://Sprites/spr_mmui_btn0_big_0.png" id="3_21xkr"]
+[ext_resource type="Texture2D" uid="uid://c8up5olvxoguu" path="res://Sprites/spr_mmui_btn0_big_1.png" id="4_6bp64"]
 [ext_resource type="Texture2D" uid="uid://bjpkiia6pj8h8" path="res://Sprites/spr_mmui_btn2_small_0.png" id="5_21xkr"]
-[ext_resource type="Texture2D" uid="uid://bldg0f6qhol0h" path="res://Sprites/ms4_spr_computer_bg_0.png" id="5_344ge"]
+[ext_resource type="Texture2D" uid="uid://bejs0wtoq1mej" path="res://Sprites/ms4_spr_computer_bg_0.png" id="5_344ge"]
 
 [node name="Node2D" type="Node2D"]
 
