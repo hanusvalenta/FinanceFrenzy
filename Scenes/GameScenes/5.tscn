@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq63vnybwhmsi"]
+[gd_scene load_steps=9 format=3 uid="uid://co1r0f1j43dts"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_4bbmq"]
-[ext_resource type="Texture2D" uid="uid://v1t5gvmgx007" path="res://TestImages/CardHand.png" id="1_bp4bb"]
 [ext_resource type="Texture2D" uid="uid://bogjyc38sggyt" path="res://TestImages/Scanner.png" id="2_jjmnh"]
+[ext_resource type="Texture2D" uid="uid://dn5rmo1lbugbo" path="res://Sprites/hand_sep__0001_Vrstva-1.png" id="3_b2guf"]
 [ext_resource type="Script" uid="uid://bk2ueyu2trfr3" path="res://Scripts/CardHand.cs" id="3_g64ns"]
 [ext_resource type="Texture2D" uid="uid://deqc7ev8utl1j" path="res://TestImages/ScannerR.png" id="3_jjmnh"]
+[ext_resource type="Texture2D" uid="uid://ciwblslrkre52" path="res://Sprites/hand_sep__0000_Vrstva-2.png" id="5_wceol"]
+[ext_resource type="Texture2D" uid="uid://cakmt2ccvmiog" path="res://Sprites/R-min.png" id="6_78m6r"]
+[ext_resource type="Texture2D" uid="uid://codyvluyhxrjt" path="res://Sprites/billa_nový_koncept_prodejny-9-min.png" id="8_xtmm3"]
 
 [node name="5" type="Node2D"]
 script = ExtResource("1_4bbmq")
@@ -14,18 +17,39 @@ metadata/V_NextLevelIn = 3
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(743, 4.57764e-05)
+position = Vector2(887.5, 11.2694)
 scale = Vector2(3.35526, 3.35526)
 texture = ExtResource("2_jjmnh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 82)
-scale = Vector2(0.7125, 0.7125)
-texture = ExtResource("1_bp4bb")
+rotation = -1.5708
+scale = Vector2(4.415, 4.415)
+texture = ExtResource("3_b2guf")
 flip_h = true
 script = ExtResource("3_g64ns")
 
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+z_index = 1
+texture_filter = 1
+position = Vector2(56.6667, 21.3333)
+texture = ExtResource("5_wceol")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(54.8131, 50.7361)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_78m6r")
+
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(743, 4.57764e-05)
+position = Vector2(887.5, 11.2694)
 scale = Vector2(3.35526, 3.35526)
 texture = ExtResource("3_jjmnh")
+
+[node name="BillaNovýKonceptProdejny-9-min" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0.434674, 107.25)
+scale = Vector2(2.76124, 2.76124)
+texture = ExtResource("8_xtmm3")
+metadata/_edit_lock_ = true

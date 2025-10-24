@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://hu4kkh2m2rld"]
+[gd_scene load_steps=8 format=3 uid="uid://hu4kkh2m2rld"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_k0l3i"]
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="2_4nnvh"]
+[ext_resource type="Texture2D" uid="uid://cpnpobphalqo0" path="res://Sprites/ms12_spr_bg_win_1_0002_Vrstva-1.png" id="3_wnjkg"]
+[ext_resource type="Texture2D" uid="uid://esv7li2qkgso" path="res://Sprites/ms12_spr_bg_win_1_0001_Vrstva-2.png" id="4_k0dqm"]
+[ext_resource type="Texture2D" uid="uid://tcntcvmne3mx" path="res://Sprites/ms12_spr_bg_win_1_0000_Vrstva-3.png" id="5_47dhd"]
+[ext_resource type="Script" uid="uid://bsrcjxlpfttg5" path="res://Scripts/SimpleTileBackground.cs" id="6_47dhd"]
+[ext_resource type="Texture2D" uid="uid://c28bu24e5pvth" path="res://Sprites/DollaDolla.png" id="7_f3y7e"]
 
 [node name="Interm" type="Node2D"]
 script = ExtResource("1_k0l3i")
@@ -9,3 +14,29 @@ metadata/V_NextLevelIn = 3
 metadata/V_IsInterm = true
 
 [node name="MenuManager" parent="." instance=ExtResource("2_4nnvh")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(968, 544)
+scale = Vector2(6.01111, 6.01111)
+texture = ExtResource("3_wnjkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+z_index = 2
+position = Vector2(1.01537e-05, -69.2052)
+texture = ExtResource("4_k0dqm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+z_index = 2
+texture_filter = 1
+position = Vector2(1.01328e-05, 67.8743)
+scale = Vector2(1, 1)
+texture = ExtResource("5_47dhd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
+z_index = 1
+script = ExtResource("6_47dhd")
+TileTexture = ExtResource("7_f3y7e")
+ScrollSpeedX = 25.0
+ScrollSpeedY = 0.0
+TileSize = Vector2(32, 32)

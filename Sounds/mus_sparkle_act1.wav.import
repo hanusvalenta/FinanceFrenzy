@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/mus_sparkle_act1.wav-bf9e9cf63110fb31d7e2c71f
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
