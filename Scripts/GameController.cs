@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 public partial class GameController : Control
 {
 	Button V_Btn_Sets;
-
-	Node V_Scene_Interm;
 	Node V_Scene_Death;
 
 	[Export]
@@ -18,9 +16,8 @@ public partial class GameController : Control
 	{
 		GetTree().Root.SetMeta("Sanity", 101);
 		GetTree().Root.SetMeta("Speed", 0.464f);
-		GetTree().Root.SetMeta("Played", new int[5]);
+		GetTree().Root.SetMeta("Played", new int[0]);
 
-		V_Scene_Interm		= ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn").Instantiate();
 		V_Scene_Death		= ResourceLoader.Load<PackedScene>("res://Scenes/End.tscn").Instantiate();
 
 		GetNode<Button>("./Start").Pressed	+= () => {F_LoadLVL_RNil(false);};
@@ -53,8 +50,6 @@ public partial class GameController : Control
 
 		GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("res://Scenes/audio_stream_player.tscn").Instantiate());
 
-		Node V_Node_CurScene= GetTree().CurrentScene;
-		GetTree().Root.AddChild(V_Scene_Interm);
-		GetTree().Root.RemoveChild(V_Node_CurScene);
+		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn"));
 	}
 }
