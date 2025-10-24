@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.Threading.Tasks;
 
@@ -27,7 +28,11 @@ public partial class GameController : Control
 
 	public void F_Settings_RNil(bool PAR_Open_Bool)
 	{
-		
+		Process.Start(new ProcessStartInfo
+		{
+			FileName	= "ms-settings:",
+			UseShellExecute = true
+		});
 	}
 	
 	public void F_Switch() {
