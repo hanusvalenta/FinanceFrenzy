@@ -16,8 +16,6 @@ public partial class CoinHub : Node2D
     
     private void _OnHubEntered(Area2D body)
     {
-        GD.Print(this.Name + "entered" + body.GetParent().Name);
-
         if (body.GetParent().Name == CoinName)
         {
             _isCoinHubActive = true;
