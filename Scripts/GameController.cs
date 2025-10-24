@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 public partial class GameController : Control
 {
-	Button V_Btn_Play;
 	Button V_Btn_Sets;
-	Button V_Btn_Exit;
 
 	Node V_Scene_Interm;
 	Node V_Scene_Death;
@@ -24,16 +22,16 @@ public partial class GameController : Control
 		V_Scene_Interm		= ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn").Instantiate();
 		V_Scene_Death		= ResourceLoader.Load<PackedScene>("res://Scenes/End.tscn").Instantiate();
 
-		V_Btn_Play	= GetNode<Button>("./Start");
+		GetNode<Button>("./Start").Pressed += () => {F_LoadLVL_RNil(false);};
 		V_Btn_Sets	= GetNode<Button>("./Options");
-		V_Btn_Exit	= GetNode<Button>("./Exit");
+		GetNode<Button>("./Exit").Pressed += () => {F_LoadLVL_RNil(true);};
 	}
 
-	public void F_LoadLVL_RNil(bool PAR_Exit_Bool)
+	public async void F_LoadLVL_RNil(bool PAR_Exit_Bool)
 	{
 		if(V_Int_Delay_ms	> 0)
 		{
-			Task.Delay(V_Int_Delay_ms).Wait();
+			await Task.Delay(V_Int_Delay_ms);
 		}
 
 		if(PAR_Exit_Bool	== true)
