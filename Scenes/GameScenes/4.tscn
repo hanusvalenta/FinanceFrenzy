@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://soxqfe0yxnnc"]
+[gd_scene load_steps=8 format=3 uid="uid://b367mbpeeejo6"]
 
 [ext_resource type="Texture2D" uid="uid://d4g0ap223654m" path="res://TestImages/Hand.png" id="1_uicom"]
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_y1p4c"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bdir46ebmolh6" path="res://TestImages/cig.png" id="2_tsl6b"]
 [ext_resource type="Texture2D" uid="uid://bvjslpyeyonsp" path="res://TestImages/lighter.png" id="3_0yw7b"]
 [ext_resource type="Texture2D" uid="uid://geqmnhodvhm5" path="res://TestImages/cigB.png" id="4_0yw7b"]
+[ext_resource type="Texture2D" uid="uid://u3y2cs63gvsk" path="res://Sprites/cs_0_0_3_spr_bg_0.png" id="7_5snrc"]
 
 [node name="4" type="Node2D"]
 script = ExtResource("1_y1p4c")
@@ -29,3 +30,10 @@ metadata/V_IsInterm = false
 position = Vector2(283, -47)
 scale = Vector2(2.89853, 2.89853)
 texture = ExtResource("2_tsl6b")
+
+[node name="Cs003SprBg0" type="Sprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+position = Vector2(312, -22.25)
+scale = Vector2(3.9963, 4.39815)
+texture = ExtResource("7_5snrc")
