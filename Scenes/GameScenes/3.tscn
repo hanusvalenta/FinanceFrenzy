@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bnp67uyfuqy34"]
 
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_ojqd7"]
-[ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="2_uii3l"]
+[ext_resource type="Texture2D" uid="uid://757kejjosfgy" path="res://Sprites/ms3_spr_hand_open_0.png" id="2_f8egr"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="3_87qgg"]
-[ext_resource type="Texture2D" uid="uid://cbjth6p1ip0s7" path="res://TestImages/IMG_20251024_123020407-removebg-preview.png" id="4_anwib"]
+[ext_resource type="Texture2D" uid="uid://diy1nf4rejp1o" path="res://Sprites/ms3_spr_hand_pinch_0.png" id="4_1c47g"]
 [ext_resource type="Texture2D" uid="uid://clk1dhy7rciv7" path="res://TestImages/5.png" id="5_fk6v0"]
 [ext_resource type="Texture2D" uid="uid://dbu4c25oqnbc" path="res://TestImages/20.png" id="6_cgare"]
 [ext_resource type="Texture2D" uid="uid://b1kfchtwx4h0e" path="res://TestImages/50.png" id="7_f8egr"]
@@ -24,16 +24,17 @@ radius = 273.713
 z_index = 1
 position = Vector2(434.75, -83.0415)
 scale = Vector2(2.43764, 2.43764)
-texture = ExtResource("2_uii3l")
+texture = ExtResource("2_f8egr")
+offset = Vector2(50, -17)
 script = ExtResource("3_87qgg")
 _snappableObject1 = NodePath("../5")
 _snappableObject2 = NodePath("../20")
 _snappableObject3 = NodePath("../50")
 _snapTargetPosition = NodePath("HeldPos")
-_holdingTexture = ExtResource("4_anwib")
+_holdingTexture = ExtResource("4_1c47g")
 
 [node name="HeldPos" type="Node2D" parent="Hand"]
-position = Vector2(-92.6101, -3.26484)
+position = Vector2(-79.8929, -5.316)
 
 [node name="5" type="Sprite2D" parent="."]
 position = Vector2(122, 354)
