@@ -58,6 +58,7 @@ public partial class One : Node2D
 
 	private void Good()
 	{
+		GD.Print("Good Clicked");
 		goodClicks++;
 		if (goodClicks >= 5)
 		{
@@ -68,6 +69,6 @@ public partial class One : Node2D
 	
 	private void Bad()
 	{
-		GD.Print("Outcome: Bad!");
+		GetNode<DataModel>("..").F_SanityChange_RNil(-10);
 	}
 }
