@@ -1,14 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://3qammc20vd41"]
+[gd_scene load_steps=5 format=3 uid="uid://3qammc20vd41"]
 
 [sub_resource type="Gradient" id="Gradient_dj5pn"]
+colors = PackedColorArray(0.0823529, 0.129412, 0.14902, 1, 0.0823529, 0.129412, 0.14902, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8reg5"]
 gradient = SubResource("Gradient_dj5pn")
 width = 20
 
+[sub_resource type="Gradient" id="Gradient_8reg5"]
+colors = PackedColorArray(0.419608, 0.552941, 0.607843, 1, 0.419842, 0.553188, 0.609351, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tlnrp"]
+gradient = SubResource("Gradient_8reg5")
+width = 20
+
 [node name="1" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(919, 535)
+[node name="BackGround" type="Sprite2D" parent="."]
+position = Vector2(919, 538)
 scale = Vector2(-119.247, 1076.75)
 texture = SubResource("GradientTexture1D_8reg5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(952, 276)
+rotation = 3.14159
+scale = Vector2(83.8194, -463.747)
+texture = SubResource("GradientTexture1D_tlnrp")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 179.0
+offset_top = 610.0
+offset_right = 187.0
+offset_bottom = 618.0
+scale = Vector2(15.4939, 10.8414)
+text = "Buy"
+
+[node name="Sell" type="Button" parent="."]
+offset_left = 1090.0
+offset_top = 610.0
+offset_right = 1125.0
+offset_bottom = 641.0
+scale = Vector2(15.0717, 10.546)
+text = "Sell"
+
+[node name="SceneManager" type="Node2D" parent="."]
