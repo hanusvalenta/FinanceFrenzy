@@ -18,6 +18,7 @@ public partial class GameController : Control
 	{
 		GetTree().Root.SetMeta("Sanity", 101);
 		GetTree().Root.SetMeta("Speed", 0.464f);
+		GetTree().Root.SetMeta("Played", new int[5]);
 
 		V_Scene_Interm		= ResourceLoader.Load<PackedScene>("res://Scenes/Intermission.tscn").Instantiate();
 		V_Scene_Death		= ResourceLoader.Load<PackedScene>("res://Scenes/End.tscn").Instantiate();

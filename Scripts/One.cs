@@ -73,6 +73,6 @@ public partial class One : Node2D
 	
 	private void Bad()
 	{
-		F_FinishLevel_RNil(10);
+		F_FinishLevel_RNil(-10);
 	}
 }

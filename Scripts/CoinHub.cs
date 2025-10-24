@@ -24,6 +24,7 @@ public partial class CoinHub : Node2D
             {
                 if (Hub1._isCoinHubActive && Hub2._isCoinHubActive && Hub3._isCoinHubActive)
                 {
+					GetNode<DataModel>("..").F_SanityChange_RNil(10);
                     GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
                 }
             }

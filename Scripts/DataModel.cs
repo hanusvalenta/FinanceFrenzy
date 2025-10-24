@@ -1,5 +1,7 @@
 using Godot;
+using Godot.Collections;
 using System;
+using System.Collections.Generic;
 
 public partial class DataModel : Node2D
 {
@@ -23,6 +25,12 @@ public partial class DataModel : Node2D
 			if(V_Double_Nextlvl	< 0)
 			{
 				V_Bool_QuitService	= true;
+
+				if((bool)GetMeta("V_IsInterm") == false)
+				{
+					GetNode<DataModel>("..").F_SanityChange_RNil(-10);
+				}
+
 				F_ChangeLevel_RNil((bool)GetMeta("V_IsInterm") == true ? "" : "res://Scenes/Intermission.tscn");
 			}
 		}
@@ -54,8 +62,10 @@ public partial class DataModel : Node2D
 				PAR_ScenePath_Str	= "res://Scenes/CursedScenes/";
 			}
 
-			
-			V_Int_NextLVL			= V_Random_.Next(1, V_Int_Max+1);
+			do
+			{
+				V_Int_NextLVL			= V_Random_.Next(1, V_Int_Max+1);
+			}while(false);//(int[])GetTree().Root.GetMeta("Played").IndexOf(V_Int_NextLVL) != -1);
 
 			PAR_ScenePath_Str		= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
 		}
