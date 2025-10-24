@@ -1,15 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://kh1solr2rh21"]
-
-[ext_resource type="Texture2D" uid="uid://bmyduopphuv70" path="res://TestImages/Sources-of-Business-Finance-2-copy-551611966.webp" id="1_jjgbg"]
+[gd_scene format=3 uid="uid://kh1solr2rh21"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="BackGround" type="Sprite2D" parent="."]
-position = Vector2(-9.09495e-13, -1.13687e-13)
-scale = Vector2(2.12103, 2.12103)
-texture = ExtResource("1_jjgbg")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
