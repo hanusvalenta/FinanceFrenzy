@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1fchttk6p8el"]
+[gd_scene load_steps=6 format=3 uid="uid://soxqfe0yxnnc"]
 
 [ext_resource type="Texture2D" uid="uid://d4g0ap223654m" path="res://TestImages/Hand.png" id="1_uicom"]
 [ext_resource type="Script" uid="uid://bx52v5br6np2l" path="res://Scripts/CigHand.cs" id="2_htpog"]
@@ -16,6 +16,8 @@ script = ExtResource("2_htpog")
 _holdingTexture = ExtResource("3_0yw7b")
 _burntTexture = ExtResource("4_0yw7b")
 _targetSprite = NodePath("../Sprite2D2")
+metadata/V_NextLevelIn = 3
+metadata/V_IsInterm = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(283, -47)

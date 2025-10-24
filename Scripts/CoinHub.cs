@@ -24,7 +24,7 @@ public partial class CoinHub : Node2D
             {
                 if (Hub1._isCoinHubActive && Hub2._isCoinHubActive && Hub3._isCoinHubActive)
                 {
-                    GD.Print("Win");
+                    GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
                 }
             }
         }

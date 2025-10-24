@@ -11,6 +11,8 @@
 [node name="1" type="Node2D"]
 position = Vector2(0, 2)
 script = ExtResource("1_tlnrp")
+metadata/V_NextLevelIn = 5
+metadata/V_IsInterm = false
 
 [node name="MenuManager" parent="." instance=ExtResource("2_u6r6c")]
 

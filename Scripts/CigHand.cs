@@ -38,7 +38,8 @@ public partial class CigHand : Sprite2D
 				{
 					_targetSprite.Texture = _burntTexture;
 					_isBurnt = true;
-					GD.Print("Win");
+
+					GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
 				}
 			}
 		}
