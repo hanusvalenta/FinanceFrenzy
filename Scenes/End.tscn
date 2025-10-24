@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bg880qsb15lbt"]
+[gd_scene load_steps=36 format=3 uid="uid://bg880qsb15lbt"]
 
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_x8vyd"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="2_67ibq"]
@@ -9,6 +9,27 @@
 [ext_resource type="Texture2D" uid="uid://diy1nf4rejp1o" path="res://Sprites/ms3_spr_hand_pinch_0.png" id="4_whs21"]
 [ext_resource type="Texture2D" uid="uid://bgmw4lm5f6mc" path="res://TestImages/Ammo3.png" id="6_d1g0i"]
 [ext_resource type="Texture2D" uid="uid://bh30ueaouqxkh" path="res://Sprites/ms14_spr_candy2_0.png" id="10_d1g0i"]
+[ext_resource type="Shader" uid="uid://d3w8kw1njlc7l" path="res://Shaders/liquid.gdshader" id="10_whs21"]
+[ext_resource type="Texture2D" uid="uid://bqwvop8dmjnns" path="res://Sprites/ms10_spr_bg_0.png" id="11_x0iu1"]
+[ext_resource type="Script" uid="uid://bsxmnsi56j6tx" path="res://Scripts/DualAnimatedSprites.cs" id="12_2l8ss"]
+[ext_resource type="Texture2D" uid="uid://75r4ge1dhyhc" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_3.png" id="12_6xdg8"]
+[ext_resource type="Texture2D" uid="uid://bgew4rco2g4r5" path="res://Sprites/blackBgr.png" id="12_kis1o"]
+[ext_resource type="Texture2D" uid="uid://b8rk7cqwb2icf" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_4.png" id="13_2l8ss"]
+[ext_resource type="Texture2D" uid="uid://bg5ppypsdjj0v" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_5.png" id="14_ahyq4"]
+[ext_resource type="Texture2D" uid="uid://xls4k33hokkp" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_6.png" id="15_yn1l8"]
+[ext_resource type="Texture2D" uid="uid://vb42hekb13x1" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_7.png" id="16_30x4o"]
+[ext_resource type="Texture2D" uid="uid://bxbkwqnpkqt7a" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_8.png" id="17_qa7go"]
+[ext_resource type="Texture2D" uid="uid://bud0wxewkrxmg" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_9.png" id="18_3c3x7"]
+[ext_resource type="Texture2D" uid="uid://dmcoif5vg0i6r" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_10.png" id="19_kis1o"]
+[ext_resource type="Texture2D" uid="uid://du728qtwrxygx" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_11.png" id="20_samm4"]
+[ext_resource type="Texture2D" uid="uid://c6gt4y0fcwauf" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_12.png" id="21_gvqfx"]
+[ext_resource type="Texture2D" uid="uid://8y8od6fbxeri" path="res://Sprites/ShootAnim/ibtG_spr_speedupguys_13.png" id="22_6m2ld"]
+[ext_resource type="Texture2D" uid="uid://bwdbgsxblm523" path="res://Sprites/ShootAnim/ibtG_spr_life_die_0.png" id="23_36j56"]
+[ext_resource type="Texture2D" uid="uid://cr3sykupkmhsw" path="res://Sprites/ShootAnim/ibtG_spr_life_die_1.png" id="24_kjtwu"]
+[ext_resource type="Texture2D" uid="uid://dm1ad2vg3invh" path="res://Sprites/ShootAnim/ibtG_spr_life_die_2.png" id="25_hnpit"]
+[ext_resource type="Texture2D" uid="uid://3y5agy2mvf46" path="res://Sprites/ShootAnim/spr_mmui_hoverimg2_fill_0.png" id="26_mik1s"]
+[ext_resource type="Texture2D" uid="uid://dsn5t545dni62" path="res://Sprites/ShootAnim/spr_mmui_hoverimg2_fill_1.png" id="27_xspcb"]
+[ext_resource type="Texture2D" uid="uid://b5rjb3aiikcum" path="res://Sprites/ShootAnim/spr_mmui_hoverimg2_fill_2.png" id="28_wsevp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dut67"]
 radius = 23.2709
@@ -16,6 +37,90 @@ radius = 23.2709
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbw3r"]
 radius = 18.5277
 height = 109.133
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwq7q"]
+shader = ExtResource("10_whs21")
+shader_parameter/flow_speed = 1.0
+shader_parameter/flow_strength = 0.05
+shader_parameter/swirl_intensity = 0.8
+shader_parameter/wave_scale = 4.0
+shader_parameter/viscosity = 1.0
+shader_parameter/enable_secondary_flow = true
+shader_parameter/turbulence = 0.3
+shader_parameter/opacity = 0.5
+shader_parameter/fade_edges = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pldh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_6xdg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2l8ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ahyq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_yn1l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_30x4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qa7go")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3c3x7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_kis1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_samm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gvqfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_6m2ld")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pfu0k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_36j56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_kjtwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_hnpit")
+}],
+"loop": true,
+"name": &"DeadHead",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_mik1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xspcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_wsevp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="End" type="Node2D"]
 
@@ -39,7 +144,7 @@ _holdingTexture = ExtResource("4_whs21")
 [node name="HeldPos" type="Node2D" parent="Hand"]
 position = Vector2(-49.1977, 8.79642)
 
-[node name="Shotgun" type="Sprite2D" parent="." node_paths=PackedStringArray("_sprite")]
+[node name="Shotgun" type="Sprite2D" parent="." node_paths=PackedStringArray("_sprite", "_delayedSprite", "_animationSprite")]
 position = Vector2(-199, 111)
 scale = Vector2(2.284, 2.284)
 texture = ExtResource("4_03b8h")
@@ -48,6 +153,8 @@ script = ExtResource("2_vbw3r")
 _sprite = NodePath(".")
 _oneAmmoTexture = ExtResource("4_vbw3r")
 _twoAmmoTexture = ExtResource("6_d1g0i")
+_delayedSprite = NodePath("../Sprite2D")
+_animationSprite = NodePath("../Sprite2D/AnimatedSprite2D")
 
 [node name="Area2D" type="Area2D" parent="Shotgun"]
 position = Vector2(87.1279, -48.599)
@@ -69,7 +176,7 @@ shape = SubResource("CircleShape2D_dut67")
 
 [node name="Ammo1" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(336.75, 261.355)
+position = Vector2(336.75, -71.43)
 scale = Vector2(5.43421, 5.43421)
 texture = ExtResource("10_d1g0i")
 offset = Vector2(0, 25)
@@ -86,7 +193,7 @@ shape = SubResource("CapsuleShape2D_vbw3r")
 
 [node name="Ammo3" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(777, 352)
+position = Vector2(777, 180.165)
 scale = Vector2(5.434, 5.434)
 texture = ExtResource("10_d1g0i")
 offset = Vector2(0, 15)
@@ -100,6 +207,41 @@ scale = Vector2(0.437828, 0.437828)
 position = Vector2(-199.421, 107.637)
 scale = Vector2(2.284, 2.284)
 shape = SubResource("CapsuleShape2D_vbw3r")
+
+[node name="Ms10SprBg0" type="Sprite2D" parent="." node_paths=PackedStringArray("spriteA", "spriteB")]
+z_index = -2
+texture_filter = 1
+material = SubResource("ShaderMaterial_fwq7q")
+position = Vector2(96.3288, 16)
+scale = Vector2(4.65753, 4.65753)
+texture = ExtResource("11_x0iu1")
+script = ExtResource("12_2l8ss")
+spriteA = NodePath("AnimatedSprite2D")
+spriteB = NodePath("AnimatedSprite2D2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ms10SprBg0"]
+position = Vector2(130.471, -5.15295)
+scale = Vector2(0.86435, 0.86435)
+sprite_frames = SubResource("SpriteFrames_6pldh")
+frame_progress = 0.417459
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Ms10SprBg0"]
+position = Vector2(-168.4, -5.15295)
+scale = Vector2(0.86435, 0.86435)
+sprite_frames = SubResource("SpriteFrames_6pldh")
+frame_progress = 0.159287
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("12_kis1o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_pfu0k")
+frame_progress = 0.523331
 
 [connection signal="area_entered" from="Shotgun/Area2D" to="Shotgun" method="_OnHole1BodyEntered"]
 [connection signal="area_entered" from="Shotgun/Area2D2" to="Shotgun" method="_OnHole2BodyEntered"]
