@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1fchttk6p8el"]
+[gd_scene load_steps=7 format=3 uid="uid://soxqfe0yxnnc"]
 
 [ext_resource type="Texture2D" uid="uid://d4g0ap223654m" path="res://TestImages/Hand.png" id="1_uicom"]
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_y1p4c"]
 [ext_resource type="Script" uid="uid://bx52v5br6np2l" path="res://Scripts/CigHand.cs" id="2_htpog"]
 [ext_resource type="Texture2D" uid="uid://bdir46ebmolh6" path="res://TestImages/cig.png" id="2_tsl6b"]
 [ext_resource type="Texture2D" uid="uid://bvjslpyeyonsp" path="res://TestImages/lighter.png" id="3_0yw7b"]
 [ext_resource type="Texture2D" uid="uid://geqmnhodvhm5" path="res://TestImages/cigB.png" id="4_0yw7b"]
 
 [node name="4" type="Node2D"]
+script = ExtResource("1_y1p4c")
+metadata/V_IsInterm = false
+metadata/V_NextLevelIn = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -18,6 +22,8 @@ script = ExtResource("2_htpog")
 _holdingTexture = ExtResource("3_0yw7b")
 _burntTexture = ExtResource("4_0yw7b")
 _targetSprite = NodePath("../Sprite2D2")
+metadata/V_NextLevelIn = 3
+metadata/V_IsInterm = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(283, -47)
