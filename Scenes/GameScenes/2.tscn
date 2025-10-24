@@ -1,76 +1,79 @@
-[gd_scene load_steps=7 format=3 uid="uid://nlayuaquxmy5"]
+[gd_scene load_steps=7 format=3 uid="uid://ct48w7scfodlb"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_717p5"]
 [ext_resource type="Script" uid="uid://ddyfpjv66k1gl" path="res://Scripts/One.cs" id="2_g1jek"]
-
-[sub_resource type="Gradient" id="Gradient_dj5pn"]
-colors = PackedColorArray(0.0823529, 0.129412, 0.14902, 1, 0.0823529, 0.129412, 0.14902, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8reg5"]
-gradient = SubResource("Gradient_dj5pn")
-width = 20
-
-[sub_resource type="Gradient" id="Gradient_8reg5"]
-colors = PackedColorArray(0.419608, 0.552941, 0.607843, 1, 0.419842, 0.553188, 0.609351, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tlnrp"]
-gradient = SubResource("Gradient_8reg5")
-width = 20
+[ext_resource type="Texture2D" uid="uid://bejs0wtoq1mej" path="res://Sprites/ms4_spr_computer_bg_0.png" id="2_yg1c2"]
+[ext_resource type="Texture2D" uid="uid://btaw3ijvk07oq" path="res://Sprites/ms4_spr_bg_0.png" id="3_041pl"]
+[ext_resource type="Texture2D" uid="uid://c72l7pssbtiwf" path="res://Sprites/ibtS_spr_btn_blank_0.png" id="5_d1wgd"]
+[ext_resource type="Texture2D" uid="uid://c2ni1argf82sg" path="res://Sprites/ibtS_spr_btn_blank_1.png" id="6_q4vvs"]
 
 [node name="1" type="Node2D"]
 position = Vector2(0, 2)
 script = ExtResource("1_717p5")
 
 [node name="BackGround" type="Sprite2D" parent="."]
-position = Vector2(919, 538)
-scale = Vector2(-119.247, 1076.75)
-texture = SubResource("GradientTexture1D_8reg5")
+z_index = 1
+texture_filter = 1
+position = Vector2(975.889, 570)
+scale = Vector2(7.14074, 7.14074)
+texture = ExtResource("2_yg1c2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(952, 276)
+texture_filter = 1
+position = Vector2(963.367, 253.071)
 rotation = 3.14159
-scale = Vector2(83.8194, -463.747)
-texture = SubResource("GradientTexture1D_tlnrp")
+scale = Vector2(2.75988, 4.28545)
+texture = ExtResource("3_041pl")
 
 [node name="1" type="Node2D" parent="Sprite2D2"]
-position = Vector2(8.78079, 0.204849)
+position = Vector2(191.446, -23.0845)
 
 [node name="2" type="Node2D" parent="Sprite2D2"]
-position = Vector2(6.001, -0.0345043)
+position = Vector2(110.645, -13.5174)
 
 [node name="3" type="Node2D" parent="Sprite2D2"]
-position = Vector2(2.67241, 0.0991908)
+position = Vector2(43.9751, -20.9846)
 
 [node name="4" type="Node2D" parent="Sprite2D2"]
-position = Vector2(1.75378, 0.431269)
+position = Vector2(-13.9978, -76.0548)
+scale = Vector2(-8.99944, -1026.07)
 
 [node name="5" type="Node2D" parent="Sprite2D2"]
-position = Vector2(-1.24076, 0.370892)
+position = Vector2(-63.2756, -2.55036)
 
 [node name="6" type="Node2D" parent="Sprite2D2"]
-position = Vector2(-2.93489, -0.357952)
-
-[node name="Button" type="Button" parent="."]
-offset_left = 179.0
-offset_top = 610.0
-offset_right = 187.0
-offset_bottom = 618.0
-scale = Vector2(15.4939, 10.8414)
-action_mode = 0
-text = "Buy"
-metadata/_edit_use_anchors_ = true
-
-[node name="Sell" type="Button" parent="."]
-offset_left = 1090.0
-offset_top = 610.0
-offset_right = 1125.0
-offset_bottom = 641.0
-scale = Vector2(15.0717, 10.546)
-text = "Sell"
+position = Vector2(-88.2767, 6.55016)
 
 [node name="SceneManager" type="Node2D" parent="." node_paths=PackedStringArray("_targetObjects")]
 script = ExtResource("2_g1jek")
 _targetObjects = [NodePath("../Sprite2D2/1"), NodePath("../Sprite2D2/2"), NodePath("../Sprite2D2/3"), NodePath("../Sprite2D2/4"), NodePath("../Sprite2D2/5"), NodePath("../Sprite2D2/6")]
 
-[connection signal="pressed" from="Button" to="SceneManager" method="Bad"]
+[node name="Buy" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 656.0
+offset_top = 654.0
+offset_right = 840.0
+offset_bottom = 798.0
+texture_normal = ExtResource("5_d1wgd")
+texture_hover = ExtResource("6_q4vvs")
+stretch_mode = 0
+
+[node name="Sell" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 1104.0
+offset_top = 654.0
+offset_right = 1288.0
+offset_bottom = 798.0
+texture_normal = ExtResource("5_d1wgd")
+texture_hover = ExtResource("6_q4vvs")
+stretch_mode = 0
+flip_h = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 1
+position = Vector2(1004, 464)
+rotation = 3.14159
+scale = Vector2(2.75988, 4.28545)
+
+[connection signal="pressed" from="Buy" to="SceneManager" method="Bad"]
 [connection signal="pressed" from="Sell" to="SceneManager" method="Good"]
