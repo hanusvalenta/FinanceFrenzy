@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=2 format=3 uid="uid://kh1solr2rh21"]
+
+[ext_resource type="Script" uid="uid://dwqg7d3qf7i1t" path="res://Scenes/Start.cs" id="1_jjgbg"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -11,33 +13,19 @@ grow_vertical = 2
 
 [node name="Start" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = -128.0
-offset_top = -311.0
-offset_right = -120.0
-offset_bottom = -303.0
-scale = Vector2(31.9022, 31.9022)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Start"]
-layout_mode = 0
-offset_left = 0.7523
-offset_top = 1.62998
-offset_right = 40.7523
-offset_bottom = 41.63
-scale = Vector2(0.189073, 0.189073)
+offset_left = -156.0
+offset_top = -198.0
+offset_right = -110.0
+offset_bottom = -167.0
+scale = Vector2(5.67497, 5.67497)
 text = "Start
 "
+script = ExtResource("1_jjgbg")
 
 [node name="Stop" type="Button" parent="Control"]
-offset_left = -128.0
-offset_right = -120.0
-offset_bottom = 8.0
-scale = Vector2(31.9022, 31.9022)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Stop"]
-layout_mode = 0
-offset_left = 0.752301
-offset_top = 1.62998
-offset_right = 40.7523
-offset_bottom = 41.63
-scale = Vector2(0.189073, 0.189073)
-text = "Quit"
+offset_left = -156.0
+offset_top = 46.0
+offset_right = -101.0
+offset_bottom = 77.0
+scale = Vector2(5.67497, 5.67497)
+text = "Quitw"
