@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnp67uyfuqy34"]
+[gd_scene load_steps=14 format=3 uid="uid://chl3d2dxeprbj"]
 
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_1c47g"]
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_ojqd7"]
 [ext_resource type="Texture2D" uid="uid://757kejjosfgy" path="res://Sprites/ms3_spr_hand_open_0.png" id="2_f8egr"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="3_87qgg"]
@@ -17,6 +18,9 @@ radius = 273.713
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgare"]
 
 [node name="3" type="Node2D"]
+script = ExtResource("1_1c47g")
+metadata/V_NextLevelIn = 5
+metadata/V_IsInterm = false
 
 [node name="MenuManager" parent="." instance=ExtResource("1_ojqd7")]
 

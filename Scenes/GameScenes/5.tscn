@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://kgim0s06cpd5"]
+[gd_scene load_steps=6 format=3 uid="uid://bq63vnybwhmsi"]
 
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_4bbmq"]
 [ext_resource type="Texture2D" uid="uid://v1t5gvmgx007" path="res://TestImages/CardHand.png" id="1_bp4bb"]
 [ext_resource type="Texture2D" uid="uid://bogjyc38sggyt" path="res://TestImages/Scanner.png" id="2_jjmnh"]
 [ext_resource type="Script" uid="uid://bk2ueyu2trfr3" path="res://Scripts/CardHand.cs" id="3_g64ns"]
 [ext_resource type="Texture2D" uid="uid://deqc7ev8utl1j" path="res://TestImages/ScannerR.png" id="3_jjmnh"]
 
 [node name="4" type="Node2D"]
+script = ExtResource("1_4bbmq")
+metadata/V_IsInterm = false
+metadata/V_NextLevelIn = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

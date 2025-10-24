@@ -5,6 +5,7 @@ public partial class DataModel : Node2D
 {
 	Random V_Random_;
 	public double V_Double_Nextlvl;
+	private bool V_Bool_QuitService	= false;
 
 	public override void _Ready()
 	{
@@ -15,14 +16,14 @@ public partial class DataModel : Node2D
 
 	public override void _Process(double delta)
 	{
-		if((int)GetTree().Root.GetMeta("Sanity") != 101)
+		if((int)GetTree().Root.GetMeta("Sanity") != 101 && V_Bool_QuitService == false)
 		{
 			V_Double_Nextlvl	-= delta;
-			GD.Print(V_Double_Nextlvl);
+
 			if(V_Double_Nextlvl	< 0)
 			{
+				V_Bool_QuitService	= true;
 				F_ChangeLevel_RNil((bool)GetMeta("V_IsInterm") == true ? "" : "res://Scenes/Intermission.tscn");
-				V_Double_Nextlvl= 20;
 			}
 		}
 	}
@@ -36,7 +37,7 @@ public partial class DataModel : Node2D
 	}
 
 	public void F_ChangeLevel_RNil(string PAR_ScenePath_Str	= "")
-	{
+	{GD.Print(V_Double_Nextlvl+" | "+PAR_ScenePath_Str);
 		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
 		{
 			int V_Int_Max;
