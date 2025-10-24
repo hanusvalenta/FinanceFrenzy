@@ -12,7 +12,11 @@ config_version=5
 
 config/name="FinanceFrenzy"
 run/main_scene="uid://kh1solr2rh21"
+<<<<<<< Updated upstream
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+=======
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
+>>>>>>> Stashed changes
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
