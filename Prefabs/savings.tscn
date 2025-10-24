@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ph6bvvcn0a3o"]
+[gd_scene load_steps=4 format=3 uid="uid://pc8sdhujlt66"]
 
 [ext_resource type="Texture2D" uid="uid://7terun3mks88" path="res://TestImages/Weight.png" id="1_xylxl"]
 
@@ -8,6 +8,7 @@
 size = Vector2(358.991, 459.566)
 
 [node name="Savings" type="RigidBody2D"]
+scale = Vector2(0.205582, 0.205582)
 physics_material_override = SubResource("PhysicsMaterial_x7rhe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
