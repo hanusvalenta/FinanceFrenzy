@@ -1,14 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg880qsb15lbt"]
+[gd_scene load_steps=10 format=3 uid="uid://bg880qsb15lbt"]
 
 [ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="1_pw64i"]
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_x8vyd"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="2_67ibq"]
+[ext_resource type="Script" uid="uid://bflshvxtvhhvx" path="res://Scripts/Hotgun.cs" id="2_vbw3r"]
 [ext_resource type="Texture2D" uid="uid://hmj4il71050d" path="res://TestImages/IMG_20251024_124935334-removebg-preview.png" id="3_70j8v"]
 [ext_resource type="Texture2D" uid="uid://ccd4cke2fxa1e" path="res://TestImages/Ammo.png" id="4_03b8h"]
 [ext_resource type="Texture2D" uid="uid://cbjth6p1ip0s7" path="res://TestImages/IMG_20251024_123020407-removebg-preview.png" id="6_dut67"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8vyd"]
-size = Vector2(41.4924, 58.9123)
+[sub_resource type="CircleShape2D" id="CircleShape2D_dut67"]
+radius = 23.2709
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbw3r"]
+radius = 40.0
+height = 324.0
 
 [node name="End" type="Node2D"]
 
@@ -16,44 +21,61 @@ size = Vector2(41.4924, 58.9123)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Hotgun" type="Sprite2D" parent="."]
+[node name="Shotgun" type="StaticBody2D" parent="." node_paths=PackedStringArray("_hole1", "_hole2", "_ammo1", "_ammo2")]
+script = ExtResource("2_vbw3r")
+_hole1 = NodePath("Hole1")
+_hole2 = NodePath("Hole2")
+_ammo1 = NodePath("../Ammo1/CollisionShape2D")
+_ammo2 = NodePath("../Ammo3/CollisionShape2D")
+
+[node name="Hotgun" type="Sprite2D" parent="Shotgun"]
 position = Vector2(-199, 111)
 scale = Vector2(2.284, 2.284)
 texture = ExtResource("4_03b8h")
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotgun"]
-position = Vector2(-49.4746, -37.2154)
-rotation = -0.47822
-shape = SubResource("RectangleShape2D_x8vyd")
+[node name="Hole1" type="CollisionShape2D" parent="Shotgun"]
+position = Vector2(-326, 36)
+scale = Vector2(2.284, 2.284)
+shape = SubResource("CircleShape2D_dut67")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hotgun"]
-unique_name_in_owner = true
-position = Vector2(-115.587, -11.3835)
-rotation = -0.47822
-shape = SubResource("RectangleShape2D_x8vyd")
-
-[node name="Ammo" type="Sprite2D" parent="."]
-position = Vector2(312, 332)
-texture = ExtResource("3_70j8v")
-offset = Vector2(-50, 0)
-metadata/Tag = "Ammo"
-
-[node name="Ammo2" type="Sprite2D" parent="."]
-position = Vector2(211, 271)
-texture = ExtResource("3_70j8v")
-offset = Vector2(-50, 0)
-metadata/Tag = "Ammo"
+[node name="Hole2" type="CollisionShape2D" parent="Shotgun"]
+position = Vector2(-454, 76)
+scale = Vector2(2.284, 2.284)
+shape = SubResource("CircleShape2D_dut67")
 
 [node name="Hand" type="Sprite2D" parent="." node_paths=PackedStringArray("_snappableObject1", "_snappableObject2", "_snapTargetPosition")]
 position = Vector2(434.75, -83.0415)
 scale = Vector2(2.43764, 2.43764)
 texture = ExtResource("1_pw64i")
 script = ExtResource("2_67ibq")
-_snappableObject1 = NodePath("../Ammo")
-_snappableObject2 = NodePath("../Ammo2")
+_snappableObject1 = NodePath("../Ammo1/Ammo")
+_snappableObject2 = NodePath("../Ammo3/Ammo")
 _snapTargetPosition = NodePath("HeldPos")
 _holdingTexture = ExtResource("6_dut67")
 
 [node name="HeldPos" type="Node2D" parent="Hand"]
 position = Vector2(-92.6101, -3.26484)
+
+[node name="Ammo1" type="StaticBody2D" parent="."]
+position = Vector2(449, 309)
+
+[node name="Ammo" type="Sprite2D" parent="Ammo1"]
+texture = ExtResource("3_70j8v")
+offset = Vector2(-50, 0)
+metadata/Tag = "Ammo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ammo1"]
+shape = SubResource("CapsuleShape2D_vbw3r")
+
+[node name="Ammo3" type="StaticBody2D" parent="."]
+position = Vector2(122, 269)
+
+[node name="Ammo" type="Sprite2D" parent="Ammo3"]
+texture = ExtResource("3_70j8v")
+offset = Vector2(-50, 0)
+metadata/Tag = "Ammo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ammo3"]
+position = Vector2(-57, 0)
+shape = SubResource("CapsuleShape2D_vbw3r")
