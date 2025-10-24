@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg880qsb15lbt"]
+[gd_scene load_steps=7 format=3 uid="uid://bg880qsb15lbt"]
 
 [ext_resource type="Texture2D" uid="uid://ubs2hncp2jfm" path="res://TestImages/IMG_20251024_123013098-removebg-preview.png" id="1_pw64i"]
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_x8vyd"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="2_67ibq"]
 [ext_resource type="Texture2D" uid="uid://hmj4il71050d" path="res://TestImages/IMG_20251024_124935334-removebg-preview.png" id="3_70j8v"]
 [ext_resource type="Texture2D" uid="uid://ccd4cke2fxa1e" path="res://TestImages/Ammo.png" id="4_03b8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8vyd"]
+size = Vector2(41.4924, 58.9123)
 
 [node name="End" type="Node2D"]
 
@@ -17,6 +20,17 @@ position = Vector2(-199, 111)
 scale = Vector2(2.284, 2.284)
 texture = ExtResource("4_03b8h")
 flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotgun"]
+position = Vector2(-49.4746, -37.2154)
+rotation = -0.47822
+shape = SubResource("RectangleShape2D_x8vyd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hotgun"]
+unique_name_in_owner = true
+position = Vector2(-115.587, -11.3835)
+rotation = -0.47822
+shape = SubResource("RectangleShape2D_x8vyd")
 
 [node name="Ammo" type="Sprite2D" parent="."]
 position = Vector2(312, 332)

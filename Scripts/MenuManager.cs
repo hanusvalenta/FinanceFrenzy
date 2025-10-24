@@ -10,10 +10,15 @@ public partial class MenuManager : Node
 	{
 		if (@event.IsActionPressed("ui_cancel"))
 		{
+			GetViewport().SetInputAsHandled();
+
 			if (_menuScene != null)
 			{
-				GetViewport().SetInputAsHandled();
 				GetTree().ChangeSceneToPacked(_menuScene);
+			}
+			else
+			{
+				GetTree().Quit();
 			}
 		}
 	}
