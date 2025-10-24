@@ -8,6 +8,8 @@
 
 [node name="4" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("_targetSprite")]
 position = Vector2(-60, 181)
 scale = Vector2(2.41176, 2.41176)
@@ -23,5 +25,3 @@ metadata/V_IsInterm = false
 position = Vector2(283, -47)
 scale = Vector2(2.89853, 2.89853)
 texture = ExtResource("2_tsl6b")
-
-[node name="Camera2D" type="Camera2D" parent="."]
