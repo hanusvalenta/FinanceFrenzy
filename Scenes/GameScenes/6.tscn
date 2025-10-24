@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://13t2p8bnej7y"]
+[gd_scene load_steps=9 format=3 uid="uid://13t2p8bnej7y"]
 
 [ext_resource type="Script" uid="uid://beutqq7fcg274" path="res://Scripts/Six.cs" id="1_8ja2j"]
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_gf06a"]
 [ext_resource type="Texture2D" uid="uid://chnp54tx2470c" path="res://TestImages/Plank.png" id="2_8ja2j"]
 [ext_resource type="Script" uid="uid://cwlnq8ktfl5qx" path="res://Scripts/Plank.cs" id="3_8ja2j"]
+[ext_resource type="PackedScene" uid="uid://dy2rl3shnlcwj" path="res://Prefabs/bills.tscn" id="3_ugy0i"]
+[ext_resource type="PackedScene" uid="uid://ph6bvvcn0a3o" path="res://Prefabs/savings.tscn" id="5_x0hyg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8ja2j"]
 friction = 0.0
@@ -11,18 +14,25 @@ friction = 0.0
 size = Vector2(2391.7, 328.028)
 
 [node name="6" type="Node2D"]
+script = ExtResource("1_gf06a")
+metadata/V_NextLevelIn = 13
+metadata/V_IsInterm = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="6" type="Node" parent="."]
+[node name="6" type="Node" parent="." node_paths=PackedStringArray("Node2D_1", "Node2D_2")]
 script = ExtResource("1_8ja2j")
+Prefab1 = ExtResource("3_ugy0i")
+Prefab2 = ExtResource("5_x0hyg")
+Node2D_1 = NodePath("Point1")
+Node2D_2 = NodePath("Point2")
+PrefabScale = 0.1
 
 [node name="Point1" type="Node2D" parent="6"]
-position = Vector2(-274, -327)
-scale = Vector2(-1.55388, 25.0043)
+position = Vector2(-120, -327)
 
 [node name="Point2" type="Node2D" parent="6"]
-position = Vector2(275, -327)
+position = Vector2(138, -327)
 
 [node name="Plank" type="RigidBody2D" parent="."]
 position = Vector2(0, -1.52588e-05)
