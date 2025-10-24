@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://soxqfe0yxnnc"]
+[gd_scene load_steps=8 format=3 uid="uid://b367mbpeeejo6"]
 
 [ext_resource type="Texture2D" uid="uid://d4g0ap223654m" path="res://TestImages/Hand.png" id="1_uicom"]
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_y1p4c"]

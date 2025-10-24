@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://hu4kkh2m2rld"]
+[gd_scene load_steps=14 format=3 uid="uid://hu4kkh2m2rld"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_k0l3i"]
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="2_4nnvh"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://tcntcvmne3mx" path="res://Sprites/ms12_spr_bg_win_1_0000_Vrstva-3.png" id="5_47dhd"]
 [ext_resource type="Script" uid="uid://bsrcjxlpfttg5" path="res://Scripts/SimpleTileBackground.cs" id="6_47dhd"]
 [ext_resource type="Texture2D" uid="uid://c28bu24e5pvth" path="res://Sprites/DollaDolla.png" id="7_f3y7e"]
+[ext_resource type="Texture2D" uid="uid://ce687oc8wqvx0" path="res://Sprites/ibtS_spr_controlprompt_keyboard_0.png" id="8_l5w55"]
+[ext_resource type="Texture2D" uid="uid://bow3786yahpy6" path="res://Sprites/ibtS_spr_controlprompt_keyboard_mouse_0.png" id="9_lo3t8"]
+[ext_resource type="Texture2D" uid="uid://dvqbvlkxt4ok5" path="res://Sprites/ibtS_spr_controlprompt_mouse_0.png" id="10_u1u3f"]
+[ext_resource type="Texture2D" uid="uid://cho70om4cdpc8" path="res://Sprites/cs_0_0_12_spr_pandora_2.png" id="11_mb0fx"]
+[ext_resource type="Texture2D" uid="uid://c4cah24qsrbno" path="res://Sprites/cs_0_0_12_spr_pandora_6.png" id="12_woxsb"]
+[ext_resource type="Texture2D" uid="uid://dqf3ye80cjtwf" path="res://Sprites/cs_0_0_12_spr_pandora_3.png" id="13_ydaex"]
 
 [node name="Interm" type="Node2D"]
 script = ExtResource("1_k0l3i")
@@ -39,3 +45,31 @@ TileTexture = ExtResource("7_f3y7e")
 ScrollSpeedX = 25.0
 ScrollSpeedY = 0.0
 TileSize = Vector2(32, 32)
+
+[node name="nextGameInput" type="Node2D" parent="."]
+
+[node name="Keyboard" type="Sprite2D" parent="nextGameInput"]
+position = Vector2(-232, -216)
+texture = ExtResource("8_l5w55")
+
+[node name="KeyboardAndMouse" type="Sprite2D" parent="nextGameInput"]
+position = Vector2(16, -216)
+texture = ExtResource("9_lo3t8")
+
+[node name="Mouse" type="Sprite2D" parent="nextGameInput"]
+position = Vector2(248, -224)
+texture = ExtResource("10_u1u3f")
+
+[node name="reaction" type="Node2D" parent="."]
+
+[node name="Sane" type="Sprite2D" parent="reaction"]
+position = Vector2(-568, 40)
+texture = ExtResource("11_mb0fx")
+
+[node name="NotSane" type="Sprite2D" parent="reaction"]
+position = Vector2(-568, 392)
+texture = ExtResource("12_woxsb")
+
+[node name="Insane" type="Sprite2D" parent="reaction"]
+position = Vector2(-584, 720)
+texture = ExtResource("13_ydaex")
