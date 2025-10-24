@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bg880qsb15lbt"]
+[gd_scene load_steps=0 format=3 uid="uid://bg880qsb15lbt"]
 
 [node name="End" type="Node2D"]
 
