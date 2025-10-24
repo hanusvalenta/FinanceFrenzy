@@ -1,5 +1,27 @@
-[gd_scene format=3 uid="uid://kgim0s06cpd5"]
+[gd_scene load_steps=5 format=3 uid="uid://kgim0s06cpd5"]
+
+[ext_resource type="Texture2D" uid="uid://v1t5gvmgx007" path="res://TestImages/CardHand.png" id="1_bp4bb"]
+[ext_resource type="Texture2D" uid="uid://bogjyc38sggyt" path="res://TestImages/Scanner.png" id="2_jjmnh"]
+[ext_resource type="Script" uid="uid://bk2ueyu2trfr3" path="res://Scripts/CardHand.cs" id="3_g64ns"]
+[ext_resource type="Texture2D" uid="uid://deqc7ev8utl1j" path="res://TestImages/ScannerR.png" id="3_jjmnh"]
 
 [node name="4" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(743, 4.57764e-05)
+scale = Vector2(3.35526, 3.35526)
+texture = ExtResource("2_jjmnh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-202, 87)
+scale = Vector2(0.7125, 0.7125)
+texture = ExtResource("1_bp4bb")
+flip_h = true
+script = ExtResource("3_g64ns")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(743, 4.57764e-05)
+scale = Vector2(3.35526, 3.35526)
+texture = ExtResource("3_jjmnh")
