@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://kh1solr2rh21"]
+[gd_scene load_steps=74 format=3 uid="uid://kh1solr2rh21"]
 
 [ext_resource type="Script" uid="uid://dxxwujakx82pg" path="res://Scripts/MenuManager.cs" id="1_fevyy"]
 [ext_resource type="Script" uid="uid://cplnluy5gi4fk" path="res://Scripts/GameController.cs" id="1_jjgbg"]
@@ -69,9 +69,8 @@
 [ext_resource type="Texture2D" uid="uid://brdpgmftfi5e8" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_47.png" id="57_gdwd6"]
 [ext_resource type="Texture2D" uid="uid://b2qpxmjxihc8f" path="res://Sprites/MenuAnim1/ibtT_spr_mgintro_48.png" id="58_cmq5c"]
 [ext_resource type="AudioStream" uid="uid://c0oqjhomhtfsf" path="res://Sounds/ibtS_voice_win2.wav" id="63_uv6w5"]
-[ext_resource type="Script" uid="uid://b1oututgycilv" path="res://Scenes/SimpleMusicPlayer.cs" id="71_r7bbj"]
+[ext_resource type="Script" uid="uid://b1oututgycilv" path="res://Scripts/SimpleMusicManager.cs" id="70_uv6w5"]
 [ext_resource type="AudioStream" uid="uid://cyd0gdxwotxbo" path="res://Sounds/ms12_snd_hello.wav" id="72_f6rfp"]
-[ext_resource type="AudioStream" uid="uid://bscgc3epioqax" path="res://Sounds/mus_mainmenu.wav" id="73_sasc4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdnlq"]
 shader = ExtResource("11_6iyac")
@@ -225,10 +224,9 @@ texture = ExtResource("16_h1bgf")
 metadata/_edit_lock_ = true
 
 [node name="MenuMusicManager" type="Node" parent="."]
-script = ExtResource("71_r7bbj")
-FirstAudio = ExtResource("72_f6rfp")
-SecondAudio = ExtResource("73_sasc4")
-Volume = 1.0
+script = ExtResource("70_uv6w5")
+HelloSound = ExtResource("72_f6rfp")
+MenuMusic = ExtResource("63_uv6w5")
 
 [connection signal="pressed" from="Control/Start" to="Control" method="F_LoadLVL_RNil" binds= [false]]
 [connection signal="pressed" from="Control/Exit" to="Control" method="F_LoadLVL_RNil" binds= [true]]
