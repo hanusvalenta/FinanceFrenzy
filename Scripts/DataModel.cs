@@ -43,6 +43,11 @@ public partial class DataModel : Node2D
 		{
 			GetTree().Root.SetMeta("Sanity", (int)GetTree().Root.GetMeta("Sanity")+PAR_Sanity);
 		}
+
+		if((int)GetTree().Root.GetMeta("Sanity") < 1)
+		{
+			F_ChangeLevel_RNil("res://Scenes/End.tscn");
+		}
 	}
 
 	public void F_ChangeLevel_RNil(string PAR_ScenePath_Str	= "")
