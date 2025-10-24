@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://13t2p8bnej7y"]
+[gd_scene load_steps=6 format=3 uid="uid://13t2p8bnej7y"]
 
 [ext_resource type="Script" uid="uid://beutqq7fcg274" path="res://Scripts/Six.cs" id="1_8ja2j"]
 [ext_resource type="Texture2D" uid="uid://chnp54tx2470c" path="res://TestImages/Plank.png" id="2_8ja2j"]
+[ext_resource type="Script" uid="uid://cwlnq8ktfl5qx" path="res://Scripts/Plank.cs" id="3_8ja2j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8ja2j"]
+friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ja2j"]
 size = Vector2(2391.7, 328.028)
@@ -14,19 +18,40 @@ size = Vector2(2391.7, 328.028)
 script = ExtResource("1_8ja2j")
 
 [node name="Point1" type="Node2D" parent="6"]
-position = Vector2(-379, -327)
+position = Vector2(-274, -327)
 scale = Vector2(-1.55388, 25.0043)
 
 [node name="Point2" type="Node2D" parent="6"]
-position = Vector2(397, -327)
+position = Vector2(275, -327)
 
-[node name="Plank" type="Sprite2D" parent="."]
+[node name="Plank" type="RigidBody2D" parent="."]
+position = Vector2(0, -1.52588e-05)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_8ja2j")
+gravity_scale = 0.0
+script = ExtResource("3_8ja2j")
+RotationStrength = 120000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plank"]
+position = Vector2(-0.000214969, 185.112)
+scale = Vector2(0.4275, 0.4275)
+shape = SubResource("RectangleShape2D_8ja2j")
+
+[node name="Plank" type="Sprite2D" parent="Plank"]
 position = Vector2(1.52588e-05, 186)
 scale = Vector2(0.4275, 0.4275)
 texture = ExtResource("2_8ja2j")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Plank"]
+[node name="PlankHolder" type="StaticBody2D" parent="."]
+position = Vector2(0, 185)
+scale = Vector2(0.0477658, 0.683743)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plank/StaticBody2D"]
-position = Vector2(-0.000538546, -2.07654)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlankHolder"]
+position = Vector2(-0.000214969, 185.112)
+scale = Vector2(0.4275, 0.4275)
 shape = SubResource("RectangleShape2D_8ja2j")
+
+[node name="Plank" type="Sprite2D" parent="PlankHolder"]
+position = Vector2(1.52588e-05, 186)
+scale = Vector2(0.4275, 0.4275)
+texture = ExtResource("2_8ja2j")
