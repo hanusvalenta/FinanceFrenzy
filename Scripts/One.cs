@@ -9,7 +9,8 @@ public partial class One : Node2D
 
 	private Timer _drawTimer;
 	private int _connectionsDrawn = 0;
-	private readonly Color _lineColor = Colors.Red;
+	private readonly Color _upwardColor = Colors.Green;
+	private readonly Color _downwardColor = Colors.Red;
 	private const float LINE_DRAW_INTERVAL = 0.5f;
 
 	public override void _Ready()
@@ -44,9 +45,12 @@ public partial class One : Node2D
 	
 			if (startNode != null && endNode != null)
 			{
+				bool isMovingUp = endNode.GlobalPosition.Y < startNode.GlobalPosition.Y;
+				Color lineColor = isMovingUp ? _upwardColor : _downwardColor;
+
 				Vector2 localStart = ToLocal(startNode.GlobalPosition);
 				Vector2 localEnd = ToLocal(endNode.GlobalPosition);
-				DrawLine(localStart, localEnd, _lineColor, 2.0f);
+				DrawLine(localStart, localEnd, lineColor, 2.0f);
 			}
 		}
 	}
