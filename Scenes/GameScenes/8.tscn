@@ -65,7 +65,7 @@ position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_dl0ov")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(451, 179)
+position = Vector2(452, 259.983)
 physics_material_override = SubResource("PhysicsMaterial_67qo3")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
@@ -77,7 +77,7 @@ position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_dl0ov")
 
 [node name="Win" type="Sprite2D" parent="."]
-position = Vector2(543, 52)
+position = Vector2(544, 132.983)
 scale = Vector2(1.63415, 2.10345)
 texture = ExtResource("4_jqfx8")
 
