@@ -7,34 +7,36 @@ public partial class One : Node2D
 	[Export]
 	private Node2D[] _targetObjects = new Node2D[5];
 
-	private Timer _drawTimer;
 	private int _connectionsDrawn = 0;
 	private readonly Color _upwardColor = Colors.Green;
 	private readonly Color _downwardColor = Colors.Red;
-    private const float LINE_DRAW_INTERVAL = 0.5f;
     private const float LINE_WIDTH = 10.0f;
     private int goodClicks = 0;
 
 	public override void _Ready()
 	{
-		_drawTimer = new Timer();
-		AddChild(_drawTimer);
-		_drawTimer.WaitTime = LINE_DRAW_INTERVAL;
-		_drawTimer.OneShot = false;
-		_drawTimer.Timeout += OnDrawTimerTimeout;
-		_drawTimer.Start();
+		var dataModel = GetNode<DataModel>("..");
+		if (dataModel != null)
+		{
+			dataModel.Event_RhythmStep += OnRhythmStep;
+		}
 	}
 
-	private void OnDrawTimerTimeout()
+	public override void _ExitTree()
+	{
+		var dataModel = GetNode<DataModel>("..");
+		if (dataModel != null)
+		{
+			dataModel.Event_RhythmStep -= OnRhythmStep;
+		}
+	}
+
+	private void OnRhythmStep()
 	{
 		if (_connectionsDrawn < _targetObjects.Length - 1)
 		{
 			_connectionsDrawn++;
 			QueueRedraw();
-		}
-		else
-		{
-			_drawTimer.Stop();
 		}
 	}
 	
