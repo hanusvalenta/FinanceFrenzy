@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://he4rw6klvymj"]
+[gd_scene load_steps=11 format=3 uid="uid://cuvc4hhbl8vyy"]
 
 [ext_resource type="Texture2D" uid="uid://dht7o7p43jcmb" path="res://Sprites/cs_0_0_11c_spr_2frontbuilding_0.png" id="1_litrt"]
 [ext_resource type="Texture2D" uid="uid://dxyu1b637hspo" path="res://Sprites/cs_0_0_11c_spr_newmain_0.png" id="2_35k6n"]
@@ -81,5 +81,6 @@ scale = Vector2(4.00588, 4.00588)
 texture = ExtResource("9_svw77")
 metadata/_edit_lock_ = true
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("nodes")]
 script = ExtResource("10_qayrs")
+nodes = [NodePath("../First"), NodePath("../Second"), NodePath("../Third")]

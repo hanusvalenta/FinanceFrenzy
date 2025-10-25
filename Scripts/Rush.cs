@@ -31,16 +31,16 @@ public partial class Rush : Sprite2D
 
 		if (Input.IsActionJustPressed("ui_accept"))
 		{
-			Scale = new Vector2(Scale.X, Scale.Y + StretchPerPress);
+			Scale = new Vector2(Scale.X  + StretchPerPress, Scale.Y);
 		}
 
-		if (Scale.Y > _initialScale.Y)
+		if (Scale.X > _initialScale.X)
 		{
 			float decay = StretchDecayRate * (float)delta;
-			Scale = new Vector2(Scale.X, Mathf.Max(_initialScale.Y, Scale.Y - decay));
+			Scale = new Vector2(Scale.X  - decay, Mathf.Max(_initialScale.Y, Scale.Y));
 		}
 
-		if (Scale.Y >= WinScaleY)
+		if (Scale.X >= WinScaleY)
 		{
 			FlingObject();
 		}
