@@ -119,7 +119,7 @@ public partial class DataModel : Node2D
 
 				if((bool)GetMeta("V_IsInterm") == false)
 				{
-					F_SanityChange_RNil(-20);
+					F_SanityChange_RNil(-30);
 				}
 
 				F_ChangeLevel_RNil((bool)GetMeta("V_IsInterm") == true ? V_Str_GameScnPath : "res://Scenes/Intermission.tscn");
