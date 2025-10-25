@@ -13,6 +13,9 @@ public partial class DataModel : Node2D
 	List<int> V_IntList_KeyBLVL		= new List<int>(){6};
 	private string V_Str_GameScnPath= "res://Scenes/GameScenes/";
 
+	Sprite2D V_Sprite2_SanityState;
+	Sprite2D V_Sprite2_InputHint;
+
 	public override void _Ready()
 	{
 		V_Double_Rhythm		= (double)GetTree().Root.GetMeta("Speed");
@@ -20,20 +23,23 @@ public partial class DataModel : Node2D
 		
 		if((bool)GetMeta("V_IsInterm")	== true)
 		{
+			V_Sprite2_SanityState			= GetNode<Sprite2D>("./Reaction/Sane");
+
 			if((int)GetTree().Root.GetMeta("Sanity") < 75 && (int)GetTree().Root.GetMeta("Sanity") > 45) 
 			{
 				GetNode<Sprite2D>("./Reaction/Sane").Visible	= false;
-				GetNode<Sprite2D>("./Reaction/NotSane").Visible	= true;
+
+				V_Sprite2_SanityState			= GetNode<Sprite2D>("./Reaction/NotSane");
+				V_Sprite2_SanityState.Visible	= true;
 			}
 			else if((int)GetTree().Root.GetMeta("Sanity") <= 45)
 			{
 				GetNode<Sprite2D>("./Reaction/Sane").Visible	= false;
-				GetNode<Sprite2D>("./Reaction/InSane").Visible	= true;
-			}
-		}
 
-		if((bool)GetMeta("V_IsInterm") == true)
-		{
+				V_Sprite2_SanityState			= GetNode<Sprite2D>("./Reaction/InSane");
+				V_Sprite2_SanityState.Visible	= true;
+			}
+
 			V_Random_			= new Random();
 
 			int V_Int_Max			= 7;
@@ -60,10 +66,14 @@ public partial class DataModel : Node2D
 
 			V_Str_GameScnPath		= V_Str_GameScnPath+V_Int_NextLVL+".tscn";
 
+			V_Sprite2_InputHint			= GetNode<Sprite2D>("./NextInputType/Mouse");
+
 			if(V_IntList_KeyBLVL.Contains(V_Int_NextLVL))
 			{
 				GetNode<Sprite2D>("./NextInputType/Mouse").Visible		= false;
-				GetNode<Sprite2D>("./NextInputType/Keyboard").Visible	= true;
+
+				V_Sprite2_InputHint			= GetNode<Sprite2D>("./NextInputType/Keyboard");
+				V_Sprite2_InputHint.Visible	= true;
 			}
 		}
 	}
@@ -77,6 +87,12 @@ public partial class DataModel : Node2D
 
 			if(V_Double_Rhythm		< 0)
 			{
+				if((bool)GetMeta("V_IsInterm") == true)
+				{
+					V_Sprite2_SanityState.RotationDegrees	= V_Sprite2_SanityState.RotationDegrees == -10 ? 0 : -10;
+					V_Sprite2_InputHint.RotationDegrees		= V_Sprite2_InputHint.RotationDegrees == 0 ? 15 : 0;
+				}
+
 				if(V_Bool_LvlWonSwitch	== true)
 				{GD.Print("Add point");
 					V_Bool_QuitService	= true;
