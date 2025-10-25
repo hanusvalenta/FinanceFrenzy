@@ -161,4 +161,12 @@ public partial class DataModel : Node2D
 
 		return (float)GetTree().Root.GetMeta("Speed");
 	}
+
+	public void F_AlterReality_RNil(Node PAR__Node)
+	{
+		if(V_Random_.Next((int)GetTree().Root.GetMeta("Sanity"), 100) < 60)
+		{
+			((CanvasItem)PAR__Node).UseParentMaterial	= false;
+		}
+	}
 }
