@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4x50uw7jhhhg"]
+
+[ext_resource type="Texture2D" uid="uid://b1kfchtwx4h0e" path="res://TestImages/50.png" id="1_oth6i"]
+[ext_resource type="Script" uid="uid://bm240er4tiuhr" path="res://Scripts/FallingMoney.cs" id="2_404iv"]
+[ext_resource type="Texture2D" uid="uid://clk1dhy7rciv7" path="res://TestImages/5.png" id="3_xuye6"]
+[ext_resource type="Texture2D" uid="uid://dbu4c25oqnbc" path="res://TestImages/20.png" id="4_2x3ki"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gy62a"]
+radius = 288.914
+
+[node name="Money" type="Sprite2D" node_paths=PackedStringArray("_moneyArea")]
+scale = Vector2(0.393608, 0.393608)
+texture = ExtResource("1_oth6i")
+script = ExtResource("2_404iv")
+_texture1 = ExtResource("3_xuye6")
+_texture2 = ExtResource("4_2x3ki")
+_texture3 = ExtResource("1_oth6i")
+_moneyArea = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gy62a")
+
+[connection signal="area_entered" from="Area2D" to="." method="_SetCatchArea"]
+[connection signal="area_exited" from="Area2D" to="." method="_SetCatchArea"]

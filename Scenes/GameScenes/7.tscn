@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://djaqqgqd8vbh1"]
+
+[ext_resource type="Texture2D" uid="uid://ci30jubm4t3df" path="res://Sprites/ms3_spr_hand_thumbsup_0.png" id="1_eqiqr"]
+[ext_resource type="Script" uid="uid://civhfte584n4s" path="res://Scripts/CatchHand.cs" id="2_6cq75"]
+[ext_resource type="PackedScene" uid="uid://c4x50uw7jhhhg" path="res://Prefabs/money.tscn" id="4_6cq75"]
+[ext_resource type="Script" uid="uid://c77ef2764dx2h" path="res://Scripts/Seven.cs" id="7_byfj3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gy62a"]
+size = Vector2(84.5793, 113.619)
+
+[node name="7" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.913488, 0.795437)
+
+[node name="CatchHand" type="Sprite2D" parent="."]
+scale = Vector2(3.03033, 3.03033)
+texture = ExtResource("1_eqiqr")
+script = ExtResource("2_6cq75")
+
+[node name="HandCatchArea" type="Area2D" parent="CatchHand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchHand/HandCatchArea"]
+position = Vector2(-1.26994, -0.609947)
+shape = SubResource("RectangleShape2D_gy62a")
+
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("Node2D_1", "Node2D_2", "Node2D_3", "Node2D_4", "Node2D_5")]
+script = ExtResource("7_byfj3")
+Node2D_1 = NodePath("Node2D")
+Node2D_2 = NodePath("Node2D2")
+Node2D_3 = NodePath("Node2D3")
+Node2D_4 = NodePath("Node2D4")
+Node2D_5 = NodePath("Node2D5")
+MoneyPrefab = ExtResource("4_6cq75")
+
+[node name="Node2D" type="Node2D" parent="Spawner"]
+position = Vector2(-568, -324)
+
+[node name="Node2D2" type="Node2D" parent="Spawner"]
+position = Vector2(382, -224)
+
+[node name="Node2D3" type="Node2D" parent="Spawner"]
+position = Vector2(-532, 177)
+
+[node name="Node2D4" type="Node2D" parent="Spawner"]
+
+[node name="Node2D5" type="Node2D" parent="Spawner"]
+position = Vector2(633, 239)
