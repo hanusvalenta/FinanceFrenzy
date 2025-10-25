@@ -12,8 +12,13 @@ public partial class MenuManager : Node
 		{
 			GetViewport().SetInputAsHandled();
 
-			if (_menuScene != null)
+			if(_menuScene != null)
 			{
+				if(GetTree().Root.GetNode<AudioStreamPlayer>("AudioStreamPlayer") != null)
+				{
+					GetTree().Root.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stop();
+				}
+
 				GetTree().ChangeSceneToPacked(_menuScene);
 			}
 			else
