@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr0tt2o3kllob"]
+[gd_scene load_steps=5 format=3 uid="uid://canlanduu08u0"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_vdrcm"]
 [ext_resource type="Script" uid="uid://o81gjlhevoks" path="res://Scripts/Rush.cs" id="3_scxe3"]
