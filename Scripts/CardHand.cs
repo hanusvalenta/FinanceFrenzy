@@ -44,7 +44,7 @@ public partial class CardHand : Sprite2D
 
 	private async void WinSequence()
 	{
-		await ToSignal(GetTree().CreateTimer(2.0), SceneTreeTimer.SignalName.Timeout);
+		await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
 		GetNode<DataModel>("..").V_Bool_LvlWonSwitch	= true;
 	}
 
