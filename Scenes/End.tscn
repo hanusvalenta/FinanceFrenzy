@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://g2axvft3cn00"]
+[gd_scene load_steps=95 format=3 uid="uid://g2axvft3cn00"]
 
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="1_x8vyd"]
 [ext_resource type="Script" uid="uid://8247gifyw5ex" path="res://Scripts/Hand.cs" id="2_67ibq"]
@@ -84,6 +84,7 @@
 [ext_resource type="Texture2D" uid="uid://c6bb2qjs8bpxv" path="res://Sprites/ibtSa3_spr_curt2_0.png" id="81_3mcql"]
 [ext_resource type="Texture2D" uid="uid://guei02lnratf" path="res://Sprites/ibtSa3_spr_curt1_0.png" id="82_s432d"]
 [ext_resource type="Texture2D" uid="uid://b70vbbhpffn7y" path="res://Sprites/sqcs_0_4_0_spr_floor_4.png" id="83_faer2"]
+[ext_resource type="Script" uid="uid://b7dqjdpqglwrh" path="res://Scripts/ScaleOnVisible.cs" id="85_sehht"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dut67"]
 radius = 23.2709
@@ -491,7 +492,7 @@ texture_filter = 1
 position = Vector2(-5.60007, 336.5)
 scale = Vector2(4.01, 4.01)
 sprite_frames = SubResource("SpriteFrames_kango")
-frame_progress = 0.340731
+frame_progress = 0.561534
 
 [node name="Mid" type="AnimatedSprite2D" parent="hell"]
 z_index = 2
@@ -499,7 +500,7 @@ texture_filter = 1
 position = Vector2(-5.60007, 336.5)
 scale = Vector2(4.01, 4.01)
 sprite_frames = SubResource("SpriteFrames_hluyu")
-frame_progress = 0.31568
+frame_progress = 0.536483
 
 [node name="Back" type="AnimatedSprite2D" parent="hell"]
 z_index = 1
@@ -507,7 +508,7 @@ texture_filter = 1
 position = Vector2(0, 456)
 scale = Vector2(4.01, 4.01)
 sprite_frames = SubResource("SpriteFrames_x4k1x")
-frame_progress = 0.261357
+frame_progress = 0.482163
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="hell"]
 z_index = 2
@@ -515,7 +516,7 @@ texture_filter = 1
 position = Vector2(696, 0)
 scale = Vector2(4.05807, 4.05807)
 sprite_frames = SubResource("SpriteFrames_6pldh")
-frame_progress = 0.736929
+frame_progress = 0.53318
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="hell"]
 z_index = 2
@@ -523,7 +524,7 @@ texture_filter = 1
 position = Vector2(-682.036, -7.15265)
 scale = Vector2(4.05807, 4.05807)
 sprite_frames = SubResource("SpriteFrames_6pldh")
-frame_progress = 0.352183
+frame_progress = 0.148434
 flip_h = true
 
 [node name="Top" type="AnimatedSprite2D" parent="hell"]
@@ -532,7 +533,7 @@ texture_filter = 1
 position = Vector2(-47.9746, -303.75)
 scale = Vector2(6.06962, 6.06962)
 sprite_frames = SubResource("SpriteFrames_5f8qe")
-frame_progress = 0.411571
+frame_progress = 0.207824
 
 [node name="IbtGSprElevator11" type="Sprite2D" parent="hell"]
 texture_filter = 1
@@ -557,6 +558,16 @@ texture_filter = 1
 position = Vector2(8.00009, 464)
 scale = Vector2(5.83333, 5.83333)
 texture = ExtResource("83_faer2")
+
+[node name="ScaleScript" type="Node2D" parent="hell" node_paths=PackedStringArray("_nodeToScale", "_nodeToWatch")]
+script = ExtResource("85_sehht")
+_nodeToScale = NodePath("..")
+_nodeToWatch = NodePath("..")
+_targetScale = Vector2(15, 15)
+_startScale = Vector2(1, 1)
+_easeType = 2
+_debugMode = false
+_scaleOnlyOnce = true
 
 [connection signal="area_entered" from="Shotgun/Area2D" to="Shotgun" method="_OnHole1BodyEntered"]
 [connection signal="area_entered" from="Shotgun/Area2D2" to="Shotgun" method="_OnHole2BodyEntered"]
