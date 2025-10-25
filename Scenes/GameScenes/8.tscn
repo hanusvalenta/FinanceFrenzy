@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7eot75mlcwne"]
+[gd_scene load_steps=10 format=3 uid="uid://3ditfknrq0j8"]
 
 [ext_resource type="Script" uid="uid://ce0wddmovjg8f" path="res://Scripts/Mario.cs" id="1_67qo3"]
+[ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_dl0ov"]
 [ext_resource type="Texture2D" uid="uid://bnr5ij28wkh8i" path="res://TestImages/Mario.png" id="1_vjxc6"]
 [ext_resource type="Texture2D" uid="uid://chnp54tx2470c" path="res://TestImages/Plank.png" id="3_jqfx8"]
 [ext_resource type="Texture2D" uid="uid://c28bu24e5pvth" path="res://Sprites/DollaDolla.png" id="4_jqfx8"]
@@ -17,6 +18,9 @@ size = Vector2(330, 42)
 size = Vector2(51.8358, 57.7049)
 
 [node name="8" type="Node2D"]
+script = ExtResource("1_dl0ov")
+metadata/V_IsInterm = false
+metadata/V_NextLevelIn = 11
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
