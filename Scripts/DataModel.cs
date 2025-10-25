@@ -43,7 +43,7 @@ public partial class DataModel : Node2D
 				V_Sprite2_SanityState.Visible	= true;
 			}
 
-			V_Random_			= new Random();
+			V_Random_				= new Random();
 
 			int V_Int_Max			= 7;
 			int V_Int_NextLVL;

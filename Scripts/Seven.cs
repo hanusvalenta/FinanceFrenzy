@@ -27,7 +27,9 @@ public partial class Seven : Node2D
 	private List<Node2D> _spawnLocations;
 
     public override void _Ready()
-    {
+	{
+		GetNode<DataModel>("..").Event_RhythmStep += OnSpawnTimerTimeout;
+
         _spawnLocations = new List<Node2D> { Node2D_1, Node2D_2, Node2D_3, Node2D_4, Node2D_5 }
             .Where(node => node != null)
             .ToList();
