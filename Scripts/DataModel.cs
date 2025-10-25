@@ -10,14 +10,62 @@ public partial class DataModel : Node2D
 	public bool V_Bool_LvlWonSwitch	= false;
 	private double V_Double_Rhythm;
 	private bool V_Bool_QuitService	= false;
+	List<int> V_IntList_KeyBLVL		= new List<int>(){6};
+	private string V_Str_GameScnPath= "res://Scenes/GameScenes/";
 
 	public override void _Ready()
 	{
 		V_Double_Rhythm		= (double)GetTree().Root.GetMeta("Speed");
 		V_Double_Nextlvl	= (double)GetMeta("V_NextLevelIn")*V_Double_Rhythm;
 		
+		if((bool)GetMeta("V_IsInterm")	== true)
+		{
+			if((int)GetTree().Root.GetMeta("Sanity") < 75 && (int)GetTree().Root.GetMeta("Sanity") > 45) 
+			{
+				GetNode<Sprite2D>("./Reaction/Sane").Visible	= false;
+				GetNode<Sprite2D>("./Reaction/NotSane").Visible	= true;
+			}
+			else if((int)GetTree().Root.GetMeta("Sanity") <= 45)
+			{
+				GetNode<Sprite2D>("./Reaction/Sane").Visible	= false;
+				GetNode<Sprite2D>("./Reaction/InSane").Visible	= true;
+			}
+		}
 
-		V_Random_			= new Random();
+		if((bool)GetMeta("V_IsInterm") == true)
+		{
+			V_Random_			= new Random();
+
+			int V_Int_Max			= 7;
+			int V_Int_NextLVL;
+
+			List<int> V_IntList_Pld	= ((Godot.Collections.Array<int>)GetTree().Root.GetMeta("Played")).ToList<int>();
+
+			if(V_Int_Max			== V_IntList_Pld.Count)
+			{
+				F_ChangeLevel_RNil("res://Scenes/Win.tscn");
+				return;
+			}
+
+			do
+			{
+				V_Int_NextLVL		= V_Random_.Next(1, V_Int_Max+1);
+
+			}while(V_IntList_Pld.IndexOf(V_Int_NextLVL) != -1);
+
+		
+			V_IntList_Pld.Add(V_Int_NextLVL);
+
+			GetTree().Root.SetMeta("Played", V_IntList_Pld.ToArray<int>());
+
+			V_Str_GameScnPath		= V_Str_GameScnPath+V_Int_NextLVL+".tscn";
+
+			if(V_IntList_KeyBLVL.Contains(V_Int_NextLVL))
+			{
+				GetNode<Sprite2D>("./NextInputType/Mouse").Visible		= false;
+				GetNode<Sprite2D>("./NextInputType/Keyboard").Visible	= true;
+			}
+		}
 	}
 
 	public override void _Process(double delta)
@@ -30,7 +78,7 @@ public partial class DataModel : Node2D
 			if(V_Double_Rhythm		< 0)
 			{
 				if(V_Bool_LvlWonSwitch	== true)
-				{GD.Print("Point add");
+				{GD.Print("Add point");
 					V_Bool_QuitService	= true;
 
 					F_SanityChange_RNil(10);
@@ -51,7 +99,7 @@ public partial class DataModel : Node2D
 					F_SanityChange_RNil(-20);
 				}
 
-				F_ChangeLevel_RNil((bool)GetMeta("V_IsInterm") == true ? "" : "res://Scenes/Intermission.tscn");
+				F_ChangeLevel_RNil((bool)GetMeta("V_IsInterm") == true ? V_Str_GameScnPath : "res://Scenes/Intermission.tscn");
 			}
 		}
 	}
@@ -70,34 +118,7 @@ public partial class DataModel : Node2D
 	}
 
 	public void F_ChangeLevel_RNil(string PAR_ScenePath_Str	= "")
-	{
-		if(string.IsNullOrEmpty(PAR_ScenePath_Str))
-		{
-			int V_Int_Max			= 6;
-			int V_Int_NextLVL;
-			PAR_ScenePath_Str		= "res://Scenes/GameScenes/";
-
-			List<int> V_IntList_Pld	= ((Godot.Collections.Array<int>)GetTree().Root.GetMeta("Played")).ToList<int>();
-
-			if(V_Int_Max			== V_IntList_Pld.Count)
-			{GD.Print("Out");
-				GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>("res://Scenes/Win.tscn"));
-				return;
-			}
-
-			do
-			{
-				V_Int_NextLVL		= V_Random_.Next(1, V_Int_Max+1);
-
-			}while(V_IntList_Pld.IndexOf(V_Int_NextLVL) != -1);
-
-			V_IntList_Pld.Add(V_Int_NextLVL);
-
-			GetTree().Root.SetMeta("Played", V_IntList_Pld.ToArray<int>());
-
-			PAR_ScenePath_Str		= PAR_ScenePath_Str+V_Int_NextLVL+".tscn";
-		}
-GD.Print(PAR_ScenePath_Str);
+	{GD.Print(PAR_ScenePath_Str);
 		GetTree().ChangeSceneToPacked(ResourceLoader.Load<PackedScene>(PAR_ScenePath_Str));
 	}
 

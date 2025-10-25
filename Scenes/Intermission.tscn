@@ -75,7 +75,7 @@ position = Vector2(300, 600)
 scale = Vector2(2, 2)
 texture = ExtResource("12_woxsb")
 
-[node name="Insane" type="Sprite2D" parent="Reaction"]
+[node name="InSane" type="Sprite2D" parent="Reaction"]
 visible = false
 texture_filter = 1
 position = Vector2(300, 600)
