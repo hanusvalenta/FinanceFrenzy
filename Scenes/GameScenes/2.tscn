@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://i4ip6e5gd8fh"]
+[gd_scene load_steps=11 format=3 uid="uid://i4ip6e5gd8fh"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_717p5"]
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="2_041pl"]
@@ -6,11 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bejs0wtoq1mej" path="res://Sprites/ms4_spr_computer_bg_0.png" id="2_yg1c2"]
 [ext_resource type="Texture2D" uid="uid://btaw3ijvk07oq" path="res://Sprites/ms4_spr_bg_0.png" id="3_041pl"]
 [ext_resource type="Shader" uid="uid://hof5nyuxjpo3" path="res://Shaders/PalleteSwap.gdshader" id="3_d1wgd"]
+[ext_resource type="Texture2D" uid="uid://cc2ic6yri03th" path="res://Shaders/RFXpalettes_spr_11.png" id="4_q4vvs"]
 [ext_resource type="Texture2D" uid="uid://c72l7pssbtiwf" path="res://Sprites/ibtS_spr_btn_blank_0.png" id="5_d1wgd"]
 [ext_resource type="Texture2D" uid="uid://c2ni1argf82sg" path="res://Sprites/ibtS_spr_btn_blank_1.png" id="6_q4vvs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q4vvs"]
 shader = ExtResource("3_d1wgd")
+shader_parameter/gradient = ExtResource("4_q4vvs")
 
 [node name="2" type="Node2D"]
 position = Vector2(0, 2)

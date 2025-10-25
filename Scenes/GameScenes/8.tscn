@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxguaaonxnebq"]
+[gd_scene load_steps=11 format=3 uid="uid://3ditfknrq0j8"]
 
 [ext_resource type="Script" uid="uid://ce0wddmovjg8f" path="res://Scripts/Mario.cs" id="1_67qo3"]
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_dl0ov"]

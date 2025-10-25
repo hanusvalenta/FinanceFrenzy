@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://djaqqgqd8vbh1"]
+[gd_scene load_steps=8 format=3 uid="uid://b1d4oopn85yfs"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_gy62a"]
 [ext_resource type="Script" uid="uid://civhfte584n4s" path="res://Scripts/CatchHand.cs" id="2_6cq75"]
 [ext_resource type="Texture2D" uid="uid://ds8t1jsy7p5wp" path="res://Sprites/ms14_spr_hands_0.png" id="2_pcips"]
-[ext_resource type="PackedScene" uid="uid://c4x50uw7jhhhg" path="res://Prefabs/money.tscn" id="4_6cq75"]
+[ext_resource type="PackedScene" uid="uid://gsoekcll8g2p" path="res://Prefabs/money.tscn" id="4_6cq75"]
 [ext_resource type="Texture2D" uid="uid://bvbotigpov1u1" path="res://Sprites/cs_0_0_2_spr_bg_0.png" id="6_byfj3"]
 [ext_resource type="Script" uid="uid://c77ef2764dx2h" path="res://Scripts/Seven.cs" id="7_byfj3"]
 

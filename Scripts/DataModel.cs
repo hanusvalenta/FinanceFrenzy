@@ -23,7 +23,7 @@ public partial class DataModel : Node2D
 	{
 		V_Double_Rhythm		= (double)GetTree().Root.GetMeta("Speed");
 		V_Double_Nextlvl	= (double)GetMeta("V_NextLevelIn")*V_Double_Rhythm;
-		
+
 		if((bool)GetMeta("V_IsInterm")	== true)
 		{
 			V_Sprite2_SanityState			= GetNode<Sprite2D>("./Reaction/Sane");
@@ -169,7 +169,11 @@ public partial class DataModel : Node2D
 		if(V_Int_SanityAlter	< 95)
 		{GD.Print("In redraw");
 			((CanvasItem)PAR__Node).UseParentMaterial	= false;
+
 			((CanvasItem)PAR__Node).QueueRedraw();
+			((CanvasItem)PAR__Node)._Draw();
+
+			PAR__Node.Reparent(PAR__Node.GetParent());
 		}
 	}
 }
