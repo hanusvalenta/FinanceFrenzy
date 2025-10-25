@@ -10,11 +10,14 @@ public partial class DataModel : Node2D
 	public bool V_Bool_LvlWonSwitch	= false;
 	private double V_Double_Rhythm;
 	private bool V_Bool_QuitService	= false;
-	List<int> V_IntList_KeyBLVL		= new List<int>(){6};
+	List<int> V_IntList_KeyBLVL		= new List<int>(){6, 8};
 	private string V_Str_GameScnPath= "res://Scenes/GameScenes/";
 
 	Sprite2D V_Sprite2_SanityState;
 	Sprite2D V_Sprite2_InputHint;
+
+	public delegate void D_RhythmStep_RNil();
+	public event D_RhythmStep_RNil Event_RhythmStep;
 
 	public override void _Ready()
 	{
@@ -87,6 +90,8 @@ public partial class DataModel : Node2D
 
 			if(V_Double_Rhythm		< 0)
 			{
+				Event_RhythmStep.Invoke();
+
 				if((bool)GetMeta("V_IsInterm") == true)
 				{
 					V_Sprite2_SanityState.RotationDegrees	= V_Sprite2_SanityState.RotationDegrees == -10 ? 0 : -10;
