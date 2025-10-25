@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://ddyfpjv66k1gl" path="res://Scripts/One.cs" id="2_g1jek"]
 [ext_resource type="Texture2D" uid="uid://bejs0wtoq1mej" path="res://Sprites/ms4_spr_computer_bg_0.png" id="2_yg1c2"]
 [ext_resource type="Texture2D" uid="uid://btaw3ijvk07oq" path="res://Sprites/ms4_spr_bg_0.png" id="3_041pl"]
-[ext_resource type="Shader" path="res://Shaders/PalleteSwap.gdshader" id="3_d1wgd"]
+[ext_resource type="Shader" uid="uid://hof5nyuxjpo3" path="res://Shaders/PalleteSwap.gdshader" id="3_d1wgd"]
 [ext_resource type="Texture2D" uid="uid://c72l7pssbtiwf" path="res://Sprites/ibtS_spr_btn_blank_0.png" id="5_d1wgd"]
 [ext_resource type="Texture2D" uid="uid://c2ni1argf82sg" path="res://Sprites/ibtS_spr_btn_blank_1.png" id="6_q4vvs"]
 
@@ -24,6 +24,7 @@ metadata/V_IsInterm = false
 z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_q4vvs")
+use_parent_material = true
 position = Vector2(975.889, 570)
 scale = Vector2(7.14074, 7.14074)
 texture = ExtResource("2_yg1c2")
@@ -31,6 +32,7 @@ texture = ExtResource("2_yg1c2")
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_q4vvs")
+use_parent_material = true
 position = Vector2(963.367, 253.071)
 rotation = 3.14159
 scale = Vector2(2.75988, 4.28545)
@@ -56,12 +58,14 @@ position = Vector2(-63.2756, -2.55036)
 position = Vector2(-88.2767, 6.55016)
 
 [node name="SceneManager" type="Node2D" parent="." node_paths=PackedStringArray("_targetObjects")]
+use_parent_material = true
 script = ExtResource("2_g1jek")
 _targetObjects = [NodePath("../Sprite2D2/1"), NodePath("../Sprite2D2/2"), NodePath("../Sprite2D2/3"), NodePath("../Sprite2D2/4"), NodePath("../Sprite2D2/5"), NodePath("../Sprite2D2/6")]
 
 [node name="Buy" type="TextureButton" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_q4vvs")
+use_parent_material = true
 offset_left = 656.0
 offset_top = 654.0
 offset_right = 840.0
@@ -72,6 +76,7 @@ stretch_mode = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Buy"]
 material = SubResource("ShaderMaterial_q4vvs")
+use_parent_material = true
 layout_mode = 0
 anchor_right = 0.859
 anchor_bottom = 0.819
@@ -91,6 +96,7 @@ autowrap_mode = 2
 [node name="Sell" type="TextureButton" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_q4vvs")
+use_parent_material = true
 offset_left = 1104.0
 offset_top = 654.0
 offset_right = 1288.0
@@ -102,6 +108,7 @@ flip_h = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Sell"]
 material = SubResource("ShaderMaterial_q4vvs")
+use_parent_material = true
 layout_mode = 0
 anchor_right = 0.859
 anchor_bottom = 0.819

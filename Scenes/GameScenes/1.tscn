@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_tlnrp"]
 [ext_resource type="Texture2D" uid="uid://bejs0wtoq1mej" path="res://Sprites/ms4_spr_computer_bg_0.png" id="2_3ba80"]
 [ext_resource type="PackedScene" uid="uid://qokuxg20kcm0" path="res://Prefabs/menu_manager.tscn" id="2_u6r6c"]
-[ext_resource type="Shader" path="res://Shaders/PalleteSwap.gdshader" id="3_44jne"]
+[ext_resource type="Shader" uid="uid://hof5nyuxjpo3" path="res://Shaders/PalleteSwap.gdshader" id="3_44jne"]
 [ext_resource type="Texture2D" uid="uid://btaw3ijvk07oq" path="res://Sprites/ms4_spr_bg_0.png" id="3_u6r6c"]
 [ext_resource type="Texture2D" uid="uid://c72l7pssbtiwf" path="res://Sprites/ibtS_spr_btn_blank_0.png" id="5_44jne"]
 [ext_resource type="Texture2D" uid="uid://c2ni1argf82sg" path="res://Sprites/ibtS_spr_btn_blank_1.png" id="6_8ctki"]

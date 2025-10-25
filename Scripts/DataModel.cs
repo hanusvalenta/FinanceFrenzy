@@ -165,11 +165,11 @@ public partial class DataModel : Node2D
 	public void F_AlterReality_RNil(Node PAR__Node)
 	{
 		int V_Int_SanityAlter	= new Random().Next((int)GetTree().Root.GetMeta("Sanity"), 100);
-GD.Print(V_Int_SanityAlter+" | "+(int)GetTree().Root.GetMeta("Sanity"));
 
-		if(V_Int_SanityAlter	< 65)
-		{
+		if(V_Int_SanityAlter	< 95)
+		{GD.Print("In redraw");
 			((CanvasItem)PAR__Node).UseParentMaterial	= false;
+			((CanvasItem)PAR__Node).QueueRedraw();
 		}
 	}
 }
