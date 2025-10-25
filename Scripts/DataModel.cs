@@ -164,7 +164,10 @@ public partial class DataModel : Node2D
 
 	public void F_AlterReality_RNil(Node PAR__Node)
 	{
-		if(V_Random_.Next((int)GetTree().Root.GetMeta("Sanity"), 100) < 60)
+		int V_Int_SanityAlter	= new Random().Next((int)GetTree().Root.GetMeta("Sanity"), 100);
+GD.Print(V_Int_SanityAlter);
+
+		if(V_Int_SanityAlter	< 60)
 		{
 			((CanvasItem)PAR__Node).UseParentMaterial	= false;
 		}
