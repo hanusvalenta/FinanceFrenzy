@@ -87,7 +87,8 @@ public partial class FallingMoney : Sprite2D
 		else
 		{
             QueueFree();
-            GD.Print("Loose sanity");
+
+			GetNode<Seven>("..").F_Loose_RNil();
 		}
 	}
 }

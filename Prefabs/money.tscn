@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4x50uw7jhhhg"]
+[gd_scene load_steps=6 format=3 uid="uid://gsoekcll8g2p"]
 
 [ext_resource type="Texture2D" uid="uid://b1kfchtwx4h0e" path="res://TestImages/50.png" id="1_oth6i"]
 [ext_resource type="Script" uid="uid://bm240er4tiuhr" path="res://Scripts/FallingMoney.cs" id="2_404iv"]

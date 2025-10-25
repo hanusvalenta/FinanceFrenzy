@@ -21,7 +21,7 @@ public partial class CatchHand : Sprite2D
 			if (GetChildCount() >= _initialChildCount + 5)
 			{
 				_hasWon = true;
-				GD.Print("win");
+				GetNode<DataModel>("..").V_Bool_LvlWonSwitch	= true;
 			}
 		}
 	}
