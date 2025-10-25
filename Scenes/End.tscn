@@ -499,7 +499,7 @@ texture_filter = 1
 position = Vector2(-5.60007, 336.5)
 scale = Vector2(4.01, 4.01)
 sprite_frames = SubResource("SpriteFrames_kango")
-frame_progress = 0.593452
+frame_progress = 0.835022
 
 [node name="Mid" type="AnimatedSprite2D" parent="hell"]
 z_index = 2
@@ -507,7 +507,7 @@ texture_filter = 1
 position = Vector2(-5.60007, 336.5)
 scale = Vector2(4.01, 4.01)
 sprite_frames = SubResource("SpriteFrames_hluyu")
-frame_progress = 0.5684
+frame_progress = 0.809974
 
 [node name="Back" type="AnimatedSprite2D" parent="hell"]
 z_index = 1
@@ -515,7 +515,7 @@ texture_filter = 1
 position = Vector2(0, 456)
 scale = Vector2(4.01, 4.01)
 sprite_frames = SubResource("SpriteFrames_x4k1x")
-frame_progress = 0.514079
+frame_progress = 0.755657
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="hell"]
 z_index = 2
@@ -523,7 +523,7 @@ texture_filter = 1
 position = Vector2(696, 0)
 scale = Vector2(4.05807, 4.05807)
 sprite_frames = SubResource("SpriteFrames_6pldh")
-frame_progress = 0.11485
+frame_progress = 0.615879
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="hell"]
 z_index = 2
@@ -531,7 +531,7 @@ texture_filter = 1
 position = Vector2(-682.036, -7.15265)
 scale = Vector2(4.05807, 4.05807)
 sprite_frames = SubResource("SpriteFrames_6pldh")
-frame_progress = 0.730104
+frame_progress = 0.231147
 flip_h = true
 
 [node name="Top" type="AnimatedSprite2D" parent="hell"]
@@ -540,7 +540,7 @@ texture_filter = 1
 position = Vector2(-47.9746, -303.75)
 scale = Vector2(6.06962, 6.06962)
 sprite_frames = SubResource("SpriteFrames_5f8qe")
-frame_progress = 0.789492
+frame_progress = 0.290537
 
 [node name="IbtGSprElevator11" type="Sprite2D" parent="hell"]
 texture_filter = 1
