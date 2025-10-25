@@ -127,6 +127,15 @@ public partial class DataModel : Node2D
 
 	public void F_SanityChange_RNil(int PAR_Sanity)
 	{
+		if(PAR_Sanity	> 0)
+		{
+			GetTree().Root.GetNode<AudioStreamPlayer>("AudioStreamPlayer/ASP_SayWin").Play();
+		}
+		else
+		{
+			GetTree().Root.GetNode<AudioStreamPlayer>("AudioStreamPlayer/ASP_SayLose").Play();
+		}
+
 		if(!(PAR_Sanity+(int)GetTree().Root.GetMeta("Sanity") > 100))
 		{
 			GetTree().Root.SetMeta("Sanity", (int)GetTree().Root.GetMeta("Sanity")+PAR_Sanity);
