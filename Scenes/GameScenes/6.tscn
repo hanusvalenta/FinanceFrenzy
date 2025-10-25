@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_gf06a"]
 [ext_resource type="Texture2D" uid="uid://chnp54tx2470c" path="res://TestImages/Plank.png" id="2_8ja2j"]
 [ext_resource type="Script" uid="uid://cwlnq8ktfl5qx" path="res://Scripts/Plank.cs" id="3_8ja2j"]
-[ext_resource type="PackedScene" uid="uid://dy2rl3shnlcwj" path="res://Prefabs/bills.tscn" id="3_ugy0i"]
-[ext_resource type="PackedScene" uid="uid://b6nc6l5o8hvaq" path="res://Prefabs/savings.tscn" id="5_x0hyg"]
+[ext_resource type="PackedScene" uid="uid://bfavoixy74t3" path="res://Prefabs/bills.tscn" id="3_ugy0i"]
+[ext_resource type="PackedScene" uid="uid://pc8sdhujlt66" path="res://Prefabs/savings.tscn" id="5_x0hyg"]
 [ext_resource type="Texture2D" uid="uid://d4niggn8nfo2a" path="res://Sprites/mf0_spr_hand_0.png" id="6_nr3w8"]
 [ext_resource type="Shader" uid="uid://d3w8kw1njlc7l" path="res://Shaders/liquid.gdshader" id="8_oqfqs"]
 [ext_resource type="Texture2D" uid="uid://ckrv4lw2c3h8u" path="res://Sprites/sqcs_0_1_1_spr_overlay_0.png" id="9_w87wu"]
@@ -56,7 +56,7 @@ mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_8ja2j")
 gravity_scale = 0.0
 script = ExtResource("3_8ja2j")
-RotationStrength = 120.0
+RotationStrength = 1.2e+06
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plank"]
 position = Vector2(-0.000214969, 185.112)
