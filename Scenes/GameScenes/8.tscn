@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://3ditfknrq0j8"]
+[gd_scene load_steps=11 format=3 uid="uid://cxguaaonxnebq"]
 
 [ext_resource type="Script" uid="uid://ce0wddmovjg8f" path="res://Scripts/Mario.cs" id="1_67qo3"]
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_dl0ov"]
-[ext_resource type="Texture2D" uid="uid://bnr5ij28wkh8i" path="res://TestImages/Mario.png" id="1_vjxc6"]
-[ext_resource type="Texture2D" uid="uid://chnp54tx2470c" path="res://TestImages/Plank.png" id="3_jqfx8"]
+[ext_resource type="Texture2D" uid="uid://bdes5jpveqq2s" path="res://Sprites/ms8_spr_littleshit_4.png" id="3_u25ln"]
+[ext_resource type="Texture2D" uid="uid://hbqe7oj5r5ju" path="res://Sprites/msboss_spr_platform_1.png" id="4_d8d6q"]
 [ext_resource type="Texture2D" uid="uid://c28bu24e5pvth" path="res://Sprites/DollaDolla.png" id="4_jqfx8"]
+[ext_resource type="Texture2D" uid="uid://c1diiu4cgiea6" path="res://Sprites/ibtSl1_spr_bg_0.png" id="6_f6ung"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpu80"]
 size = Vector2(136, 165)
@@ -18,6 +19,7 @@ size = Vector2(330, 42)
 size = Vector2(51.8358, 57.7049)
 
 [node name="8" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_dl0ov")
 metadata/V_IsInterm = false
 metadata/V_NextLevelIn = 11
@@ -30,9 +32,10 @@ script = ExtResource("1_67qo3")
 Speed = 600.0
 
 [node name="Mario" type="Sprite2D" parent="Mario"]
-position = Vector2(-0.515869, -4.4581)
-scale = Vector2(0.309883, 0.309883)
-texture = ExtResource("1_vjxc6")
+position = Vector2(0, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("3_u25ln")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mario"]
 position = Vector2(-0.515869, -2.9581)
@@ -49,8 +52,9 @@ position = Vector2(-460, 347)
 physics_material_override = SubResource("PhysicsMaterial_67qo3")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(0.139792, 0.139792)
-texture = ExtResource("3_jqfx8")
+position = Vector2(2.97858, 63.2432)
+scale = Vector2(6, 6)
+texture = ExtResource("4_d8d6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1, -1)
@@ -61,8 +65,9 @@ position = Vector2(0, 280)
 physics_material_override = SubResource("PhysicsMaterial_67qo3")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-scale = Vector2(0.139792, 0.139792)
-texture = ExtResource("3_jqfx8")
+position = Vector2(0, 64)
+scale = Vector2(6, 6)
+texture = ExtResource("4_d8d6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(1, -1)
@@ -73,8 +78,9 @@ position = Vector2(452, 259.983)
 physics_material_override = SubResource("PhysicsMaterial_67qo3")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
-scale = Vector2(0.139792, 0.139792)
-texture = ExtResource("3_jqfx8")
+position = Vector2(-4, 68.017)
+scale = Vector2(6, 6)
+texture = ExtResource("4_d8d6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(1, -1)
@@ -91,5 +97,11 @@ texture = ExtResource("4_jqfx8")
 position = Vector2(3.8147e-06, 3.8147e-06)
 scale = Vector2(0.942375, 0.903333)
 shape = SubResource("RectangleShape2D_u25ln")
+
+[node name="IbtSl1SprBg0" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(6.22223, 0.5)
+scale = Vector2(4.02593, 4.02593)
+texture = ExtResource("6_f6ung")
 
 [connection signal="area_entered" from="Win/Area2D" to="Mario" method="OnBodyEntered"]

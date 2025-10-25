@@ -81,8 +81,6 @@ scale = Vector2(4.00588, 4.00588)
 texture = ExtResource("9_svw77")
 metadata/_edit_lock_ = true
 
-[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("nodes", "spriteToMove")]
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("nodes")]
 script = ExtResource("10_qayrs")
 nodes = [NodePath("../First"), NodePath("../Second"), NodePath("../Third")]
-spriteToMove = NodePath("../Third/Cs006SprTower0")
-moveDistance = -10.0

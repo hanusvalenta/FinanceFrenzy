@@ -40,7 +40,7 @@ public partial class Rush : Sprite2D
 			Scale = new Vector2(Scale.X, Mathf.Max(_initialScale.Y, Scale.Y - decay));
 		}
 
-		if (Scale.Y >= WinScaleY)
+		if (Scale.X >= WinScaleY)
 		{
 			FlingObject();
 		}
