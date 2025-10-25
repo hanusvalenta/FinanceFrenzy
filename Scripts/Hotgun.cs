@@ -4,33 +4,52 @@ using System;
 public partial class Hotgun : Sprite2D
 {
 	[Export] private Sprite2D _sprite;
-	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")] private Texture2D _oneAmmoTexture; // Texture when one ammo is loaded (regardless of which hole)
-	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")] private Texture2D _twoAmmoTexture; // Texture when both ammo are loaded
-	[Export] private Sprite2D _delayedSprite; // First sprite to make visible after 1 second delay
-	[Export] private AnimationManager _delayedSprite2; // Second sprite to make visible after additional 2 seconds
-	[Export] private AnimatedSprite2D _animationSprite; // AnimatedSprite2D to start and loop after delay
+	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")] private Texture2D _oneAmmoTexture;
+	[Export(PropertyHint.File, "*.png,*.jpg,*.tres")] private Texture2D _twoAmmoTexture;
+	[Export] private Sprite2D _delayedSprite;
+	[Export] private AnimationManager _delayedSprite2;
+	[Export] private AnimatedSprite2D _animationSprite;
 	
-	private int _ammoCount = 0; // Track how many ammo are loaded
+	// 🔊 DIRECT AUDIO FILE EXPORTS
+	[Export(PropertyHint.File, "*.wav,*.ogg,*.mp3")] private AudioStream _firstSpriteAudio; // Audio soubor pro první sprite
+	[Export(PropertyHint.File, "*.wav,*.ogg,*.mp3")] private AudioStream _secondSpriteAudio; // Audio soubor pro druhý sprite
+	[Export] private float _audioVolume = 0.0f; // Volume v dB (0 = default, záporné = tišší)
+	
+	private int _ammoCount = 0;
+	private AudioStreamPlayer _firstAudioPlayer; // Dedicated player pro první audio
+	private AudioStreamPlayer _secondAudioPlayer; // Dedicated player pro druhé audio
 
-	private void _OnHole1BodyEntered(Node2D body)
+	public override void _Ready()
 	{
-		LoadAmmo(body);
+		// Vytvořit dva AudioStreamPlayer pro nezávislé přehrávání
+		_firstAudioPlayer = new AudioStreamPlayer();
+		_secondAudioPlayer = new AudioStreamPlayer();
+		
+		// Nastavit volume
+		_firstAudioPlayer.VolumeDb = _audioVolume;
+		_secondAudioPlayer.VolumeDb = _audioVolume;
+		
+		// Přidat jako child nodes
+		AddChild(_firstAudioPlayer);
+		AddChild(_secondAudioPlayer);
+		
+		// Nastavit audio streams pokud jsou přiřazeny
+		if (_firstSpriteAudio != null)
+			_firstAudioPlayer.Stream = _firstSpriteAudio;
+		if (_secondSpriteAudio != null)
+			_secondAudioPlayer.Stream = _secondSpriteAudio;
+			
+		GD.Print("🎵 Audio playery inicializovány");
 	}
 
-	private void _OnHole2BodyEntered(Node2D body)
-	{
-		LoadAmmo(body);
-	}
+	private void _OnHole1BodyEntered(Node2D body) { LoadAmmo(body); }
+	private void _OnHole2BodyEntered(Node2D body) { LoadAmmo(body); }
 
 	private void LoadAmmo(Node2D body)
 	{
-		// Only proceed if we haven't reached max ammo
 		if (_ammoCount >= 2) return;
-
-		// Increment ammo count
 		_ammoCount++;
 
-		// Update texture based on total ammo count
 		if (_ammoCount == 1)
 		{
 			_sprite.Texture = _oneAmmoTexture;
@@ -38,75 +57,94 @@ public partial class Hotgun : Sprite2D
 		else if (_ammoCount >= 2)
 		{
 			_sprite.Texture = _twoAmmoTexture;
-			
-			// Start the delay timer when both ammo are loaded
 			StartDelayedSpriteActivation();
 		}
 
-		// Remove the ammo object
+		// Remove ammo logic
 		if (body != null)
 		{
-			// The body is usually a CollisionShape2D/Area2D child of the actual ammo object
 			Node ammoToDelete = body.GetParent();
-			
-			// Safety check: make sure we're not deleting the gun, hand, or main scene
 			if (ammoToDelete != null && ammoToDelete != this && ammoToDelete != GetParent())
 			{
-				GD.Print($"Deleting ammo: {ammoToDelete.Name}"); // Debug line
+				GD.Print($"Deleting ammo: {ammoToDelete.Name}");
 				ammoToDelete.QueueFree();
 			}
 			else
 			{
-				// If parent deletion seems unsafe, try deleting the body itself
-				GD.Print($"Deleting body instead: {body.Name}"); // Debug line
+				GD.Print($"Deleting body instead: {body.Name}");
 				body.QueueFree();
 			}
 		}
 
-		// Force hand to drop
 		F_ForceDrop_RNil();
 	}
 
 	private async void StartDelayedSpriteActivation()
 	{
-		// Wait for 1 second
+		// ⏰ Čekání 1 sekunda
 		await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
 		
-		// Turn on visibility for the first delayed sprite
+		// 👁️ První sprite viditelný + 🔊 PŘEHRÁT PRVNÍ AUDIO
 		if (_delayedSprite != null)
 		{
 			_delayedSprite.Visible = true;
-			GD.Print("First delayed sprite is now visible!"); // Debug line
-		}
-		else
-		{
-			GD.PrintErr("DelayedSprite is not assigned in the inspector!");
+			GD.Print("First delayed sprite is now visible!");
+			
+			// Přehrát první audio
+			PlayFirstAudio();
 		}
 		
-		// Start and loop the animation
+		// 🎬 Spustit animaci
 		if (_animationSprite != null)
 		{
 			_animationSprite.Visible = true;
-			_animationSprite.Play(); // Start the animation (will loop if set to loop in the animation)
-			GD.Print("Animation started and looping!"); // Debug line
-		}
-		else
-		{
-			GD.PrintErr("AnimationSprite is not assigned in the inspector!");
+			_animationSprite.Play();
+			GD.Print("Animation started and looping!");
 		}
 
-		// Wait for additional 2 seconds before showing the second sprite
+		// ⏰ Čekání dalších 2 sekundy
 		await ToSignal(GetTree().CreateTimer(2.0), SceneTreeTimer.SignalName.Timeout);
 		
-		// Turn on visibility for the second delayed sprite
+		// 👁️ Druhý sprite viditelný + 🔊 PŘEHRÁT DRUHÉ AUDIO
 		if (_delayedSprite2 != null)
 		{
 			_delayedSprite2.Visible = true;
-			GD.Print("Second delayed sprite is now visible!"); // Debug line
+			GD.Print("Second delayed sprite is now visible!");
+			
+			// Přehrát druhé audio
+			PlaySecondAudio();
+		}
+	}
+
+	public void PlayFirstAudio()
+	{
+		if (_firstAudioPlayer != null && _firstSpriteAudio != null)
+		{
+			_firstAudioPlayer.Play();
+			GD.Print("🔊 První sprite audio přehráno!");
 		}
 		else
 		{
-			GD.PrintErr("DelayedSprite2 is not assigned in the inspector!");
+			if (_firstSpriteAudio == null)
+				GD.PrintErr("❌ První audio soubor není přiřazen v inspektoru!");
+			if (_firstAudioPlayer == null)
+				GD.PrintErr("❌ První AudioPlayer není inicializován!");
+		}
+	}
+
+	public void PlaySecondAudio()
+	{
+		if (_secondAudioPlayer != null && _secondSpriteAudio != null)
+		{
+			_secondAudioPlayer.Play();
+			GD.Print("🔊 Druhé sprite audio přehráno!");
+		}
+		else
+		{
+			if (_secondSpriteAudio == null)
+				GD.PrintErr("❌ Druhé audio soubor není přiřazen v inspektoru!");
+			if (_secondAudioPlayer == null)
+				GD.PrintErr("❌ Druhý AudioPlayer není inicializován!");
 		}
 	}
 
@@ -115,41 +153,55 @@ public partial class Hotgun : Sprite2D
 		GetNode<Hand>("../Hand").F_DropObject_RNil();
 	}
 
-	// Optional: Method to reset the gun (remove all ammo)
 	public void ResetGun()
 	{
 		_ammoCount = 0;
-		_sprite.Texture = Texture; // Reset to original texture
+		_sprite.Texture = Texture;
 		
-		// Hide the first delayed sprite when resetting
-		if (_delayedSprite != null)
-		{
-			_delayedSprite.Visible = false;
-		}
+		// Skrýt sprite
+		if (_delayedSprite != null) _delayedSprite.Visible = false;
+		if (_delayedSprite2 != null) _delayedSprite2.Visible = false;
 		
-		// Hide the second delayed sprite when resetting
-		if (_delayedSprite2 != null)
-		{
-			_delayedSprite2.Visible = false;
-		}
-		
-		// Stop and hide the animation sprite when resetting
+		// Zastavit animaci
 		if (_animationSprite != null)
 		{
 			_animationSprite.Stop();
 			_animationSprite.Visible = false;
 		}
+		
+		// 🔇 Zastavit všechna audio
+		StopAllAudio();
 	}
 
-	// Optional: Method to check if gun is fully loaded
-	public bool IsFullyLoaded()
+	public void StopAllAudio()
 	{
-		return _ammoCount >= 2;
+		if (_firstAudioPlayer != null && _firstAudioPlayer.Playing)
+		{
+			_firstAudioPlayer.Stop();
+			GD.Print("🔇 První audio zastaveno");
+		}
+		
+		if (_secondAudioPlayer != null && _secondAudioPlayer.Playing)
+		{
+			_secondAudioPlayer.Stop();
+			GD.Print("🔇 Druhé audio zastaveno");
+		}
 	}
 
-	// Optional: Method to get current ammo count
-	public int GetAmmoCount()
+	// Utility metody
+	public bool IsFullyLoaded() => _ammoCount >= 2;
+	public int GetAmmoCount() => _ammoCount;
+	
+	public bool IsFirstAudioPlaying() => _firstAudioPlayer != null && _firstAudioPlayer.Playing;
+	public bool IsSecondAudioPlaying() => _secondAudioPlayer != null && _secondAudioPlayer.Playing;
+	public bool IsAnyAudioPlaying() => IsFirstAudioPlaying() || IsSecondAudioPlaying();
+
+	// Nastavení volume za běhu
+	public void SetAudioVolume(float volumeDb)
 	{
-		return _ammoCount;
+		_audioVolume = volumeDb;
+		if (_firstAudioPlayer != null) _firstAudioPlayer.VolumeDb = volumeDb;
+		if (_secondAudioPlayer != null) _secondAudioPlayer.VolumeDb = volumeDb;
+		GD.Print($"🔊 Audio volume nastaveno na: {volumeDb} dB");
 	}
 }
