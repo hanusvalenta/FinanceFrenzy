@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://doidrfohkcxpf"]
+[gd_scene load_steps=9 format=3 uid="uid://canlanduu08u0"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_vdrcm"]
 [ext_resource type="Texture2D" uid="uid://bdes5jpveqq2s" path="res://Sprites/ms8_spr_littleshit_4.png" id="2_fxhc0"]

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1aq4facldw75"]
-
-[ext_resource type="Texture2D" uid="uid://bh30ueaouqxkh" path="res://Sprites/ms14_spr_candy2_0.png" id="1_ur5px"]
-
-[node name="Winner" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(568, 432)
-texture = ExtResource("1_ur5px")

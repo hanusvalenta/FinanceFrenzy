@@ -52,7 +52,9 @@ public partial class DataModel : Node2D
 
 			if(V_Int_Max			== V_IntList_Pld.Count)
 			{
-				F_ChangeLevel_RNil("res://Scenes/Win.tscn");
+				var V_CurScene		= GetTree().CurrentScene;
+				GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("res://Scenes/Win.tscn").Instantiate());
+				GetTree().Root.RemoveChild(V_CurScene);
 				return;
 			}
 

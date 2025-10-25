@@ -1,38 +1,29 @@
 using Godot;
 
-public partial class SimpleSpriteVisibilitySwitcher : Node
+public partial class SimpleSpriteVisibilitySwitcher : Node2D
 {
-	[Export] public Node2D[] nodes = new Node2D[0];
+	[Export] public Node2D[] nodes = new Node2D[3];
 	[Export] public float switchInterval = 2.0f;
 	
 	private int currentIndex = 0;
-	private float timer = 0.0f;
-	
+	private double timer = 0.0f;
+
 	public override void _Ready()
-	{
-		if (nodes.Length > 0)
-		{
-			// Hide all nodes initially
-			for (int i = 0; i < nodes.Length; i++)
-			{
-				nodes[i].Visible = false;
-			}
-			
-			// Show the first node
-			nodes[0].Visible = true;
-		}
+	{GD.Print("Any");
+		timer = switchInterval;
 	}
 	
 	public override void _Process(double delta)
 	{
-		if (nodes.Length <= 1) return;
-		
-		timer += (float)delta;
-		
-		if (timer >= switchInterval)
+		if(nodes.Length > 1 && currentIndex < nodes.Length)
 		{
-			timer = 0.0f;
-			SwitchToNext();
+			timer = timer - delta;
+		
+			if(timer < 0)
+			{
+				timer = switchInterval;
+				SwitchToNext();
+			}
 		}
 	}
 	
@@ -42,7 +33,7 @@ public partial class SimpleSpriteVisibilitySwitcher : Node
 		nodes[currentIndex].Visible = false;
 		
 		// Move to next index
-		currentIndex = (currentIndex + 1) % nodes.Length;
+		currentIndex++;
 		
 		// Show new current node
 		nodes[currentIndex].Visible = true;
