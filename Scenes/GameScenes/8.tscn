@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7eot75mlcwne"]
+
+[ext_resource type="Script" uid="uid://ce0wddmovjg8f" path="res://Scripts/Mario.cs" id="1_67qo3"]
+[ext_resource type="Texture2D" uid="uid://bnr5ij28wkh8i" path="res://TestImages/Mario.png" id="1_vjxc6"]
+[ext_resource type="Texture2D" uid="uid://chnp54tx2470c" path="res://TestImages/Plank.png" id="3_jqfx8"]
+[ext_resource type="Texture2D" uid="uid://c28bu24e5pvth" path="res://Sprites/DollaDolla.png" id="4_jqfx8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpu80"]
+size = Vector2(136, 165)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_67qo3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl0ov"]
+size = Vector2(330, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u25ln"]
+size = Vector2(51.8358, 57.7049)
+
+[node name="8" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Mario" type="CharacterBody2D" parent="."]
+position = Vector2(-460, 231)
+script = ExtResource("1_67qo3")
+Speed = 600.0
+
+[node name="Mario" type="Sprite2D" parent="Mario"]
+position = Vector2(-0.515869, -4.4581)
+scale = Vector2(0.309883, 0.309883)
+texture = ExtResource("1_vjxc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mario"]
+position = Vector2(-0.515869, -2.9581)
+shape = SubResource("RectangleShape2D_hpu80")
+
+[node name="Area2D" type="Area2D" parent="Mario"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Mario/Area2D"]
+position = Vector2(-0.515869, -2.9581)
+shape = SubResource("RectangleShape2D_hpu80")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-460, 347)
+physics_material_override = SubResource("PhysicsMaterial_67qo3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.139792, 0.139792)
+texture = ExtResource("3_jqfx8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_dl0ov")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(0, 280)
+physics_material_override = SubResource("PhysicsMaterial_67qo3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+scale = Vector2(0.139792, 0.139792)
+texture = ExtResource("3_jqfx8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_dl0ov")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(451, 179)
+physics_material_override = SubResource("PhysicsMaterial_67qo3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+scale = Vector2(0.139792, 0.139792)
+texture = ExtResource("3_jqfx8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_dl0ov")
+
+[node name="Win" type="Sprite2D" parent="."]
+position = Vector2(543, 52)
+scale = Vector2(1.63415, 2.10345)
+texture = ExtResource("4_jqfx8")
+
+[node name="Area2D" type="Area2D" parent="Win"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win/Area2D"]
+position = Vector2(3.8147e-06, 3.8147e-06)
+scale = Vector2(0.942375, 0.903333)
+shape = SubResource("RectangleShape2D_u25ln")
+
+[connection signal="area_entered" from="Win/Area2D" to="Mario" method="OnBodyEntered"]
