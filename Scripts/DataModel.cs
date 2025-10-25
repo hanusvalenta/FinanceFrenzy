@@ -45,7 +45,7 @@ public partial class DataModel : Node2D
 
 			V_Random_				= new Random();
 
-			int V_Int_Max			= 7;
+			int V_Int_Max			= 8;
 			int V_Int_NextLVL;
 
 			List<int> V_IntList_Pld	= ((Godot.Collections.Array<int>)GetTree().Root.GetMeta("Played")).ToList<int>();

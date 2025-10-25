@@ -5,3 +5,7 @@
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_px1li")
 autoplay = true
+
+[node name="ASP_SayWin" type="AudioStreamPlayer" parent="."]
+
+[node name="ASP_SayLose" type="AudioStreamPlayer" parent="."]
