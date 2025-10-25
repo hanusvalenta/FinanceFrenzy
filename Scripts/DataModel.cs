@@ -90,7 +90,7 @@ public partial class DataModel : Node2D
 
 			if(V_Double_Rhythm		< 0)
 			{
-				Event_RhythmStep.Invoke();
+				Event_RhythmStep?.Invoke();
 
 				if((bool)GetMeta("V_IsInterm") == true)
 				{
