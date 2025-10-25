@@ -52,11 +52,10 @@ position = Vector2(344, -336)
 
 [node name="Plank" type="RigidBody2D" parent="."]
 position = Vector2(0, -1.52588e-05)
-mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_8ja2j")
 gravity_scale = 0.0
 script = ExtResource("3_8ja2j")
-RotationStrength = 120.0
+RotationStrength = 1.2e+06
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plank"]
 position = Vector2(-0.000214969, 185.112)

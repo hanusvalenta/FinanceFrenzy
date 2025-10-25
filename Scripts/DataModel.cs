@@ -10,7 +10,7 @@ public partial class DataModel : Node2D
 	public bool V_Bool_LvlWonSwitch	= false;
 	private double V_Double_Rhythm;
 	private bool V_Bool_QuitService	= false;
-	List<int> V_IntList_KeyBLVL		= new List<int>(){6, 8};
+	List<int> V_IntList_KeyBLVL		= new List<int>(){6, 8, 9};
 	private string V_Str_GameScnPath= "res://Scenes/GameScenes/";
 
 	Sprite2D V_Sprite2_SanityState;
@@ -45,7 +45,7 @@ public partial class DataModel : Node2D
 
 			V_Random_				= new Random();
 
-			int V_Int_Max			= 7;
+			int V_Int_Max			= 9;
 			int V_Int_NextLVL;
 
 			List<int> V_IntList_Pld	= ((Godot.Collections.Array<int>)GetTree().Root.GetMeta("Played")).ToList<int>();
@@ -127,6 +127,15 @@ public partial class DataModel : Node2D
 
 	public void F_SanityChange_RNil(int PAR_Sanity)
 	{
+		if(PAR_Sanity	> 0)
+		{
+			GetTree().Root.GetNode<AudioStreamPlayer>("AudioStreamPlayer/ASP_SayWin").Play();
+		}
+		else
+		{
+			GetTree().Root.GetNode<AudioStreamPlayer>("AudioStreamPlayer/ASP_SayLose").Play();
+		}
+
 		if(!(PAR_Sanity+(int)GetTree().Root.GetMeta("Sanity") > 100))
 		{
 			GetTree().Root.SetMeta("Sanity", (int)GetTree().Root.GetMeta("Sanity")+PAR_Sanity);

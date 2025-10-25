@@ -24,15 +24,13 @@ public partial class Seven : Node2D
 
 	private readonly RandomNumberGenerator _rng = new();
 	private List<Node2D> _spawnLocations;
-	private int _rhythmStepCount = 0;
+	private int _rhythmStepCount	= 0;
+
+	private bool V_Bool_CanSpawn	= true;
 
     public override void _Ready()
 	{
-		var dataModel = GetNode<DataModel>("..");
-		if (dataModel != null)
-		{
-			dataModel.Event_RhythmStep += OnRhythmStep;
-		}
+		GetNode<DataModel>("..").Event_RhythmStep += OnRhythmStep;
 
         _spawnLocations = new List<Node2D> { Node2D_1, Node2D_2, Node2D_3, Node2D_4, Node2D_5 }
             .Where(node => node != null)
@@ -69,5 +67,17 @@ public partial class Seven : Node2D
 		{
 			dataModel.Event_RhythmStep -= OnRhythmStep;
 		}
+	}
+
+	public void F_Loose_RNil()
+	{
+		V_Bool_CanSpawn	= false;
+		GetNode<DataModel>("..").Event_RhythmStep -= OnRhythmStep;
+
+		GetNode<DataModel>("..").F_SanityChange_RNil(-10);
+		GetNode<DataModel>("..").Event_RhythmStep	+= () =>
+		{
+			GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+		};
 	}
 }

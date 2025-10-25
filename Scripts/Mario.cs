@@ -12,6 +12,8 @@ public partial class Mario : CharacterBody2D
 	
 	private bool _jumpRequested = false;
 
+	private bool V_Bool_CanLoose= true;
+
 	public override void _Input(InputEvent @event)
 	{
 		if (Input.IsKeyPressed(Key.W))
@@ -57,14 +59,20 @@ public partial class Mario : CharacterBody2D
 
 		_jumpRequested = false;
 
-		if (GlobalPosition.Y > 664.0f)
+		if (GlobalPosition.Y > 664.0f && V_Bool_CanLoose == true)
 		{
-			GD.Print("Loose");
+			GetNode<DataModel>("..").F_SanityChange_RNil(-10);
+			GetNode<DataModel>("..").Event_RhythmStep	+= () =>
+			{
+				GetNode<DataModel>("..").F_ChangeLevel_RNil("res://Scenes/Intermission.tscn");
+			};
+
+			V_Bool_CanLoose	= false;
 		}
 	}
 	
 	private void OnBodyEntered(Area2D body)
 	{
-		GD.Print("Win");
+		GetNode<DataModel>("..").V_Bool_LvlWonSwitch	= true;
 	}
 }
