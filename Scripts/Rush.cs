@@ -46,15 +46,17 @@ public partial class Rush : Sprite2D
 		}
 	}
 
-	private void FlingObject()
+	private async void FlingObject()
 	{
 		_isFlinging = true;
 
 		if (TargetSprite != null && TargetNode != null)
 		{
 			var tween = CreateTween();
-			tween.TweenProperty(TargetSprite, "global_position", TargetNode.GlobalPosition, FlingDuration)
-				 .SetTrans(Tween.TransitionType.Quint).SetEase(Tween.EaseType.Out);
+			tween.TweenProperty(TargetSprite, "global_position", TargetNode.GlobalPosition, FlingDuration).SetTrans(Tween.TransitionType.Quint).SetEase(Tween.EaseType.Out);
+			
+			await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
+			GetNode<DataModel>("..").V_Bool_LvlWonSwitch = true;
 		}
 	}
 }
