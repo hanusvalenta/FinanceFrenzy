@@ -12,6 +12,7 @@ public partial class One : Node2D
 	private readonly Color _upwardColor = Colors.Green;
 	private readonly Color _downwardColor = Colors.Red;
     private const float LINE_DRAW_INTERVAL = 0.5f;
+    private const float LINE_WIDTH = 10.0f;
     private int goodClicks = 0;
 
 	public override void _Ready()
@@ -51,7 +52,7 @@ public partial class One : Node2D
 
 				Vector2 localStart = ToLocal(startNode.GlobalPosition);
 				Vector2 localEnd = ToLocal(endNode.GlobalPosition);
-				DrawLine(localStart, localEnd, lineColor, 2.0f);
+				DrawLine(localStart, localEnd, lineColor, LINE_WIDTH);
 			}
 		}
 	}
