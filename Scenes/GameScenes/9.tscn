@@ -22,7 +22,7 @@ texture = ExtResource("3_sycei")
 script = ExtResource("3_scxe3")
 TargetSprite = NodePath("../Rush")
 TargetNode = NodePath("../Goal")
-StretchPerPress = 0.2
+StretchDecayRate = 0.75
 
 [node name="Goal" type="Node2D" parent="."]
 position = Vector2(516, 375)
