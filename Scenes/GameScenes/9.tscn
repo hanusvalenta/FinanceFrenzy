@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://doidrfohkcxpf"]
+[gd_scene load_steps=9 format=3 uid="uid://doidrfohkcxpf"]
 
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_vdrcm"]
+[ext_resource type="Texture2D" uid="uid://bdes5jpveqq2s" path="res://Sprites/ms8_spr_littleshit_4.png" id="2_fxhc0"]
 [ext_resource type="Script" uid="uid://o81gjlhevoks" path="res://Scripts/Rush.cs" id="3_scxe3"]
-[ext_resource type="Texture2D" uid="uid://bnr5ij28wkh8i" path="res://TestImages/Mario.png" id="3_v6pyh"]
 [ext_resource type="Texture2D" uid="uid://dm3w5tljo2koj" path="res://Sprites/ibtS_spr_introfull_0.png" id="3_vdrcm"]
 [ext_resource type="Texture2D" uid="uid://baatw43y0ic7b" path="res://Sprites/ms9_spr_mashprompt_space_0.png" id="5_87tup"]
+[ext_resource type="Texture2D" uid="uid://c28bu24e5pvth" path="res://Sprites/DollaDolla.png" id="6_jjigp"]
+[ext_resource type="Texture2D" uid="uid://up7p3iqm7yf3" path="res://Sprites/ibtSa2_spr_bg_0.png" id="7_66vxs"]
+[ext_resource type="Texture2D" uid="uid://b70vbbhpffn7y" path="res://Sprites/sqcs_0_4_0_spr_floor_4.png" id="8_se4me"]
 
 [node name="9" type="Node2D"]
 texture_filter = 1
@@ -15,21 +18,22 @@ metadata/V_NextLevelIn = 11
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Rush" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(-804, 375)
-scale = Vector2(0.353829, 0.353829)
-texture = ExtResource("3_v6pyh")
+scale = Vector2(2, 2)
+texture = ExtResource("2_fxhc0")
+flip_h = true
 
 [node name="Indi" type="Sprite2D" parent="." node_paths=PackedStringArray("TargetSprite", "TargetNode")]
-position = Vector2(-804, -111)
+position = Vector2(-800, 48)
 rotation = 1.5708
-scale = Vector2(0.112, 0.0725385)
+scale = Vector2(0.112, 2.129)
 texture = ExtResource("3_vdrcm")
 script = ExtResource("3_scxe3")
 TargetSprite = NodePath("../Rush")
 TargetNode = NodePath("../Goal")
-StretchPerPress = 1.0
 StretchDecayRate = 0.75
-WinScaleY = 6.35
+WinScaleY = 0.7
 
 [node name="Goal" type="Node2D" parent="."]
 position = Vector2(516, 375)
@@ -39,3 +43,19 @@ scale = Vector2(0.353829, 0.353829)
 position = Vector2(-800, -184)
 scale = Vector2(3.16667, 3.16667)
 texture = ExtResource("5_87tup")
+
+[node name="DollaDolla" type="Sprite2D" parent="."]
+position = Vector2(512, 368)
+scale = Vector2(1.72222, 1.72222)
+texture = ExtResource("6_jjigp")
+
+[node name="IbtSa2SprBg0" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(-8, -96)
+scale = Vector2(3.33951, 3.33951)
+texture = ExtResource("7_66vxs")
+
+[node name="Sqcs040SprFloor4" type="Sprite2D" parent="."]
+position = Vector2(3.50002, 646.25)
+scale = Vector2(10.8371, 10.7564)
+texture = ExtResource("8_se4me")
