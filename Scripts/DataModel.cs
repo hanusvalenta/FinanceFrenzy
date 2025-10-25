@@ -233,20 +233,4 @@ public partial class DataModel : Node2D
 
 		return (float)GetTree().Root.GetMeta("Speed");
 	}
-
-	public void F_AlterReality_RNil(Node PAR__Node)
-	{
-		int V_Int_SanityAlter	= new Random().Next((int)GetTree().Root.GetMeta("Sanity"), 100);
-
-		if(V_Int_SanityAlter	< 95)
-		{
-			GD.Print("Altering reality for node: " + PAR__Node.Name);
-			((CanvasItem)PAR__Node).UseParentMaterial	= false;
-
-			((CanvasItem)PAR__Node).QueueRedraw();
-			((CanvasItem)PAR__Node)._Draw();
-
-			PAR__Node.Reparent(PAR__Node.GetParent());
-		}
-	}
 }
