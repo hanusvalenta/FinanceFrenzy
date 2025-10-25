@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://13t2p8bnej7y"]
+[gd_scene load_steps=13 format=3 uid="uid://chsmo4gh2pc87"]
 
 [ext_resource type="Script" uid="uid://beutqq7fcg274" path="res://Scripts/Six.cs" id="1_8ja2j"]
 [ext_resource type="Script" uid="uid://dense454xkkin" path="res://Scripts/DataModel.cs" id="1_gf06a"]
 [ext_resource type="Texture2D" uid="uid://chnp54tx2470c" path="res://TestImages/Plank.png" id="2_8ja2j"]
 [ext_resource type="Script" uid="uid://cwlnq8ktfl5qx" path="res://Scripts/Plank.cs" id="3_8ja2j"]
-[ext_resource type="PackedScene" uid="uid://dy2rl3shnlcwj" path="res://Prefabs/bills.tscn" id="3_ugy0i"]
-[ext_resource type="PackedScene" uid="uid://ph6bvvcn0a3o" path="res://Prefabs/savings.tscn" id="5_x0hyg"]
+[ext_resource type="PackedScene" path="res://Prefabs/bills.tscn" id="3_ugy0i"]
+[ext_resource type="PackedScene" path="res://Prefabs/savings.tscn" id="5_x0hyg"]
+[ext_resource type="Texture2D" uid="uid://d4niggn8nfo2a" path="res://Sprites/mf0_spr_hand_0.png" id="6_nr3w8"]
+[ext_resource type="Shader" uid="uid://d3w8kw1njlc7l" path="res://Shaders/liquid.gdshader" id="8_oqfqs"]
+[ext_resource type="Texture2D" uid="uid://ckrv4lw2c3h8u" path="res://Sprites/sqcs_0_1_1_spr_overlay_0.png" id="9_w87wu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8ja2j"]
 friction = 0.0
@@ -13,7 +16,20 @@ friction = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ja2j"]
 size = Vector2(2391.7, 328.028)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2yj6"]
+shader = ExtResource("8_oqfqs")
+shader_parameter/flow_speed = 0.241
+shader_parameter/flow_strength = 0.2
+shader_parameter/swirl_intensity = 0.0
+shader_parameter/wave_scale = 4.21
+shader_parameter/viscosity = 0.891
+shader_parameter/enable_secondary_flow = false
+shader_parameter/turbulence = 0.3
+shader_parameter/opacity = 1.0
+shader_parameter/fade_edges = 0.0
+
 [node name="6" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_gf06a")
 metadata/V_NextLevelIn = 13
 metadata/V_IsInterm = false
@@ -29,10 +45,10 @@ Node2D_2 = NodePath("Point2")
 PrefabScale = 0.1
 
 [node name="Point1" type="Node2D" parent="6"]
-position = Vector2(-120, -327)
+position = Vector2(-376, -320)
 
 [node name="Point2" type="Node2D" parent="6"]
-position = Vector2(138, -327)
+position = Vector2(344, -336)
 
 [node name="Plank" type="RigidBody2D" parent="."]
 position = Vector2(0, -1.52588e-05)
@@ -40,17 +56,27 @@ mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_8ja2j")
 gravity_scale = 0.0
 script = ExtResource("3_8ja2j")
-RotationStrength = 120000.0
+RotationStrength = 120.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plank"]
 position = Vector2(-0.000214969, 185.112)
 scale = Vector2(0.4275, 0.4275)
 shape = SubResource("RectangleShape2D_8ja2j")
 
-[node name="Plank" type="Sprite2D" parent="Plank"]
-position = Vector2(1.52588e-05, 186)
-scale = Vector2(0.4275, 0.4275)
-texture = ExtResource("2_8ja2j")
+[node name="HandLeft" type="Sprite2D" parent="Plank"]
+position = Vector2(-384, 184)
+rotation = 0.364774
+scale = Vector2(1.15569, 1.15569)
+texture = ExtResource("6_nr3w8")
+flip_v = true
+
+[node name="HandLeft2" type="Sprite2D" parent="Plank"]
+position = Vector2(384, 184)
+rotation = -0.364774
+scale = Vector2(1.15569, 1.15569)
+texture = ExtResource("6_nr3w8")
+flip_h = true
+flip_v = true
 
 [node name="PlankHolder" type="StaticBody2D" parent="."]
 position = Vector2(0, 185)
@@ -62,6 +88,14 @@ scale = Vector2(0.4275, 0.4275)
 shape = SubResource("RectangleShape2D_8ja2j")
 
 [node name="Plank" type="Sprite2D" parent="PlankHolder"]
+visible = false
 position = Vector2(1.52588e-05, 186)
 scale = Vector2(0.4275, 0.4275)
 texture = ExtResource("2_8ja2j")
+
+[node name="Sqcs011SprOverlay0" type="Sprite2D" parent="."]
+z_index = -2
+material = SubResource("ShaderMaterial_m2yj6")
+position = Vector2(32, -104)
+scale = Vector2(2.08933, 2.08933)
+texture = ExtResource("9_w87wu")
